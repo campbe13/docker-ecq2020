@@ -3,21 +3,29 @@ working on Docker / container images for teaching
 my dockerfiles & scripts here
 
 
-## whalesay
-working, in my hub repo
+## [flaskpy](flaskpy) 
+working, in my hub.docker.com repo
+
+* uses python image
+* install flask
+* hello world web page
+* exposes port 5000 \(flask default)
+
+## [whalesay](whalesay)
+working, in my hub.docker.com repo
 
 * uses docker/whalesay image
 * simple poc
 *  i added  some apps, runs to stdout 
 
-## shakespeare-ec & shakespeare-jm
+## [shakespeare-ec](shakespeare-ec) & [shakespeare-jm](shakespeare-jm)
 work in progress 2020-02-12
 
 * Eira G & Camillia E (ec), J Boisvert & Michael Mi (mi) two teams of students in PHP  2019-fall
 * assignment 1 for PHP 
 * php web app, uses redis
 
-## firefox
+## [firefox](firefox)
 work in progress 2020-02-06
 
 * poc one app 

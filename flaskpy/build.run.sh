@@ -10,8 +10,13 @@ if [[ $? -ne 0 ]] ; then
 fi
 
 container=tricia/flaskpoc
+
+# build the container image
+# run the container
 read -p "hit enter to build $container"
 docker build -t $container .
+
+# run the container
 read -p "hit enter to run $container"
 # running flask, binds to port 5000
 # port forward container 5000 to host 8080
@@ -20,11 +25,8 @@ read -p "hit enter to run $container"
 # -d 
 
 # stop last runtime
-docker stop flasktest
-#docker run --name flasktest -d -p 172.17.0.4:5000:8080 $container 
+docker stop flasktest 2> /dev/null
 docker run --name flasktest -d -p 5000:5000 $container 
-#docker run -d -p 5000:8080 $container 
-#docker run  -d -p 192.168.0.117:8080:5000 $container 
 
 # show port bindings 
 # docker inspect $container
