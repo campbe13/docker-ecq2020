@@ -19,8 +19,10 @@ read -p "hit enter to run $container"
 # detach, run in bg releases console 
 # -d 
 
-docker run --name flasktest -d -p 172.17.0.4:5000:8080 $container 
-#docker run -d -p 5000:5000 $container 
+# stop last runtime
+docker stop flasktest
+#docker run --name flasktest -d -p 172.17.0.4:5000:8080 $container 
+docker run --name flasktest -d -p 5000:5000 $container 
 #docker run -d -p 5000:8080 $container 
 #docker run  -d -p 192.168.0.117:8080:5000 $container 
 
