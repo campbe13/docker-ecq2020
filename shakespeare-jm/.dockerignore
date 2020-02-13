@@ -1,0 +1,4 @@
+# don't copy markdown
+*.md
+# don't copy redis
+*/vendor
