@@ -6,7 +6,7 @@ This is a proof of concept single container app.  It uses a python alpine image 
 
 It is available as a public image in my repo https://hub.docker.com/repository/docker/tricia/flaskpoc
 
-If you don't want to clone this repo you can run this image (provided docker is installed) use this command change hostport to whatever you want (high is eaiser wrt firewalls):
+If you don't want to clone this repo you can run this image (provided docker is installed) use this command change hostport to whatever you want (high is eaiser wrt firewalls) docker will do port forwarding for you:
 ```
 docker run -p hostport:5000 tricia/flaskpoc
 ```

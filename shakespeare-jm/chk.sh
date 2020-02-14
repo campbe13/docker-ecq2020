@@ -9,7 +9,8 @@ if [[ $? -ne 0 ]] ; then
    exit 5
 fi
 systemctl status  docker 
-sudo docker version
-sudo docker images
+docker version
+docker images
+docker ps
 
 

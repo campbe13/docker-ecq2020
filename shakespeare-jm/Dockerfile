@@ -1,5 +1,5 @@
 # dockerfile for apache + php + redis + php 2019 assignment1
-FROM ubuntu
+FROM php:7.2-apache
 MAINTAINER P Campbell pcampbell.edu@gmail.com
 
 # env var for apt-get otherwise I get the error
@@ -8,10 +8,8 @@ MAINTAINER P Campbell pcampbell.edu@gmail.com
 # debconf: falling back to frontend: Readline
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get -y update 
+RUN apt-get -y update && apt-get clean
 
-# install apache2 & allow through firewall
-RUN apt-get -y install apache2
 # don't need this
 # todo check how firewall is set in base images??
 #RUN ufw allow in "Apache Full"
@@ -23,27 +21,23 @@ RUN apt-get -y install apache2
 COPY app.tgz /var/www/html/ 
 RUN cd /var/www/html/ ; tar -xzf app.tgz ; rm app.tgz 
 
-# install php & php cli
-#RUN apt-get -y install php libapache2-mod-php php-mysql php-cli
-RUN apt-get -y install php libapache2-mod-php php-mysql
-RUN apt-get -y install php-cli curl
-
 # needed by predis
-RUN apt-get -y install zip unzip
+RUN apt-get -y install zip unzip curl && apt-get clean
+# for debugging
+RUN apt-get -y install net-tools 
 
-# install composer &  redis
-RUN curl -sS https://getcomposer.org/installer|php
-RUN ./composer.phar require predis/predis
-
-# train the db
-# team3 EC  
-#RUN ln -s  /var/www/html/project1_team3 /var/www/html/app
-#RUN cd /var/www/html/app; php loader.php 
-# team6 JM
-#RUN ln -s  /var/www/html/Project1team06 /var/www/html/app
-# temporarily off, will shell in to try
-# RUN ls -l /var/www/html;ls /var/www/html/app/ ;php  /var/www/html/app/load_model.php 
+# install composer &  predis
+# squaks and says install ext-predis
+RUN cd /var/www/html/app ; curl -sS https://getcomposer.org/installer|php; ./composer.phar require predis/predis
+# install redis
+RUN apt-get -y install redis-server && apt-get clean 
 
 # show container info 
-RUN echo "container info: ";uname -a ; echo /etc/*release
+RUN echo "container info: ";ps -ef ;uname -a ; cat /etc/*release ;  netstat -plan 
 
+WORKDIR /var/www/html/app
+
+# expose the website port
+EXPOSE 80
+# start  redis server & train the model & launch apache  (systemctl not installed on this image )
+CMD redis-server /etc/redis/redis.conf ; php load_model.php ; apachectl -D  FOREGROUND
