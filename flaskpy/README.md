@@ -6,10 +6,19 @@ This is a proof of concept single container app.  It uses a python alpine image 
 
 It is available as a public image in my repo https://hub.docker.com/repository/docker/tricia/flaskpoc
 
-If you don't want to clone this repo you can run this image (provided docker is installed):
+If you don't want to clone this repo you can run this image (provided docker is installed) use this command change hostport to whatever you want (high is eaiser wrt firewalls):
 ```
 docker run -p hostport:5000 tricia/flaskpoc
 ```
+If you run the preceding command the container will have control of the shell and you will see error or debut messages.  In order to run the app in a headless manner you must `-d` detach:
+```
+docker run -d -p hostport:5000 tricia/flaskpoc
+```
+While the host is running you can shell into it if you wish, to see what is going on, if you run `docker ps` you will see the container name on the left: 
+```
+docker exec -it containernamehere sh
+```
+
 note: If you have newly install docker in order to run docker as a regular user you must add your userid to the docker group (then restart the shell) `sudo usermod -aG docker youruserid`  To check this you should see it as your group when you run `id`
 
 
