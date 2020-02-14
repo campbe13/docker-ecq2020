@@ -1,52 +1,158 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Shakespeare text generator</title>
-        <style>
-            body {
-                background-color:beige;
-                color:	rgb(102, 51, 0);
-            }
-            #textOutput {border-style: inset;}
-        </style>
+        <meta charset = "UTF-8">
+        <title>Shakespeare Generator</title>
+        <link rel = "stylesheet" href = "./styles/main_styling.css" />
     </head>
     <body>
-        <h1>Shakespeare Text Generator</h1>
         
-        <!-- Form which will be handled within this file-->
-        <form action="" method="post">
-            <p>
-                Please select the number of characters in the model: <br>
-                <label><input type="radio" name="nb_of_chars" value="3"/>3 (default)</label> <br>
-                <label><input type="radio" name="nb_of_chars" value="6"/>6</label> <br>
-                <label><input type="radio" name="nb_of_chars" value="10"/>10</label> <br>
+        <?php
+        //require statements
+        require_once "model/DataStorage.php";
         
-            </p>
-            <input type="submit" value="Submit">
-        </form>
-        <br>
-    </body>
-</html>    
+        // define variables and set to empty values
+        $model = "";
 
-<!-- Form handling -->
-<?php
-    //Gets executed when the user selects 'Submit'
-    if($_SERVER['REQUEST_METHOD']=='POST'){
-        
-        //If user didn't select any choice, default is 3.
-        $nb_of_chars;
-        if(isset($_POST['nb_of_chars'])){
-            $nb_of_chars=$_POST['nb_of_chars'];
-        } else {
-            $nb_of_chars=3;
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
+            if (empty($_POST["model"])) 
+            {
+                $modelErr = "Selection is required!";
+            }
+            else 
+            {
+                $model = test_input($_POST["model"]);
+            }
+        }
+
+        function test_input($data) 
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+        ?>
+
+    <!-- This section will handle the form part -->
+    <header>
+        <img class="icon" src="images/shakespeare.png" alt="shakespeare image">
+        <img class="spotlight" src="images/spotlight.png" alt="spotlight">
+        <h2>Shakespeare Generator</h2>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">  
+
+        Please select the number of characters in the model: <br><br>
+        <label class="container">
+            <input type="radio" name="model" value="3" checked>3 (default)
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            <input type="radio" name="model" value="6" >6
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            <input type="radio" name="model" value="10" >10
+            <span class="checkmark"></span>
+        </label>
+        <br>
+        <input type="submit" name="submit" value="Submit">  
+        </form>
+    </header>
+
+    <!-- This section will handle the generated text -->
+    <section class="border_image">
+        <?php
+        // if model has been assigned from the form start generating the text.
+        // Varify that the model is 3, 6 or 10. If not it will set it to 3.
+        if($_POST['model'] != '3' && $_POST['model'] != '6' && $_POST['model'] != '10')
+        {
+            $_POST['model'] = '3';
         }
         
-        //Echo generated text
-        include "classes/TextGenerator.php";
-        $generator = new TextGenerator($nb_of_chars);
-        $resultStr = $generator->createText();
-        echo nl2br($resultStr);
-        
-    }
+        if(isset($_POST['model']) && $model != "")
+        {
+            // Validation of the currect data.
+            if($_POST['model'] == '3' || $_POST['model'] == '6' || $_POST['model'] == '10')
+            {
+                echo '<h2>Your Input: '.$_POST['model']."</h2>";
+                
+                $modelData = new DataStorage();
+                
+                //Constants
+                define('FIRST3', "Fir");
+                define('FIRST6', "First ");
+                define('FIRST10', "First Citi");
+                
+                $counter = 0; // to count the characters.
+                
+
+                
+                if($_POST['model'] == '3')
+                {
+                    $currentKey=FIRST3;
+                }
+                
+                if($_POST['model'] == '6')
+                {
+                    $currentKey=FIRST6;
+                }
+                
+                if($_POST['model'] == '10')
+                {
+                    $currentKey=FIRST10;
+                }
+                
+                $text = $currentKey;
+                
+                //Varifies the key
+                if(isset($currentKey))
+                {
+                    // looping for 1000 characters
+                    while($counter < 1000)
+                    {
+                        $randomProb = rand() / getrandmax();
+                        $probabilitySum = 0.0; 
+                        
+                        $currentValue = $modelData->getValueFromKey($currentKey);
+                        
+                        $jsonCurrentValue = json_decode($currentValue, true);
+                        
+                        foreach($jsonCurrentValue as $letter => $probability)
+                        {
+                            $probabilitySum += $probability;
+                            if($probabilitySum > $randomProb)
+                            {
+                                $text.=$letter; 
+                                break;
+                            }
+                        }
+                        
+                        $currentKey = substr($text, -((int)($_POST['model'])));
+                        
+                        $counter++;
+                        
+                    }
+                    
+                    echo nl2br($text); //displaying the whole text.
+                    
+                }
+                // throws an exception if the character was not set.
+                else
+                {
+                    throw new InvalidArgumentException("No starting character was set.");
+                }
+                
+            }
+        }
+        ?>    
+    </section>
     
-?>
+    <!-- The footer section will be used for refferences. -->
+    <footer>
+        <p class="blured">What, you egg? [He stabs him.]</p>
+        <p class="blured">&copy; <?php echo date("Y"); ?> Jeffrey and Michael</p>
+        <p class="blured">images from wikimedia.org</p>
+    </footer>
+    </body>
+</html>

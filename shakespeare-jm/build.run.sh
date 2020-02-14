@@ -1,9 +1,7 @@
 #!/bin/bash
 # pmc
-# 2020-02-03
+# 2020-02-12
 # see Dockerfile
-# using whalesay image install fortune, figlet 
-# use cowsay when run
 
 which docker >/dev/null
 if [[ $? -ne 0 ]] ; then
@@ -11,8 +9,26 @@ if [[ $? -ne 0 ]] ; then
    exit 5
 fi
 
-container=tricia/shakespearec
+container=tricia/shakespearejm
+
+# build the container image
+# run the container
 read -p "hit enter to build $container"
 docker build -t $container .
+
+# run the container
 read -p "hit enter to run $container"
-docker run $container 
+
+# port forward container 80 to host 8080
+# -p hostport:containerport  
+# detach, run in bg releases console 
+# -d 
+
+# stop last runtime
+docker stop flasktest 2> /dev/null
+docker run --name shakespeare-jm -d -p 8080:80 $container 
+
+# show port bindings 
+# docker inspect $container
+# show running containers
+docker ps
