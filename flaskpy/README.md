@@ -10,6 +10,9 @@ If you don't want to clone this repo you can run this image (provided docker is 
 ```
 docker run -p hostport:5000 tricia/flaskpoc
 ```
+To access the app load a browser and use localhost or your ip address `localhost:hostport` or `your.ip.address:hostport`   
+![browser shot](flaskcontainertest.PNG)
+
 If you run the preceding command the container will have control of the shell and you will see error or debut messages.  In order to run the app in a headless manner you must `-d` detach:
 ```
 docker run -d -p hostport:5000 tricia/flaskpoc
