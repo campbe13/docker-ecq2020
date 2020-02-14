@@ -20,28 +20,36 @@ This script will pull the public image and run it.
 This script will build the image from the Dockerfile in this repo, then run it.
 
 ## Dockerfile with explanations 
+
 ```
 FROM python:3-alpine
 MAINTAINER P.M.Campbell pcampbell.edu@gmail.com
-
+```
+* FROM:  the image to be pulled from the docker hub, you choose a base image that has most of what you want or your start with a basic image (alpine, ubuntu etc.)
+* MAINTAINER: labeling information
+```
 RUN pip install --no-cache-dir Flask
-
+```
+* RUN: commands to be run on the image, each RUN creates a new layer on the docker image
+```
 COPY hello.py /usr/local/bin/hello.py 
+```
+- COPY copy from the local host to the container (AFAICT not possible to do a recursive copy)
+-- as this is a simple example we copy one file, a project would be installed through pulling from a git repo
 
+```
 # default flask port
 EXPOSE 5000
+```
+* EXPOSE:  by default ports are internal to docker networks only, unless they are explicitly exposed to the host, EXPOSE means that we can access this port from the host for the docker engine 
 
+```
 # working dir
 WORKDIR /usr/local/bin
-
+```
+* WORKDIR: this is effectively a cd on the container filesystem
+```
 # runtime
 CMD [ "python", "./hello.py" ] 
 ```
-* FROM:  the image to be pulled from the docker hub
-* MAINTAINER: 
-* RUN: commands to be run on the image, each RUN creates a new layer on the docker image
-* COPY copy from the local host to the container (AFAICT not possible to do a recursive copy
- * as this is a simple example we copy one file, a project would be installed through pulling from a git repo
-* EXPOSE:  ports are internal to docker networks only, unless they are explicitly exposed to the host
-* WORKDIR: this is effectively a cd on the container filesystem
-* CMD: command to be run when the container is runs
+* CMD: command to be run when the container is run
