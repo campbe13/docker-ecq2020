@@ -1,0 +1,22 @@
+# list of commands used on azure
+# azure cloud shell
+# via browser, could install the cli app
+
+# log off & log on again to see if I need to recreate the resource group
+# it is the run time for the container
+#  repository must be 1 time only but test also
+# 2020-02-17
+
+# one time only ?
+# create resource group:
+  az group create --name ecq2020test --location eastus
+# create registry:
+az acr create --resource-group ecq2020test --name ecqregistry1 --sku Basic
+# create dockerfile I used my whalesay 
+vi Dockerfile
+az acr build -t whalesay  --registry ecqregistry1  .
+# show repositoyr info
+az acr repository list  --name ecqregistry1
+az acr repository show -n ecqregistry1 --repository whalesay
+# run the container from the registry
+az acr run --registry ecqregistry1 --cmd  '$Registry/whalesay'  /dev/null

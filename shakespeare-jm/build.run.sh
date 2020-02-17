@@ -20,7 +20,7 @@ source CONTAINERNAME
 if [[ $# -eq 0 ]] || [[ $1 != "nobuild" ]] ; then
    read -p "hit enter to build $containerimage"
 #  create a tarball of the app 
-#   tar -czf app.tgz app/
+   tar -czf app.tgz app/
 # build the container image
    docker build -t $containerimage .
 fi

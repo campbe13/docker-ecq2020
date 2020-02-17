@@ -21,7 +21,11 @@ $dataStorage = new DataStorage();
 $dataStorage->flushDataStore();
 
 echo 'Connection to data storage successful. Flushed previous results and now attempting to insert data' . PHP_EOL;
-
+// PMC getting a memory error in the container
+// same limit 128M as my ubuntu but I get the error
+// should not do this, should find the error instead
+ini_set('memory_limit', '-1');
+// PMC
 if (isset($argc))
   {
     //Skip first element since just name of script
@@ -40,6 +44,7 @@ if (isset($argc))
   }
 else
   {
+    error_log('Must provide command line arguments of integers holding the sizes used for the creation of model'); 
     throw new InvalidArgumentException('Must provide command line arguments of integers holding the sizes used for the creation of model');
   }
 

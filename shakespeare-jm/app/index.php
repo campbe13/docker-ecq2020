@@ -8,6 +8,7 @@
     <body>
         
         <?php
+        
         //require statements
         require_once "model/DataStorage.php";
         
@@ -115,9 +116,13 @@
                         $probabilitySum = 0.0; 
                         
                         $currentValue = $modelData->getValueFromKey($currentKey);
-                        
+                        // PMC catch no data error 2020-02-17
+			if ($currentValue == '')  {
+				echo "Data lookup error, null returned, key: ".$currentKey ; 
+				break;
+			}
+			// PMC
                         $jsonCurrentValue = json_decode($currentValue, true);
-                        
                         foreach($jsonCurrentValue as $letter => $probability)
                         {
                             $probabilitySum += $probability;
