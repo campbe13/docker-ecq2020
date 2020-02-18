@@ -4,7 +4,7 @@ my dockerfiles & scripts here
 
 
 ## [flaskpy](flaskpy) 
-working, in my hub.docker.com repo
+working, in my hub.docker.com registry
 
 * uses python image
 * install flask
@@ -12,18 +12,25 @@ working, in my hub.docker.com repo
 * exposes port 5000 \(flask default)
 
 ## [whalesay](whalesay)
-working, in my hub.docker.com repo
+working, in my hub.docker.com registry
 
 * uses docker/whalesay image
 * simple poc
 *  i added  some apps, runs to stdout 
 
-## [shakespeare-ec](shakespeare-ec) & [shakespeare-jm](shakespeare-jm)
+## [shakespeare-jm](shakespeare-jm)
+working, in my hub.docker.com registry
+
+* J Boisvert & Michael Mi students in PHP  2019-fall
+* assignment 1 for PHP 
+* php web app, uses redis and apache
+
+## [shakespeare-ec](shakespeare-ec)
 work in progress 2020-02-12
 
-* Eira G & Camillia E (ec), J Boisvert & Michael Mi (mi) two teams of students in PHP  2019-fall
+* Eira G & Camillia E (ec) students in PHP  2019-fall
 * assignment 1 for PHP 
-* php web app, uses redis
+* php web app, uses redis and apache
 
 ## [firefox](firefox)
 work in progress 2020-02-06

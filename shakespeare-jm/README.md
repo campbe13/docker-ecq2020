@@ -25,6 +25,7 @@ If you don't want to clone this repo to use my scripts you can run this image (p
 docker run -p hostport:80 tricia/shakespeare-jm
 ```
 In the following example the command was `docker run -d -p 8088:80 tricia/shakespeare-jm`
+See [here](RUNTIME-NIX.md) for using docker on a Fedora 31 box,  download from the hub and run the first time, non-detached so you see the startup and apache output.
 ![browser shot](shakespeare-jm-container.PNG)
 
 ### running on cloud
