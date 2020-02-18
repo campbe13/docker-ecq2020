@@ -12,9 +12,10 @@ To run this app
 2. run `docker run -d -p 8888:80 tricia/shakespeare-jm` 
     * 80 is the container port and 8888 is the host that is running docker, port forwarding from
  container 80 to host 8888 is done by docker, choose a high port if you don't want 8888
-    * -d detaches the container, if you omit you will see the startup and the apache output
-3. load a browser to access the app localhost:8888 or ip.address.of.host:8888
+    * \-d detaches the container, if you omit you will see the startup and the apache output
+3. load a browser to access the app `localhost:8888` or `ip.address.of.host:8888`
 
+**__Note__** If you are newly learning docker I suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 ## docker registry image repo
 It is available as a public image in my repo 
 https://hub.docker.com/repository/docker/tricia/shakespeare-jm 
