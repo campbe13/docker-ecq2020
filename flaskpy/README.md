@@ -17,7 +17,6 @@ docker run -p hostport:5000 tricia/flaskpoc
 ```
 To access the app load a browser and use localhost or your ip address `localhost:hostport` or `your.ip.address:hostport`   
 In the following screenshot the command run was `docker run -p 8080:5000 tricia/flaskpoc` so access is form port 8080 on the host running docker.  
-```
 ![browser shot](flaskcontainertest.PNG)
 
 If you run the preceding docker command the container will have control of the shell and you will see error or debut messages.  In order to run the app in a headless manner you must `-d` detach:
