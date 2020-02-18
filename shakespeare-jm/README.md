@@ -8,9 +8,9 @@ It uses a PHP & apache image + redis data store
 ## TL;DR
 To run this app
 1. install docker https://docs.docker.com/install/ 
-⋅⋅* on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
+    * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. run `docker run -d -p 8888:80 tricia/shakespeare-jm` 
-⋅⋅* 80 is the container port and 8888 is the host that is running docker, port forwarding from container 80 to host 8888 is done by docker, choose a high port
+    * 80 is the container port and 8888 is the host that is running docker, port forwarding from container 80 to host 8888 is done by docker, choose a high port
 3. load a browser to access the app localhost:8888 or ip.address.of.host:8888
 
 ## docker registry image repo
