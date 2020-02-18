@@ -10,7 +10,9 @@ To run this app
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. run `docker run -d -p 8888:80 tricia/shakespeare-jm` 
-    * 80 is the container port and 8888 is the host that is running docker, port forwarding from container 80 to host 8888 is done by docker, choose a high port
+    * 80 is the container port and 8888 is the host that is running docker, port forwarding from
+ container 80 to host 8888 is done by docker, choose a high port if you don't want 8888
+    * -d detaches the container, if you omit you will see the startup and the apache output
 3. load a browser to access the app localhost:8888 or ip.address.of.host:8888
 
 ## docker registry image repo
@@ -107,6 +109,8 @@ node                    6.11.5              852391892b9f        2 years ago     
 docker/whalesay         latest              6b362a9f73eb        4 years ago         247MB
 [tricia@acerfed31 ~]$
 ```
+run another container:
+```
 [tricia@acerfed31 ~]$ docker run tricia/whalesay1
  _____________________________________
 / Everything will be just tickety-boo \
@@ -131,7 +135,14 @@ docker/whalesay         latest              6b362a9f73eb        4 years ago     
 
 [tricia@acerfed31 ~]$
 ```
+## Scripts (install docker before using)
+### build.run.sh
+This script will build the image from the Dockerfile in this repo, then run it.
+### tohub.sh
+This script will push the image to docker hub, you will need to logon `docker logon` to do this.
 
+## Creating a container image (Dockerfile)
+Multi container apps use docker compose yaml and Dockerfiles, this app has a single container so everything to define the image is in the Dockerfile.  You need the Dockerfile to create the image, so that you can add it to a repository & reuse the container.  Once it is in the repo you no longer need the Dockerfile, unless you are going to make changes to the app or its supporting software or config. 
 
-
+See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
 
