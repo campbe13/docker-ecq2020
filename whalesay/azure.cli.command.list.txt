@@ -1,6 +1,7 @@
 # list of commands used on azure
 # azure cloud shell
-# via browser, could install the cli app
+# via browser, 
+# could also install the cli app & do the same commands via the host.
 
 # log off & log on again to see if I need to recreate the resource group
 # it is the run time for the container
