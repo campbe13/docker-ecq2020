@@ -6,7 +6,7 @@ My thanks to everyone for lending me their work.
 
 It uses a PHP & apache image + redis data store  
 ## TL;DR
-To run this app
+### To run this app
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. run `docker run -d -p 8888:80 tricia/shakespeare-jm` 
@@ -14,8 +14,13 @@ To run this app
  container 80 to host 8888 is done by docker, choose a high port if you don't want 8888
     * \-d detaches the container, if you omit you will see the startup and the apache output
 3. load a browser to access the app `localhost:8888` or `ip.address.of.host:8888`
+### To build a container  (general info)
+1.  install docker https://docs.docker.com/install/
+2.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
+3.  build the image, run `docker build -t containerimagename .`   until it works!
+4.  run the container, run `docker run containerimagename`       to test it.
+**__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
-**__Note__** If you are newly learning docker I suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 ## docker registry image repo
 It is available as a public image in my repo 
 https://hub.docker.com/repository/docker/tricia/shakespeare-jm 
