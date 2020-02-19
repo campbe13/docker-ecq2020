@@ -17,7 +17,8 @@ It uses a PHP & apache image + redis data store
 ### To build a container  (general info)
 1.  install docker https://docs.docker.com/install/
 2.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
-3.  build the image, run `docker build -t containerimagename .`   until it works!
+    * Dockerfile reference https://docs.docker.com/engine/reference/builder/
+3.  build the image, run `docker build -t **containerimagename** .` (tweak Dockerfile until it works!)
 4.  run the container, run `docker run containerimagename`       to test it.
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
