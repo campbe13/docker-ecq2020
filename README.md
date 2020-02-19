@@ -29,8 +29,9 @@ working, in my hub.docker.com registry
 ## [shakespeare-jm](shakespeare-jm)
 working, in my hub.docker.com registry
 
-* J Boisvert & Michael Mi students in PHP  2019-fall
-* assignment 1 for PHP 
+* uses python apache image
+* install redis
+* install app: J Boisvert & Michael Mi students in PHP  2019-fall, assignment 1 for PHP 
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
 * tested on
