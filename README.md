@@ -52,6 +52,15 @@ working, in my hub.docker.com registry
 * tested on
     * ubuntu 18.04 (created & run)
 
+## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
+work in progress 2020-02-20
+
+Original instructions here https://docs.docker.com/get-started/part2/
+
+* uses x, y z 
+* install x, y z
+* install app https://github.com/dockersamples/node-bulletin-board/tree/master/bulletin-board-app
+
 ## [firefox](firefox)
 work in progress 2020-02-06
 
