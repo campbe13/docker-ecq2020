@@ -32,6 +32,7 @@ working, in my hub.docker.com registry
 * uses python apache image
 * install redis
 * install app: J Boisvert & Michael Mi students in PHP  2019-fall, assignment 1 for PHP 
+* run php app to train model in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
 * tested on
@@ -41,9 +42,13 @@ working, in my hub.docker.com registry
 ## [shakespeare-ec](shakespeare-ec)
 work in progress 2020-02-12
 
-* Eira G & Camillia E (ec) students in PHP  2019-fall
-* assignment 1 for PHP 
+* uses python apache image
+* install redis
+* install app Eira G & Camillia E (ec) students in PHP  2019-fall assignment 1 for PHP 
+* run php app to train model in redis
 * php web app, uses redis and apache
+* exposes port 80 \(apache default\)
+* tested on
 
 ## [firefox](firefox)
 work in progress 2020-02-06
