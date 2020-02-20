@@ -5,6 +5,7 @@ assignment given by J. Nilakantan @ Dawson College for the Computer Science PHP 
 My thanks to everyone for lending me their work.
 
 It uses a PHP & apache image + redis data store  
+**__NOTE:  TL;DR is complete, everything that follows is still being edited, do not rely on it.__**
 ## TL;DR
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
