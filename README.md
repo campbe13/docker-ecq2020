@@ -61,6 +61,7 @@ Original instructions here https://docs.docker.com/get-started/part2/
 * install x, y z
 * install app https://github.com/dockersamples/node-bulletin-board/tree/master/bulletin-board-app
 
+
 ## [firefox](firefox)
 work in progress 2020-02-06
 
