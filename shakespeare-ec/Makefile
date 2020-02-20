@@ -46,5 +46,10 @@ check:  ## check docker run time
 	docker ps
 
 publish:   
-	@echo publish to $(DOCKER_REPO)
-	docker push $(DOCKER_REPO)/$(APPNAME):LATEST
+	@echo publish to  docker hub, interactive 
+        ifdef DOCKER_USER
+		docker login   -u $(DOCKER_USER)
+        else
+		docker login 
+        endif
+	docker image push $(CONTAINER_IMAGE):latest

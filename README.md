@@ -25,13 +25,14 @@ working, in my hub.docker.com registry
 * tested on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+    * Windows 10 @ Dawson ( run from docker hub)
 
 ## [shakespeare-jm](shakespeare-jm)
 working, in my hub.docker.com registry
 
-* uses python apache image
+* uses php apache image
 * install redis
-* install app: J Boisvert & Michael Mi students in PHP  2019-fall, assignment 1 for PHP 
+* install app: Jeff B & Michael Mi (jm) students in PHP  2019-fall, assignment 1 for PHP 
 * run php app to train model in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
@@ -40,7 +41,7 @@ working, in my hub.docker.com registry
     * Fedora 31 (run from docker hub)
 
 ## [shakespeare-ec](shakespeare-ec)
-work in progress 2020-02-12
+working, in my hub.docker.com registry
 
 * uses python apache image
 * install redis
@@ -49,6 +50,7 @@ work in progress 2020-02-12
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
 * tested on
+    * ubuntu 18.04 (created & run)
 
 ## [firefox](firefox)
 work in progress 2020-02-06
