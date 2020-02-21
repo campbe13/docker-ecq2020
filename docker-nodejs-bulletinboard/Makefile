@@ -1,8 +1,6 @@
 # Makefile to build docker image & push to hub.docker.com
-# very helpful original :
-# https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 # pmcampbell
-# 2020-2-19
+# 2020-2-20
 
 include config.make
 #export $(shell sed 's/=.*//' $(cnf))
@@ -23,6 +21,7 @@ clone: ## 	clone
 	tar -czf app.tgz app
  
 build: ##   build container image from Dockerfile
+        
 	docker build -t $(CONTAINER_IMAGE) . 
 
 run:  ## run the container 
@@ -40,7 +39,7 @@ stop: ## stop and remove the container
 	docker stop $(RUN_NAME) ; docker rm $(RUN_NAME) ; docker ps
 
 check:  ## check docker run time
-	systemctl status  docker
+	systemctl status  docker  # hit q to continue
 	docker version
 	docker images
 	docker ps
@@ -53,3 +52,6 @@ publish:
 		docker login 
         endif
 	docker image push $(CONTAINER_IMAGE):latest
+
+clean:  ## clean up extra images
+	docker system prune -f    # force, no interactive

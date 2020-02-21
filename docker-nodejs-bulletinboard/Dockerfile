@@ -1,27 +1,26 @@
-# dockerfile for apache + php + redis + php 2019 assignment1
-# 2020-2-19
+# dockerfile for node.js + sample app from docker 
+# 2020-2-20
 
-FROM php:7.2-apache
-MAINTAINER P Campbell pcampbell.edu@gmail.com
+FROM node:current-slim
+MAINTAINER P Campbell 2020-02-20 pcampbell.edu@gmail.com 
 
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive
 
-# install redis-server 
-RUN apt-get -y update &&  apt-get -y install git redis-server && apt-get clean 
-
-WORKDIR /var/www/html/
+WORKDIR /usr/src/app/
 
 # install app
-COPY app.tgz .
-RUN tar -xzf app.tgz ; rm app.tgz ; mv app/* . ; rm -rf app .git
+COPY app/*/package.json .
 
-# install composer &  predis
-# squaks and says install ext-phpiredis but this is ok
-RUN  curl -sS https://getcomposer.org/installer|php; ./composer.phar require predis/predis
+# install node stuff / app from package.json
+RUN npm install 
+
+# install the app
+# not sure copy works properly ....
+COPY app/*/*  .
 
 # expose the website port
-EXPOSE 80
+EXPOSE 8080
 
 # start  redis server & train the model & launch apache   (systemctl not installed on this image )
-CMD redis-server /etc/redis/redis.conf ; php loader.php ; apachectl -D  FOREGROUND
+CMD [ "npm", "start" ]

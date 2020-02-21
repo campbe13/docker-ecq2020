@@ -4,6 +4,8 @@ assignment given by J. Nilakantan @ Dawson College for the Computer Science PHP 
 
 My thanks to everyone for lending me their work.
 
+Note in this app the model is trained via a RUN so that it becomes part of the container, it does not need to be re-run in a CMD every time the app is run.
+
 It uses a PHP & apache image + redis data store  
 **__NOTE:  TL;DR is complete, everything that follows is still being edited, do not rely on it.__**
 ## TL;DR

@@ -23,5 +23,12 @@ RUN  curl -sS https://getcomposer.org/installer|php; ./composer.phar require pre
 # expose the website port
 EXPOSE 80
 
-# start  redis server & train the model & launch apache   (systemctl not installed on this image )
-CMD redis-server /etc/redis/redis.conf ; php loader.php ; apachectl -D  FOREGROUND
+# start  redis server & train the model  (systemctl not installed on this image )
+RUN redis-server /etc/redis/redis.conf ; php loader.php 
+
+# n.b. the RUN layers are discrete anything started in  a RUN is not still running once it's finished 
+#  they are used to run commands 1 time on the container
+#  so I have to start the redis-server again to be used by the web app
+
+# start  redis server &  launch apache   (systemctl not installed on this image )
+CMD  redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND

@@ -25,7 +25,10 @@ clone: ## 	clone
 build: ##   build container image from Dockerfile
 	docker build -t $(CONTAINER_IMAGE) . 
 
-run:  ## run the container 
+run-fg:  ## run the container logs to stdout
+	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
+
+run:  ## run the container detached (~in the background )
 	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
 	docker ps 
 
@@ -36,8 +39,14 @@ shell:  ## shell into the container
 all: clone build run
 up:  build run
 
+clean:  stop prune
+
 stop: ## stop and remove the container
 	docker stop $(RUN_NAME) ; docker rm $(RUN_NAME) ; docker ps
+
+prune:  # clean up unused containers
+	docker system prune -f
+	docker images
 
 check:  ## check docker run time
 	systemctl status  docker
