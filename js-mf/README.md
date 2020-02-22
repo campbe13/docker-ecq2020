@@ -24,7 +24,6 @@ It uses an alpine image + lighttpd
 4.  run the container, run `docker run containerimagename`       to test it.
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
-**__NOTE:  TL;DR is complete, everything that follows is still being edited, do not rely on it.__**
 ## docker registry image repo
 It is available as a public image in my repo 
 https://hub.docker.com/repository/docker/tricia/js-mf
