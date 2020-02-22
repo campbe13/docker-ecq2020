@@ -1,6 +1,6 @@
 #  javascript-mf
 This is a proof of concept containerized app to host javascript sample pages (no node.)
-The code was written by M. Frydrychowiz to accompany lectures @ Dawson College for the Computer Science Javascript course in the 2rd year Winter 2018.  
+The code was written by M. Frydrychowiz to accompany lectures @ Dawson College for the Computer Science Javascript course in the 2rd year Winter 2017.  
 
 My thanks to M. Frydrychowiz for lending their work
 
