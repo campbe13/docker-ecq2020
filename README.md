@@ -35,24 +35,27 @@ working, in my hub.docker.com registry
 * uses php apache image
 * install redis
 * install app: Jeff B & Michael Mi (jm) students in PHP  2019-fall, assignment 1 for PHP 
-* run php app to train model in redis
+* run php app to train model, data in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
 * tested on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+* built and tested using scripts
 
 ## [shakespeare-ec](shakespeare-ec)
 working, in my hub.docker.com registry
 
 * uses python apache image
-* install redis
+* install redis, 
 * install app Eira G & Camillia E (ec) students in PHP  2019-fall assignment 1 for PHP 
-* run php app to train model in redis
+* run php app to train model, data in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
 * tested on
     * ubuntu 18.04 (created & run)
+    * Fedora 31 (run from docker hub)
+* built and tested using `make`
 
 ## [javascript-mf](js-mf)
 working, in my hub.docker.com registry
@@ -60,10 +63,12 @@ working, in my hub.docker.com registry
 * uses alpine base image
 * install lighttpd
 * install app javascript & static html samples for lectures in js course
-* simple web pages
+* simple web pages, uses lighttpd
 * exposes port 80 \(apache default\)
 * tested on
     * ubuntu 18.04 (created & run)
+    * Fedora 31 (run from docker hub)
+* built and tested using `make`
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20
@@ -73,7 +78,6 @@ Original instructions here https://docs.docker.com/get-started/part2/
 * uses x, y z 
 * install x, y z
 * install app https://github.com/dockersamples/node-bulletin-board/tree/master/bulletin-board-app
-
 
 ## [firefox](firefox)
 work in progress 2020-02-06
