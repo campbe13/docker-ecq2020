@@ -1,17 +1,19 @@
 # Docker 
+## Todo
+* Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??
+* Add screenshots & text examples from the READMEs in other repos.
 ## Containers & Images 
 Building and running :
 ```
 Dockerfile ------> `docker build` ----> image ---> `docker run` ---> running app!
 ```
-
 Running from local dockerd:
 
 once the image is working you can run it over & over
 ```
 image ---> `docker run` ---> running app!
 ```
-Publish it in a repository: 
+Publish it in a registry: 
 
 once the image is working you can publish it in a registry (a bit like git, but not)
 ```
@@ -20,6 +22,7 @@ image ---> `docker image push ` ---> image in a repo!
 Running from a repository dockerd:
 
 once the image is working you can run it over & over and from anywhere that has dockerd /docker installed
+it will search the docker hub (in this case) to find the image
 ```
 `docker run` ---> running app!
 ```
