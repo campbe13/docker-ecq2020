@@ -2,6 +2,8 @@
 Some containers & documentation I am working with  for teaching
 my dockerfiles & scripts & instructions here, proofs of concept and basis for lectures / labs 
 
+See [docker command reference](DOCKERCMDS.md) for some notes on using docker commands
+
 The following are in order of least to more complex
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
@@ -48,6 +50,17 @@ working, in my hub.docker.com registry
 * install app Eira G & Camillia E (ec) students in PHP  2019-fall assignment 1 for PHP 
 * run php app to train model in redis
 * php web app, uses redis and apache
+* exposes port 80 \(apache default\)
+* tested on
+    * ubuntu 18.04 (created & run)
+
+## [javascript-mf](js-mf)
+working, in my hub.docker.com registry
+
+* uses alpine base image
+* install lighttpd
+* install app javascript & static html samples for lectures in js course
+* simple web pages
 * exposes port 80 \(apache default\)
 * tested on
     * ubuntu 18.04 (created & run)
