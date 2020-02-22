@@ -41,7 +41,7 @@ help: ## put help info here
 	@echo run: $(RUN_NAME)
 	@echo port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)	
 ```
-### target  to clone & package the repo, build assumes the app is in a tarball `./app.tgz``
+### target  to clone & package the repo, build assumes the app is in a tarball `./app.tgz`
 
 ```
 # clone (need keys, or interactive w uid/pass)
@@ -55,7 +55,7 @@ clone: ## 	clone
 build: ##   build container image from Dockerfile
 	docker build -t $(CONTAINER_IMAGE) . 
 ```
-### target to run the container image: alternate run, omits `-d`  so console has control of console, logs to stdout
+### target to run the container image: alternate run, omits `-d`  so container app has control of console, logs to stdout
 ```
 run-fg:  ## run the container logs to stdout
 	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
@@ -80,12 +80,12 @@ up:  build run
 clean:  stop prune
 stoprun: stop run
 ```
-### target for testing stop & remove running container
+### target to use while testing, stop & remove running container
 ```
 stop: ## stop and remove the container
 	docker stop $(RUN_NAME) ; docker rm $(RUN_NAME) ; docker ps
 ```
-### target to use at the end of testing usee to clean up the intermediary images
+### target to use at the end of testing, to clean up the intermediary images
 ```
 prune:  # clean up unused containers
 	docker system prune -f
