@@ -9,8 +9,6 @@ MAINTAINER 2020-02-21 P Campbell pcampbell.edu@gmail.com
 * FROM the base image to be pulled from docker hub,  you choose a base image that has most of what you want or your start with a basic image alpine, ubuntu etc
 * MAINTAINER: labeling information
 ```
-
-```
 # install lighthttpd
 # ref https://wiki.alpinelinux.org/wiki/Lighttpd
 # & enable directory listing
