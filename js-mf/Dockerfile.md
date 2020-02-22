@@ -37,4 +37,6 @@ EXPOSE 80
 # start  web server  (rc-service not installed on this image )
 ENTRYPOINT ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 ```
-* ENTRYPOINT using [] command is executed if ommitted format is different and a shell is launched, CMD vs ENTRYPOINT is nuanced
+* ENTRYPOINT to be run when the container is run, using `[]` command(s) is(are) executed, if ommitted format is different and a shell is launched, CMD vs ENTRYPOINT is nuanced
+
+

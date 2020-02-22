@@ -1,3 +1,4 @@
+# Makefile with explanations
 ## Imported by the Makefile 
 see the `include config.make`
 
@@ -29,7 +30,7 @@ target:  dependency1 dependency2 ...
 include config.make
 #export $(shell sed 's/=.*//' $(cnf))
 ```
-# help target `make help`
+### target to show help `make help`
 ```
 # .PHONY used if no options given
 .PHONY: help
@@ -40,7 +41,7 @@ help: ## put help info here
 	@echo run: $(RUN_NAME)
 	@echo port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)	
 ```
-# target  to clone & package the repo, build assumes the app is in a tarball `./app.tgz``
+### target  to clone & package the repo, build assumes the app is in a tarball `./app.tgz``
 
 ```
 # clone (need keys, or interactive w uid/pass)
@@ -49,29 +50,29 @@ clone: ## 	clone
 #	mkdir app;  git clone $(GIT_REPO) app
 	tar -czf app.tgz app
 ```
-# build docker image, if we use a compiled language will need more builds
+### target to build docker image, if we use a compiled language will need more builds
 ``` 
 build: ##   build container image from Dockerfile
 	docker build -t $(CONTAINER_IMAGE) . 
 ```
-# run the container image: alternate run, omits `-d`  so console has control of console, logs to stdout
+### target to run the container image: alternate run, omits `-d`  so console has control of console, logs to stdout
 ```
 run-fg:  ## run the container logs to stdout
 	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
 ```
-# run the container image, detach `-d` then show running docker containers `ps`
+### target to run the container image, detach `-d` then show running docker containers `ps`
 ```
 run:  ## run the container detached (~in the background )
 	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
 	docker ps 
 ```
-# shell into the app sh or shell
+### target to shell into the app sh or shell
 ```
 sh:	shell
 shell:  ## shell into the container
 	docker exec -ti $(RUN_NAME) sh
 ```
-# combinations of targets, run sequentially
+### combinations of targets, run sequentially
 ```
 all: clone build run
 up:  build run
@@ -79,18 +80,18 @@ up:  build run
 clean:  stop prune
 stoprun: stop run
 ```
-# for testing stop & remove running container
+### target for testing stop & remove running container
 ```
 stop: ## stop and remove the container
 	docker stop $(RUN_NAME) ; docker rm $(RUN_NAME) ; docker ps
 ```
-# at the end clean use to clean up the intermediary images
+### target to use at the end of testing usee to clean up the intermediary images
 ```
 prune:  # clean up unused containers
 	docker system prune -f
 	docker images
 ```
-# check if docker is running & what version
+### target to check if docker is running & what version
 ```
 check:  ## check docker run time
 	@echo to end sytemctl, hit q
@@ -99,7 +100,7 @@ check:  ## check docker run time
 	docker images
 	docker ps
 ```
-# push your code to a registry, depends what is configured on your system
+### target to push your code to a registry, depends what is configured on your system
 ```
 publish:   
 	@echo publish to  docker hub, interactive 
