@@ -70,6 +70,12 @@ working, in my hub.docker.com registry
     * Fedora 31 (run from docker hub)
 * built and tested using `make`
 
+## jeff-php-mysql
+work in progress 2020-02-23
+
+* port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
+* apache + php app + mysql
+
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20
 
@@ -89,9 +95,3 @@ work in progress 2020-02-06
 ## own-fortune 
 not completed, may abandon
 
-
-## jeff-php
-work in progress 2020-02-06
-
-* port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
-* apache + php app + mysql

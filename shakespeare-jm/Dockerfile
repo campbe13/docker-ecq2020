@@ -5,10 +5,9 @@ MAINTAINER P Campbell pcampbell.edu@gmail.com
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get -y update && apt-get clean
 
-# needed by predis
-RUN apt-get -y install zip unzip curl && apt-get clean
+#  zip unzip curl needed by predis
+RUN apt-get -y update && apt-get -y install zip unzip curl && apt-get clean
 
 # install redis
 RUN apt-get -y install redis-server && apt-get clean 
@@ -27,5 +26,8 @@ WORKDIR /var/www/html/app
 # expose the website port
 EXPOSE 80
 
-# start  redis server & train the model & launch apache  (systemctl not installed on this image )
-CMD redis-server /etc/redis/redis.conf ; php load_model.php 3 6 10 ; apachectl -D  FOREGROUND
+# start  redis server & train the model  (systemctl not installed on this image )
+RUN redis-server /etc/redis/redis.conf ; php load_model.php 3 6 10 
+
+# start  redis server & launch apache  (systemctl not installed on this image )
+CMD redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND

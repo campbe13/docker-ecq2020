@@ -1,0 +1,28 @@
+version: "0."
+
+services:
+# service name 	
+  php:
+#   build: location of the Dockerfile
+    build: ./php
+#   volumes: mappling local to container
+    volumes: 
+#	use cwd for website
+	- ./:/var/www/html
+#	log to localhost (debugging only)
+	- /var/log:/var/log	
+#   port forward 80 from container to 8700 host
+    ports:
+	- '8700:80'
+#   environment variables
+    environment:
+	- XYZ="this is an example"
+#   internal dependecies for order of ops
+    depends_on:
+	- db
+  db:
+#   build: location of the Dockerfile
+    build: ./mysql
+
+
+

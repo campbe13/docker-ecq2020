@@ -2,6 +2,12 @@
 ## Todo
 * Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??
 * Add screenshots & text examples from the READMEs in other repos.
+## References
+A **Dockerfile** is a clear text file that contains commands that `docker build` would use to assemble a container image.
+**docker compose yaml** is a clear text file that is used to build multiple containers. Docker compose sits ontop of Dockerfiles we use compose for multi container apps.
+* (docker compose syntax)[https://docs.docker.com/compose/compose-file/]
+* (Dockerfile syntax)[https://docs.docker.com/engine/reference/builder/]
+    * (Dockerfile best practices)[https://docs.docker.com/develop/develop-images/dockerfile_best-practices/]
 ## Containers & Images 
 Building and running :
 ```
