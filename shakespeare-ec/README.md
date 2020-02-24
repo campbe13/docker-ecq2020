@@ -7,7 +7,6 @@ My thanks to everyone for lending me their work.
 Note in this app the model is trained via a RUN so that it becomes part of the container, it does not need to be re-run in a CMD every time the app is run.
 
 It uses a PHP & apache image + redis data store  
-**__NOTE:  TL;DR is complete, everything that follows is still being edited, do not rely on it.__**
 ## TL;DR
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
@@ -40,12 +39,11 @@ See [here](RUNTIME-NIX.md) for using docker on a Fedora 31 box,  download from t
 
 ### running on cloud
 You may be able to pull from docker hub with Azure, still to be tested others not sure, each cloud provider has it's own registry if you want to use any of those you will have to set up an account & use the Dockerfile & app to create your own image in the cloud's own registry.  I will add this information elsewhere.
-### docker commands
-see  [common docker commands](DOCKERCMDS.md) 
 ## Makefile 
 Instead of scripts this image was built with a [Makefile](Makefile), see here for [Makefile with explanations](Makefile.md)
-
 ## Creating a container image (Dockerfile)
 Multi container apps use docker compose yaml and Dockerfiles, this app has a single container so everything to define the image is in the Dockerfile.  You need the Dockerfile to create the image, so that you can add it to a repository & reuse the container.  Once it is in the repo you no longer need the Dockerfile, unless you are going to make changes to the app or its supporting software or config. 
 
 See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
+## docker commands
+see  [common docker commands](DOCKERCMDS.md) 
