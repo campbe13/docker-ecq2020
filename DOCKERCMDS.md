@@ -1,5 +1,6 @@
 # Docker 
-The docker platform consists of three main components, the [docker command](3, dockerd or containerd the container engine, and Repositorys.  This doc is mostly about [docker commands](# Docker commands) that I have used / are widely used.
+The docker platform consists of three main components, the docker command, dockerd or containerd the container engine, and Repositorys.  This doc is mostly about docker commands that I have used / are widely used.
+
 ![docker engine](https://docs.docker.com/engine/images/engine-components-flow.png)
 ## Todo
 * Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??
