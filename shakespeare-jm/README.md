@@ -37,7 +37,21 @@ See [here](RUNTIME-NIX.md) for using docker on a Fedora 31 box,  download from t
 
 ### running on cloud
 You cannot pull from docker hub without docker AFAICT, each cloud provider has it's own registry if you want to use any of those you will have to set up an account & use the Dockerfile & app to create your own image in the cloud's own registry.  I will add this information elsewhere.
+## Scripts (install docker before using)
+### build.run.sh
+This script will build the image from the Dockerfile in this repo, then run it.
+### tohub.sh
+This script will push the image to docker hub, you will need to logon `docker logon` to do this.
+
+## Creating a container image (Dockerfile)
+Multi container apps use docker compose yaml and Dockerfiles, this app has a single container so everything to define the image is in the Dockerfile.  You need the Dockerfile to create the image, so that you can add it to a repository & reuse the container.  Once it is in the repo you no longer need the Dockerfile, unless you are going to make changes to the app or its supporting software or config. 
+
+See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
+
 ### docker commands
+see  [common docker commands](DOCKERCMDS.md) 
+
+Short list of examples: 
 if you want to see what is going on with the image use `docker ps` or `docker ps -a`
 ```
 [tricia@acerfed31 ~]$ docker ps
@@ -143,14 +157,3 @@ run another container:
 
 [tricia@acerfed31 ~]$
 ```
-## Scripts (install docker before using)
-### build.run.sh
-This script will build the image from the Dockerfile in this repo, then run it.
-### tohub.sh
-This script will push the image to docker hub, you will need to logon `docker logon` to do this.
-
-## Creating a container image (Dockerfile)
-Multi container apps use docker compose yaml and Dockerfiles, this app has a single container so everything to define the image is in the Dockerfile.  You need the Dockerfile to create the image, so that you can add it to a repository & reuse the container.  Once it is in the repo you no longer need the Dockerfile, unless you are going to make changes to the app or its supporting software or config. 
-
-See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
-
