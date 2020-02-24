@@ -41,6 +41,7 @@ Incomplete list, the ones I have used (pcampbell)
 
 # docker run
 Run an image, it becomes a container 
+When you run an image if it is on the local box it will be loaded from there if not the registriy will be searched.  If the image is found in the registry (but not locally) a `docker pull` is performed, then the container image is run.
 
 n.b. for full info see `man docker run`
 
@@ -95,6 +96,9 @@ docker build -t *containerimagename* .
 # docker ps
 show running container processes
 if you want to see what is going on with the image use `docker ps` or `docker ps -a`
+
+n.b. for full info see `man docker ps`
+
 ```
 [tricia@acerfed31 ~]$ docker ps
 CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                  NAMES
@@ -155,6 +159,9 @@ drwxr-xr-x. 4 root root    4096 Feb 17 22:35 vendor
 # docker stop
 Stop the running container 
 To stop the container (The image is still there, you can start it again, it will not take as long as it does not have to download) run `docker stop containername`
+
+n.b. for full info see `man docker stop`
+
 ```
 [tricia@acerfed31 ~]$ docker ps
 CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                  NAMES
