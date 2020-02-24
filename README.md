@@ -70,7 +70,7 @@ working, in my hub.docker.com registry
     * Fedora 31 (run from docker hub)
 * built and tested using `make`
 
-## jeff-php-mysql
+## [jeff-php-mysql](jeff-php-mysql)
 work in progress 2020-02-23
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
