@@ -1,0 +1,22 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+   Active: [0;1;32mactive (running)[0m since Thu 2020-02-13 12:41:00 EST; 1 weeks 5 days ago
+     Docs: https://docs.docker.com
+ Main PID: 1056 (dockerd)
+    Tasks: 35
+   CGroup: /system.slice/docker.service
+           ├─ 1056 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+           ├─ 6193 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8900 -container-ip 172.17.0.2 -container-port 80
+           ├─19364 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.17.0.3 -container-port 80
+           └─25954 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8700 -container-ip 172.21.0.3 -container-port 80
+
+Feb 25 16:32:34 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:32:34.328965711-05:00" level=error msg="Handler for GET /v1.38/containers/6d7bca4dcf592329122a0c2c326d3942a655841a54e1aeee8cbde06cbee4e0cf/json returned error: write unix /var/run/docker.sock->@: write: broken pipe"
+Feb 25 16:32:34 acerubuntu1804 dockerd[1056]: http: superfluous response.WriteHeader call from github.com/docker/docker/api/server/httputils.WriteJSON (httputils_write_json.go:11)
+Feb 25 16:33:44 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:33:44.281800710-05:00" level=info msg="Layer sha256:af73abca5280e4ac4a4b846b5f772b38e3740f47ebc17f164cd6680d4ac7f615 cleaned up"
+Feb 25 16:39:26 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:39:26.406811403-05:00" level=info msg="Layer sha256:d8f757ffa2cd134f3a9713f1ce56d60e3019205fac0d98c4e45508c14b1c591b cleaned up"
+Feb 25 16:39:56 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:39:56.367816753-05:00" level=info msg="Container 36b969ef1ca37c442b757c5b65db792b18c4f695eab5c42651400d2159fd2fad failed to exit within 10 seconds of signal 28 - using the force"
+Feb 25 16:39:56 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:39:56.731208211-05:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Feb 25 16:40:01 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:40:01.021535261-05:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Feb 25 16:40:13 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:40:13.483873631-05:00" level=info msg="Layer sha256:8bcaf3029097ee6ce5b170ff6df57b3bfb76e1b2e3d3f57b32b0b18bc927f060 cleaned up"
+Feb 25 16:42:06 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:42:06.943656826-05:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Feb 25 16:42:11 acerubuntu1804 dockerd[1056]: time="2020-02-25T16:42:11.722994866-05:00" level=error msg="Error setting up exec command in container jeff-php-mysql_db_1: Container 5288d6fc51cf4d4236f15f18c1470770a7e5a847e675b12803edfc9f75152c80 is not running"

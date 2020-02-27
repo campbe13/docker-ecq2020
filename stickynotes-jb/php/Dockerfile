@@ -13,8 +13,9 @@ RUN apt-get -y update && apt-get clean
 WORKDIR /var/www/html/
 
 # install app
-COPY app.tgz .
-RUN tar -xzf app.tgz ; rm app.tgz ; mv app/* . ; rm -rf app .git
+# note for test purposes it is being run from local disk, see yaml
+#COPY app.tgz .
+#RUN tar -xzf app.tgz ; rm app.tgz ; mv app/* . ; rm -rf app .git
 
 # expose the website port
 EXPOSE 80

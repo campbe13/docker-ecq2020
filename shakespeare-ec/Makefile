@@ -51,6 +51,7 @@ prune:  # clean up unused containers
 
 check:  ## check docker run time
 	systemctl status  docker
+	docker info
 	docker version
 	docker images
 	docker ps

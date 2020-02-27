@@ -9,7 +9,7 @@ ENV MYSQL_DATABASE=stickynotes \
 	MYSQL_ROOT_PASSWORD=ecq2020
 
 # copy the db dump file to seed the db
-COPY ./dbseed.sql /docker-entrypoint-initdb.d
+COPY ./dbsetup.sql /docker-entrypoint-initdb.d
 
 # expose mysql port
 EXPOSE 3306

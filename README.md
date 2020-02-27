@@ -5,10 +5,15 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 See [docker command reference](DOCKERCMDS.md) for some notes on using docker commands
 
 The following are in order of least to more complex
+
+## todo
+setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
+from https://github.com/docker/labs
+
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
 
-* uses docker/whalesay image
+* uses docker/whalesay imageeo 
 * simple poc
 * I added  some commands (figlet), runs to stdout 
 * tested on 
@@ -70,11 +75,18 @@ working, in my hub.docker.com registry
     * Fedora 31 (run from docker hub)
 * built and tested using `make`
 
-## [jeff-php-mysql](jeff-php-mysql)
-work in progress 2020-02-23
+## [hello-world-go-heroku](hello-world-go-heroku)
+work in progress 2020-02-27
+
+* simple go website, deployed to heroku using heroku cli
+* todo: deploy to heroku using docker
+
+## [stickynotes-jb](stickynotes-jb)
+work in progress 2020-02-25
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
 * apache + php app + mysql
+* 2 containers using docker-compose & yaml
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20
