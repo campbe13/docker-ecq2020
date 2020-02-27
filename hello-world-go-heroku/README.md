@@ -70,6 +70,5 @@ tricia@acerubuntu1804:~/ecq/docker-ecq2020/hello-world-go-heroku$ heroku contain
 Releasing images web to blooming-anchorage-54363... done
 ```
 It worked!
+
 ![website](heroku-deploy-golang.PNG)
-
-
