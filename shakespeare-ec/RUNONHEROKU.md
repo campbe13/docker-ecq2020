@@ -10,6 +10,8 @@ Note: EXPOSE does not work in heroku, PORT envir var is set so another work arou
 todo repeat this with shakespeare-jm to iron out the quirks
 
 ## pull the image from docker hub so the image is local
+Note: you can be developing & working with a local image, in that case no need to pull
+
 ```
 [tricia@korra shakespeare-ec]$ docker pull tricia/shakespeare-ec
 ```
@@ -33,10 +35,13 @@ tricia/shakespeare-ec                latest              8524faf9b7b8        7 d
 hello-world                          latest              fce289e99eb9        14 months ago       1.84kB
 ```
 # deploy to heroku: short verison 
-one time only
-1.  heroku create --app shakespeare-ec 
-maybe need repeating 
-1.  fix `heroku labs:enable --app=YOUR-APP runtime-new-layer-extract` 
+one time only, create the app on heroku
+1.  create  `heroku create --app shakespeare-ec` 
+
+one time only, maybe? , bug on heroku 
+1.  fix `heroku labs:enable --app shakespeare-ec runtime-new-layer-extract` 
+
+maybe need repeating, until it works 
 2.  push `heroku container:push web --app shakespeare-ec`
 2.  release `heroku container:release web  --app shakespeare-ec` and `heroku releases --app shakespeare-ec`
 3.  monitor `heroku logs --tail --app shakespeare-ec`
