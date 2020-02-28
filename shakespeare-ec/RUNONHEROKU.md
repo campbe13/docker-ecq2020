@@ -3,7 +3,7 @@ Note: abandoning using mixed docker & heroku commands to deploy
 now just heroku
 
 Note: to there is a bug with apache on heroku, heroku adds config files so you have to 
-apply a fix `heroku labs:enable --app=YOUR-APP runtime-new-layer-extract`
+apply a fix `heroku labs:enable --app YOUR-APP runtime-new-layer-extract`
 
 Note: EXPOSE does not work in heroku, PORT envir var is set so another work around,  `sed -i "s/Listen 80/Listen ${PORT:-80}/g" /etc/apache2/ports.conf`  Because of this we have a different Dockerfile so that we can do this ^ before launching apache
 
@@ -42,7 +42,8 @@ one time only, maybe? , bug on heroku
 1.  fix `heroku labs:enable --app shakespeare-ec runtime-new-layer-extract` 
 
 maybe need repeating, until it works 
-2.  push `heroku container:push web --app shakespeare-ec`
+
+1.  push `heroku container:push web --app shakespeare-ec`
 2.  release `heroku container:release web  --app shakespeare-ec` and `heroku releases --app shakespeare-ec`
 3.  monitor `heroku logs --tail --app shakespeare-ec`
 4.  test browser + http://shakespeare-ec.herokuapp.com
