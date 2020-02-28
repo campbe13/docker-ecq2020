@@ -42,6 +42,7 @@ maybe need repeating
 3.  monitor `heroku logs --tail --app shakespeare-ec`
 4.  test browser + http://shakespeare-ec.herokuapp.com
 ## 1 push
+```
 [tricia@korra shakespeare-ec]$  heroku container:push web --app shakespeare-ec
 === Building web (/home/tricia/docker-ecq2020/shakespeare-ec/Dockerfile)
 Sending build context to Docker daemon  3.721MB
@@ -121,7 +122,34 @@ v3   Deployed web (8c930156468d)  pcampbell.edu@gmail.com  2020/02/28 13:53:58 -
 v2   Enable Logplex               pcampbell.edu@gmail.com  2020/02/27 22:00:44 -0500 (~ 17h ago)
 v1   Initial release              pcampbell.edu@gmail.com  2020/02/27 22:00:43 -0500 (~ 17h ago)
 ```
-## monitor 
+## 3 monitor
+### failing
+```
+[tricia@korra docker-ecq2020]$ heroku logs --tail --app shakespeare-ec
+2020-02-28T19:54:33.634678+00:00 app[web.1]: no listening sockets available, shutting down
+2020-02-28T19:54:33.634678+00:00 app[web.1]: AH00015: Unable to open logs
+2020-02-28T19:54:33.647666+00:00 app[web.1]: Action '-D FOREGROUND' failed.
+2020-02-28T19:54:33.647667+00:00 app[web.1]: The Apache error log may have more information.
+2020-02-28T19:54:33.724537+00:00 heroku[web.1]: Process exited with status 1
+2020-02-28T19:54:34.918635+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=shakespeare-ec.herokuapp.com request_id=6deda7fd-2b60-4abb-b66b-41186f15e877 fwd="69.165.158.16" dyno= connect= service= status=503 bytes= protocol=http
+2020-02-28T19:54:36.353353+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=shakespeare-ec.herokuapp.com request_id=baefb38b-af82-402e-9391-495e286abb1e 
+2020-02-28T20:07:17.297929+00:00 heroku[web.1]: State changed from crashed to starting
+2020-02-28T20:07:17.083059+00:00 app[api]: Release v5 created by user pcampbell.edu@gmail.com
+2020-02-28T20:07:17.083059+00:00 app[api]: Deployed web (2ef8bad7ccfa) by user pcampbell.edu@gmail.com
+2020-02-28T20:07:34.719845+00:00 heroku[web.1]: Starting process with command `/bin/sh -c redis-server\ /etc/redis/redis.conf\ \;\ bash\ herokufix.sh`
+2020-02-28T20:07:37.024508+00:00 heroku[web.1]: State changed from starting to crashed
+2020-02-28T20:07:37.028911+00:00 heroku[web.1]: State changed from crashed to starting
+2020-02-28T20:07:36.941387+00:00 app[web.1]: herokufix.sh: line 8: /usr/local/bin/docker-entrypoint.sh: No such file or directory
+2020-02-28T20:07:37.005028+00:00 heroku[web.1]: Process exited with status 127
+```
+### working 
+```
+2020-02-28T20:33:09.729571+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=shakespeare-ec.herokuapp.com request_id=07d70926-8075-4a49-847f-d83423711992 fwd="198.168.48.222" dyno=web.1 connect=0ms service=4ms status=404 bytes=470 protocol=http
+2020-02-28T20:33:09.730055+00:00 app[web.1]: 0e87bf0d-ba6d-484d-8e60-87b673d5e839.prvt.dyno.rt.heroku.com:80 10.97.254.14 - - [28/Feb/2020:20:33:09 +0000] "GET /favicon.ico HTTP/1.1" 404 470 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0"
+2020-02-28T20:33:33.932984+00:00 heroku[router]: at=info method=POST path="/" host=shakespeare-ec.herokuapp.com request_id=10a1cc09-d6e7-4145-8402-7adfb698916c fwd="198.168.48.222" dyno=web.1 connect=0ms service=1133ms status=200 bytes=1158 protocol=http
+2020-02-28T20:33:33.932235+00:00 app[web.1]: 0e87bf0d-ba6d-484d-8e60-87b673d5e839.prvt.dyno.rt.heroku.com:80 10.35.221.122 - - [28/Feb/2020:20:33:32 +0000] "POST / HTTP/1.1" 200 1158 "http://shakespeare-ec.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0"
+```
+ 
 # deploy to heroku: long verison with trouble shooting
 
 ## login to heroku
