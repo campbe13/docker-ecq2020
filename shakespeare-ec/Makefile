@@ -67,6 +67,8 @@ publish:
         endif
 	docker image push $(CONTAINER_IMAGE):latest
 
+heroku-all: build tag heroku
+heroku-tag: ## using heroku commands
 heroku: ## using heroku commands
 	@echo interactive login to heroku
 	heroku login -i 

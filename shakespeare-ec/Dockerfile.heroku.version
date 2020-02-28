@@ -30,6 +30,11 @@ RUN redis-server /etc/redis/redis.conf ; php loader.php
 #  they are used to run commands 1 time on the container
 #  so I have to start the redis-server again to be used by the web app
   
+# workaround for issues to do with heroku (EXPOSE and another 
+COPY herokufix.sh . 
+
 # start  redis server &  launch apache   (systemctl not installed on this image )
+# workaround for heroku 
+CMD  redis-server /etc/redis/redis.conf ; chmod +x herokufix.sh ; ./herokufix.sh ; apachectl -D FOREGROUND 
 # run from docker
-CMD  redis-server /etc/redis/redis.conf ;  apachectl -D  FOREGROUND
+#CMD  redis-server /etc/redis/redis.conf ;  apachectl -D  FOREGROUND
