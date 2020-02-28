@@ -39,7 +39,7 @@ See [here](RUNTIME-NIX.md) for using docker on a Fedora 31 box,  download from t
 
 ### running on cloud
 * running on [heroku](RUNONHEROKU.md)
-You may be able to pull from docker hub with Azure, still to be tested others not sure, each cloud provider has it's own registry if you want to use any of those you will have to set up an account & use the Dockerfile & app to create your own image in the cloud's own registry.  I will add this information elsewhere.
+* You may be able to pull from docker hub with Azure, still to be tested others not sure, each cloud provider has it's own registry if you want to use any of those you will have to set up an account & use the Dockerfile & app to create your own image in the cloud's own registry.  I will add this information as it is obtained. 
 ## Makefile 
 Instead of scripts this image was built with a [Makefile](Makefile), see here for [Makefile with explanations](Makefile.md)
 ## Creating a container image (Dockerfile)

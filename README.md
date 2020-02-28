@@ -60,6 +60,7 @@ working, in my hub.docker.com registry
 * tested on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+    * heroku  (pull from docker hub, push to & run from heroku registry) 
 * built and tested using `make`
 
 ## [javascript-mf](js-mf)
@@ -80,6 +81,9 @@ work in progress 2020-02-27
 
 * simple go website, deployed to heroku using heroku cli
 * todo: deploy to heroku using docker
+* tested on
+    * ubuntu 18.04 (created & run)
+    * Heroku (released from heroku registry)
 
 ## [stickynotes-jb](stickynotes-jb)
 work in progress 2020-02-25

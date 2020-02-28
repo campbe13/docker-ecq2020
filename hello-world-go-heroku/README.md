@@ -6,8 +6,10 @@ ref https://medium.com/travis-on-docker/how-to-run-dockerized-apps-on-heroku-and
 
 todo use docker to deploy
 # Create main.go & Dockerfile with content
-see files in this dir
+see files [main.go](main.go) and [Dockerfile](Dockerfile) in this dir
 # docker build
+This assumes that you have aready [installed docker](https://docs.docker.com/install/).
+
 ```
 $  docker build -t tricia/goheroku
 ```
@@ -16,8 +18,11 @@ $  docker build -t tricia/goheroku
 $ docker run  -d -it -p 8888:8080 tricia/goheroku -name goheroku
 ```
 # deploy using heroku cli (already installed) 
+This assumes that you have aready [installed heroku cli](https://docs.docker.com/install/).
+
 1. `heroku login`	login to heroku 
-1. `heroku push`   push to registry
+1. `heroku create`	create an heroku app
+1. `heroku push`   push to heroku registry
 1. `heroku release`  release to web
 1. load a browser, _appname_.herokuapp.com
 ## Login to heroku
@@ -27,7 +32,9 @@ heroku: Enter your login credentials
 Email: pcampbell.edu@gmail.com
 Password: *********
 Logged in as pcampbell.edu@gmail.com
-Create an heroku app
+```
+## Create an heroku app
+```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/hello-world-go-heroku$ heroku create
 Creating app... done, ⬢ blooming-anchorage-54363
 https://blooming-anchorage-54363.herokuapp.com/ | https://git.heroku.com/blooming-anchorage-54363.git
