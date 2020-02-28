@@ -4,8 +4,6 @@ Testing with basic golang app from here
 ref https://medium.com/travis-on-docker/how-to-run-dockerized-apps-on-heroku-and-its-pretty-great-76e07e610e22
 
 
-todo load app
-
 todo use docker to deploy
 # Create main.go & Dockerfile with content
 see files in this dir
@@ -17,7 +15,11 @@ $  docker build -t tricia/goheroku
 ```
 $ docker run  -d -it -p 8888:8080 tricia/goheroku -name goheroku
 ```
-# deploy using heroku clu (already installed) 
+# deploy using heroku cli (already installed) 
+1. `heroku login`	login to heroku 
+1. `heroku push`   push to registry
+1. `heroku release`  release to web
+1. load a browser, _appname_.herokuapp.com
 ## Login to heroku
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/hello-world-go-heroku$ heroku login -i
@@ -64,11 +66,20 @@ The push refers to repository [registry.heroku.com/blooming-anchorage-54363/web]
 latest: digest: sha256:289fb22df9b7132056da501556ed64c6d06b032083aa1f9398aadd3e2d2c0311 size: 946
 Your image has been successfully pushed. You can now release it with the 'container:release' command.
 ```
-# heroku release
+## heroku release
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/hello-world-go-heroku$ heroku container:release web --app blooming-anchorage-54363
 Releasing images web to blooming-anchorage-54363... done
 ```
+## load the app 
+`https://bloming-ancohorage-54363.herokuapp.com`
+
 It worked!
 
 ![website](heroku-deploy-golang.PNG)
+# deploy using docker to heroku  
+1. `docker login`	login to heroku 
+1. `heroku tag`  tag for push
+1. `docker push`   push to registry
+1. load a browser, _appname_.herokuapp.com
+

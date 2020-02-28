@@ -100,7 +100,7 @@ check:  ## check docker run time
 	docker images
 	docker ps
 ```
-### target to push your code to a registry, depends what is configured on your system
+### target to push your code to docker hub
 ```
 publish:   
 	@echo publish to  docker hub, interactive 
@@ -110,4 +110,37 @@ publish:
 		docker login 
         endif
 	docker image push $(CONTAINER_IMAGE):latest
+```
+### target to push your code to heroku registry  & release it 
+```
+heroku: ## using heroku commands
+	@echo interactive login to heroku
+	heroku login -i 
+	@echo create app on heroku 
+	heroku create $(RUN_NAME) 
+	@echo push to the heroku repo
+	heroku container:push web --app $(RUN_NAME)
+	@echo release app
+	heroku container:release web --app $(RUN_NAME)
+	@echo if the last step worked load https://$(RUN_NAME).herokuapp.com in a browser
+```
+### testing docker commands to publish to heroku, not working 2020-02-27
+#### internal script
+```
+define tokenfile =
+fn=heroku-auth-token.txt
+heroku auth:token >> $fn
+TOKEN=$(cat $fn)
+endef 
+# needed for bash script
+# https://www.gnu.org/software/make/manual/html_node/One-Shell.html
+.ONESHELL:
+```
+#### target, not working 
+```
+heroku-via-docker:  	## use heroku cli to generate token
+	$(tokenfile)
+	docker login --username=_ -- password=$(TOKEN) registry.heroku.com
+	docker build -t registry.heroku.com/$(RUN_NAME)/web .
+	docker push registry.heroku.com/$(RUN_NAME)/web
 ```

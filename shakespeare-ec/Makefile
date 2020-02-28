@@ -2,7 +2,9 @@
 # very helpful original :
 # https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 # pmcampbell
-# 2020-2-19
+# 2020-02-19
+# add heroku deployment using docker & using heroku 
+# 2020-02-27
 
 include config.make
 #export $(shell sed 's/=.*//' $(cnf))
@@ -64,3 +66,29 @@ publish:
 		docker login 
         endif
 	docker image push $(CONTAINER_IMAGE):latest
+
+heroku: ## using heroku commands
+	@echo interactive login to heroku
+	heroku login -i 
+	@echo create app on heroku 
+	heroku create $(RUN_NAME) 
+	@echo push to the heroku repo
+	heroku container:push web --app $(RUN_NAME)
+	@echo release app
+	heroku container:release web --app $(RUN_NAME)
+	@echo if the last step worked load https://$(RUN_NAME).herokuapp.com in a browser
+
+define tokenfile =
+fn=heroku-auth-token.txt
+heroku auth:token >> $fn
+TOKEN=$(cat $fn)
+endef 
+# needed for bash script
+# https://www.gnu.org/software/make/manual/html_node/One-Shell.html
+.ONESHELL:
+
+heroku-via-docker:  	## use heroku cli to generate token
+	$(tokenfile)
+	docker login --username=_ -- password=$(TOKEN) registry.heroku.com
+	docker build -t registry.heroku.com/$(RUN_NAME)/web .
+	docker push registry.heroku.com/$(RUN_NAME)/web
