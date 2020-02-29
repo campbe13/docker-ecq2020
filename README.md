@@ -60,6 +60,7 @@ working, in my hub.docker.com registry
 * tested on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+    * Centos 7.x (korra, pulled from docker hub & run)
     * heroku  (pull from docker hub, push to & run from heroku registry) 
 * built and tested using `make`
 
