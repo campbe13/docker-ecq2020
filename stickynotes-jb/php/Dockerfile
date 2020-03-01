@@ -1,5 +1,5 @@
 # dockerfile for apache + php for  php 2019 assignment2
-# 2020-2-23
+# 2020-2-29	
 
 FROM php:7.2-apache
 MAINTAINER P Campbell pcampbell.edu@gmail.com
@@ -7,8 +7,10 @@ MAINTAINER P Campbell pcampbell.edu@gmail.com
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive
 
-# install redis-server 
+# install updates
 RUN apt-get -y update && apt-get clean 
+# install mysql necessaries
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 WORKDIR /var/www/html/
 

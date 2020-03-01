@@ -1,11 +1,11 @@
 # dockerfile for mysql
-# 2020-2-23
+# 2020-2-29
 
 FROM mysql:latest
 MAINTAINER P Campbell pcampbell.edu@gmail.com
 
 # environment variables 
-ENV MYSQL_DATABASE=stickynotes \
+ENV MYSQL_DATABASE=assignment2 \
 	MYSQL_ROOT_PASSWORD=ecq2020
 
 # copy the db dump file to seed the db

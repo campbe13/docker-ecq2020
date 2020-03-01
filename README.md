@@ -16,7 +16,7 @@ working, in my hub.docker.com registry
 * uses docker/whalesay imageeo 
 * simple poc
 * I added  some commands (figlet), runs to stdout 
-* tested on 
+* tested on / runs on 
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
     * Windows 10 @ work (run from docker hub)
@@ -29,7 +29,7 @@ working, in my hub.docker.com registry
 * install flask
 * hello world web page
 * exposes port 5000 \(flask default\)
-* tested on
+* tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
     * Windows 10 @ Dawson ( run from docker hub)
@@ -37,13 +37,16 @@ working, in my hub.docker.com registry
 ## [shakespeare-jm](shakespeare-jm)
 working, in my hub.docker.com registry
 
+* TODO deploy to heroku, see [shakespeare-ec](shakespeare-ec) & document better
+* TODO deploy to Azure,  & document it 
+
 * uses php apache image
 * install redis
 * install app: Jeff B & Michael Mi (jm) students in PHP  2019-fall, assignment 1 for PHP 
 * run php app to train model, data in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
-* tested on
+* tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
 * built and tested using scripts
@@ -57,7 +60,7 @@ working, in my hub.docker.com registry
 * run php app to train model, data in redis
 * php web app, uses redis and apache
 * exposes port 80 \(apache default\)
-* tested on
+* tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
     * heroku  (pull from docker hub, push to & run from heroku registry) 
@@ -71,26 +74,35 @@ working, in my hub.docker.com registry
 * install app javascript & static html samples for lectures in js course
 * simple web pages, uses lighttpd
 * exposes port 80 \(apache default\)
-* tested on
+* tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
 * built and tested using `make`
 
 ## [hello-world-go-heroku](hello-world-go-heroku)
-work in progress 2020-02-27
+working 2020-02-27
 
 * simple go website, deployed to heroku using heroku cli
-* todo: deploy to heroku using docker
-* tested on
+* tested on / runs on
     * ubuntu 18.04 (created & run)
     * Heroku (released from heroku registry)
 
 ## [stickynotes-jb](stickynotes-jb)
-work in progress 2020-02-25
+work in progress 2020-03-10
+* TODO port to cloud & upload image to registry, test on fedora, Azure ??
+* TODO deploy to heroku, see [shakespeare-ec](shakespeare-ec) & document better
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
-* apache + php app + mysql
-* 2 containers using docker-compose & yaml
+* containers using docker-compose & yaml
+* a bit more complex than previous apps
+    * current iteration uses internal network (name of service is hostname, pingable & used in config.ini for app
+    * uses persistent storage for database 
+* containers
+    * apache + php app 
+    * mysql   (no dockerfile, image from hub & config info in yaml)
+    * phpmyadmin  (no dockerfile, image from hub & config info in yaml)
+* tested on / runs on
+    * ubuntu 18.04 (created & run)
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20

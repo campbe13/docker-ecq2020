@@ -9,12 +9,22 @@ It uses a PHP & apache image + mysql db
 This is the first app using multiple containers & docker compose 
 * https://hub.docker.com/_/mysql/ 
 * https://docs.docker.com/compose/compose-file/
+* https://docs.docker.com/compose/gettingstarted/
+
+# NOTE WORKING ON LOCAL BOX 2020-03-01
+
+# TODO PUSH IMAGE TO REGISTRY
+# TODO COMPLETE THIS DOC
+# NOTE this readme is not complete, do not use it yet 2020-03-01
+
+
 
 ## TL;DR
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
-2. run `docker run -d -p 8888:80 tricia/stickynotes-jb` 
+2. install docker-compose https://docs.docker.com/compose/install/
+2. run `docker-compose  up  -d -p ` 
     * 80 is the container port and 8888 is the host that is running docker, port forwarding from
  container 80 to host 8888 is done by docker, choose a high port if you don't want 8888
     * \-d detaches the container, if you omit you will see the startup and the apache output
@@ -44,12 +54,12 @@ Multi container apps use docker compose yaml and Dockerfiles
 
 todo insert info
 
-See here for the [php & apache Dockerfile](php/Dockerfile.md) with explanations that was used to create this app.
-
-See here for the [mysql Dockerfile](mysql/Dockerfile.md) with explanations that was used to create this app.
-
 See here for the [docker compose yaml](docker-compose.yaml.md) that pulls it all together, with explanations that was used to create this app.
+
+See here for the [php & apache Dockerfile](php/Dockerfile.md) with explanations that was used to create this app.
 
 ### docker commands
 see  [common docker commands](DOCKERCMDS.md) 
+### TODO `docker-compose commands
+see  [common docker commands](DOCKERCOMPOSECMDS.md) 
 
