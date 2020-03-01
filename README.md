@@ -3,6 +3,7 @@ Some containers & documentation I am working with  for teaching
 my dockerfiles & scripts & instructions here, proofs of concept and basis for lectures / labs 
 
 See [docker command reference](DOCKERCMDS.md) for some notes on using docker commands
+TODO, see [docker-compose command reference](DOCKERCOMPOSECMDS.md)  for some notes on using docker commands
 
 The following are in order of least to more complex
 
