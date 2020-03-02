@@ -38,7 +38,6 @@ working, in my hub.docker.com registry
 ## [shakespeare-jm](shakespeare-jm)
 working, in my hub.docker.com registry
 
-* TODO deploy to heroku, see [shakespeare-ec](shakespeare-ec) & document better
 * TODO deploy to Azure,  & document it 
 
 * uses php apache image
@@ -50,6 +49,7 @@ working, in my hub.docker.com registry
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+    * heroku  (pull from docker hub, push to & run from heroku registry) 
 * built and tested using scripts
 
 ## [shakespeare-ec](shakespeare-ec)
@@ -92,7 +92,7 @@ working 2020-02-27
 ## [stickynotes-jb](stickynotes-jb)
 work in progress 2020-03-10
 * TODO port to cloud & upload image to registry, test on fedora, Azure ??
-* TODO deploy to heroku, see [shakespeare-ec](shakespeare-ec) & document better
+* TODO deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
 * containers using docker-compose & yaml

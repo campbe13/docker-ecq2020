@@ -9,8 +9,8 @@ services:
     build: ./php
 #   volumes: mappling local to container
     volumes: 
-#	use cwd for website
-        - ../../proj2php/jeffstickyphp/:/var/www/html
+#	use cwd for website (dev & debugging only)
+        - ./jeffstickyphp/:/var/www/html
 #	log to localhost (debugging only)
         - /var/log:/var/log
 #  links for networking purposes
