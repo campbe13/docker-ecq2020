@@ -9,16 +9,18 @@ Note: EXPOSE does not work in heroku, PORT envir var is set so another work arou
 
 todo repeat this with shakespeare-jm to iron out the quirks
 
+## refs
+* https://devcenter.heroku.com/articles/heroku-cli-commands 
+
 ## pull the image from docker hub so the image is local
 Note: you can be developing & working with a local image, in that case no need to pull
-
 ```
 [tricia@korra shakespeare-ec]$ docker pull tricia/shakespeare-ec
 ```
 ## display the images 
 ```
 [tricia@korra shakespeare-ec]$ docker images
-REPOSITORY                           \                 IMAGE ID            CREATED             SIZE
+REPOSITORY                           IMAGE ID            CREATED             SIZE
 tricia/shakespeare-ec                latest              8524faf9b7b8        7 days ago          602MB
 hello-world                          latest              fce289e99eb9        14 months ago       1.84kB
 ```
@@ -34,6 +36,31 @@ registry.heroku.com/shakespeare-ec   latest              8524faf9b7b8        7 d
 tricia/shakespeare-ec                latest              8524faf9b7b8        7 days ago          602MB
 hello-world                          latest              fce289e99eb9        14 months ago       1.84kB
 ```
+## create the app on heroku
+* `heroku create --app shakespeare-ec`
+
+* `heroku apps`
+    ```
+    tricia@acerubuntu1804:~/ecq/docker-ecq2020/shakespeare-jm$ heroku apps
+    === pcampbell.edu@gmail.com Apps
+    blooming-anchorage-54363
+    frozen-cliffs-58488
+    shakespeare-ec
+    ```
+* `heroku apps:info --app shakespeare-ec`
+```
+tricia@acerubuntu1804:~/ecq/docker-ecq2020/shakespeare-jm$ heroku apps:info --app shakespeare-ec
+=== shakespeare-ec
+Auto Cert Mgmt: false
+Dynos:          web: 1
+Git URL:        https://git.heroku.com/shakespeare-ec.git
+Owner:          pcampbell.edu@gmail.com
+Region:         us
+Repo Size:      0 B
+Slug Size:      0 B
+Stack:          container
+Web URL:        https://shakespeare-ec.herokuapp.com/
+```
 # deploy to heroku: short verison 
 one time only, create the app on heroku
 1.  create  `heroku create --app shakespeare-ec` 
@@ -47,6 +74,7 @@ maybe need repeating, until it works
 2.  release `heroku container:release web  --app shakespeare-ec` and `heroku releases --app shakespeare-ec`
 3.  monitor `heroku logs --tail --app shakespeare-ec`
 4.  test browser + http://shakespeare-ec.herokuapp.com
+
 ## 1 push
 ```
 [tricia@korra shakespeare-ec]$  heroku container:push web --app shakespeare-ec

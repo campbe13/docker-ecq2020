@@ -1,8 +1,6 @@
-# Makefile to build docker image & push to hub.docker.com
-# very helpful original :
-# https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
+# Makefile to build use docker-compose to build container images & push to hub.docker.com
 # pmcampbell
-# 2020-2-19
+# 2020-03-03
 
 include config.make
 #export $(shell sed 's/=.*//' $(cnf))
@@ -10,23 +8,17 @@ include config.make
 # .PHONY used if no options given
 .PHONY: help
 help: ## put help info here
-	@echo Makefile for container $(RUN_NAME) 
-	@echo clone: $(GIT_REPO)
+	@echo TODO PMC fix help
 	@echo build: $(CONTAINER_IMAGE) 
 	@echo run: $(RUN_NAME)
 	@echo port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)	
 
-# clone (need keys, or interactive w uid/pass)
-clone: ## 	clone
-	if [ -d app ] ; then  rm -rf app; fi
-	mkdir app;  git clone $(GIT_REPO) app
-	tar -czf app.tgz app
- 
 build: ##   build container image from Dockerfile
-	docker build -t $(CONTAINER_IMAGE) . 
+	docker-compose build 
 
+# port forwarding is in the yaml file
 run-fg:  ## run the container logs to stdout
-	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
+	docker-compose run 
 
 run:  ## run the container detached (~in the background )
 	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)

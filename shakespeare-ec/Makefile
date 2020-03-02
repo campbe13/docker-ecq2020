@@ -11,20 +11,29 @@ include config.make
  
 # .PHONY used if no options given
 .PHONY: help
-help: ## put help info here
+
+# HELP
+# The awk will output the help for each task
+# thanks to https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+
+help: ## This help.
+	@echo vars from config.make:
 	@echo Makefile for container $(RUN_NAME) 
 	@echo clone: $(GIT_REPO)
 	@echo build: $(CONTAINER_IMAGE) 
 	@echo run: $(RUN_NAME)
-	@echo port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)	
+	@echo  port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)
+	@echo 
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
 
 # clone (need keys, or interactive w uid/pass)
-clone: ## 	clone
+clone: ## clone & zip the repo into app.tgz
 	if [ -d app ] ; then  rm -rf app; fi
 	mkdir app;  git clone $(GIT_REPO) app
 	tar -czf app.tgz app
  
-build: ##   build container image from Dockerfile
+build: ## build container image from Dockerfile
 	docker build -t $(CONTAINER_IMAGE) . 
 
 run-fg:  ## run the container logs to stdout
@@ -89,7 +98,7 @@ endef
 # https://www.gnu.org/software/make/manual/html_node/One-Shell.html
 .ONESHELL:
 
-heroku-via-docker:  	## use heroku cli to generate token
+heroku-via-docker:  	## use heroku cli to generate token  not working, abandoned
 	$(tokenfile)
 	docker login --username=_ -- password=$(TOKEN) registry.heroku.com
 	docker build -t registry.heroku.com/$(RUN_NAME)/web .
