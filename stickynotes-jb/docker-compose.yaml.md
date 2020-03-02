@@ -75,7 +75,7 @@ networks:
 ## services: 
 all services (containers) are indented under this
 * https://docs.docker.com/compose/compose-file/#services
-## php: service name (host name on network)	
+## php: container / service name (host name on network)	
 all containers configs are indented under this, the name used is pingable on the
 container network.  For example to use the `db` container as the host from the php container
 configure `db` as the `server_name`. see [config.ini](todo) Will resolve to the correct ip address.
@@ -124,7 +124,7 @@ means anything under here must be built before this service
     depends_on:
         - db
 ```
-## db: service name (host name on network)	
+## db: container / service name (host name on network)	
 all containers configs are indented under this, the name used is pingable on the
 container network.  For example to use the `db` container as the host from the php container
 
@@ -183,7 +183,7 @@ yaml sits on top of docker, most docker commands with docker-compose
     ports:
         - "3306:3306"
 ```
-# phpmyadmin:  service name (host name on network)	
+# phpmyadmin:  container / service name (host name on network)	
 Used to look at and manage db for testing only
 no build/Dockerfile needed, using pre built image
 ## image:  the image to pull from the registry (docker hub  in this case)
