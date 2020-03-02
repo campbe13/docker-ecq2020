@@ -1,6 +1,4 @@
 # dockerfile for apache + php + redis + php 2019 assignment1
-#
-# HEROKU VERSION, see below
 FROM php:7.2-apache
 MAINTAINER P Campbell pcampbell.edu@gmail.com
 
@@ -28,14 +26,11 @@ WORKDIR /var/www/html/app
 # expose the website port
 EXPOSE 80
 
+#needed for heroku only
+RUN  sed -i "s/Listen 80/Listen ${PORT:-80}/g" /etc/apache2/ports.conf
+
 # start  redis server & train the model  (systemctl not installed on this image )
 RUN redis-server /etc/redis/redis.conf ; php load_model.php 3 6 10 
 
-# heroku workaround for issues to do with heroku (EXPOSE and another 
-COPY herokufix.sh . 
-
-# start  redis server &  launch apache   (systemctl not installed on this image )
-# heroku workaround for heroku 
-CMD  redis-server /etc/redis/redis.conf ; chmod +x herokufix.sh ; ./herokufix.sh ; apachectl -D FOREGROUND 
-# run from docker
-#CMD  redis-server /etc/redis/redis.conf ;  apachectl -D  FOREGROUND
+# start  redis server & launch apache  (systemctl not installed on this image )
+CMD redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND

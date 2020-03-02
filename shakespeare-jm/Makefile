@@ -52,11 +52,11 @@ fix: ## fix for heroku issue 2020-03-03
 
 
 push: ## push image to heroku registry
-	heroku container:push web --app shakespeare-ec
+	heroku container:push web --app $(RUN_NAME)
 
 release: ## heroku release app, done after push
 	heroku container:release web  --app $(RUN_NAME)
-	@echo if the last step worked load https://$(RUN_NAME).herokuapp.com in a browser
+	@echo if the last step worked load http://$(RUN_NAME).herokuapp.com in a browser
 #	also ok: heroku releases --app $(RUN_NAME)
 
 check:  ## check docker run time
