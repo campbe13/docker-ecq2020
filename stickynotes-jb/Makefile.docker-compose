@@ -72,6 +72,7 @@ check:  ## check docker run time
 
 publish:   
 	@echo publish to  docker hub, interactive 
+	@echo be sure to tag it first with my repo tricia/imagename
         ifdef DOCKER_USER
 		docker login   -u $(DOCKER_USER)
         else
