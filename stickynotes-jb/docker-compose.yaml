@@ -52,7 +52,9 @@ services:
       - ./dbsetup:/docker-entrypoint-initdb.d
       - persistent:/var/lib/mysql
     ports:
-        - "3306:3306"
+        - "3306"
+#      testing, do not need port forwarding
+#       - "3306:3306"
 # phpmyadmin 
 # manage db for testing only
 # no build/Dockerfile needed 
