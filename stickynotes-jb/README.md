@@ -12,14 +12,11 @@ This is the first app using multiple containers & docker compose
 * https://docs.docker.com/compose/gettingstarted/
 
 # NOTE WORKING ON LOCAL BOX 2020-03-01
-This is a container setup for development, there are several volumes mapped to the localhost to aide testing & dev.  Some would be changed for a production deployment
+This is a multi container setup for development, there are several volumes mapped to the localhost to aide testing & dev.  Some would be changed for a production deployment
 ![container runtime](stickynotes-jb-containers.PNG)
 # TODO PUSH IMAGE TO REGISTRY
 # TODO COMPLETE THIS DOC
-# NOTE this readme is not complete, do not use it yet 2020-03-01
-
-
-
+# TODO NOTE this readme is not complete, do not use it yet 2020-03-01
 ## TL;DR
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
