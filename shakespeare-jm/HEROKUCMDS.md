@@ -251,5 +251,29 @@ Inserting of model data was successful.
 Model created with length of key of 10
 Inserting of model data was successful.
 Inserting of all data was successful terminating program
+Removing intermediate container 60ededd143fe
+ ---> 5331132b0015
+Step 12/12 : CMD redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND
+ ---> Running in 78f21d1d7e0f
+Removing intermediate container 78f21d1d7e0f
+ ---> 84ef0b229268
+Successfully built 84ef0b229268
+Successfully tagged registry.heroku.com/shakespeare-ec/web:latest
+=== Pushing web (/home/tricia/ecq/docker-ecq2020/shakespeare-jm/Dockerfile)
+The push refers to repository [registry.heroku.com/shakespeare-ec/web]
+84a31ad6c303: Pushing [===========================>                       ]  42.86MB/77.26MB
+80bee78ac996: Retrying in 1 second
+f6999503d357: Retrying in 1 second
+ff4eff315317: Retrying in 1 second
+eb123ce60eb9: Pushing [==================================================>]  4.996MB/4.996MB
+21ca635741b4: Pushing [==================================================>]  19.48MB/19.48MB
+6565bce2d5e5: Pushing [==================================================>]  4.608kB
+2159d2f64d7e: Retrying in 1 second
+7c111aa3fc84: Waiting
+1bc9b7122630: Waiting
+bc4aa4d1d971: Waiting
+```
+
+
 
 

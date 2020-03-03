@@ -1,0 +1,73 @@
+<?php
+
+    //Start session
+    session_start();  
+
+    //Regenerate the id
+    session_regenerate_id();    
+
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IckySnotes.io</title>
+
+        <!-- Local files -->
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="StickyNote.js"></script>
+        <script type="text/javascript" src="login.js"></script>
+        <script type="text/javascript" src="sticky-note.api-plugin.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+    </head>
+    <body>
+
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.html">IckySnotes.io</a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item nav-link"><input id="username-input" pattern="^\S+$" maxlength="50" type="text" placeholder="Username"></li>
+                    <li class="nav-item nav-link"><input id="password-input" pattern="^\S+$" maxlength="80" type="password" placeholder="Password"></li>
+                    <li class="nav-item nav-link"><h3 id="logged-in-userame">Username</h3></li>
+                    <li class="nav-item nav-link"><button id="login-btn" class="btn btn-primary" type="button">Login</button></li>
+                    <li class="nav-item nav-link"><button id="register-btn" class="btn btn-secondary" type="button">Register</button></li>
+                    <li class="nav-item nav-link"><button id="logout-btn" class="btn btn-danger" type="button">Logout</button></li>
+                </ul>
+        </nav>
+
+<h2> update on host by pmc </h2>
+        <!-- Board used to hold sticky notes. -->
+        <div id="board">
+
+        <!-- Used to add a sticky -->
+        <button id="add-sticky-btn" class="btn"><i class="fa fa-plus"></i></button>
+
+        <!-- Add form to create sticky -->
+        <!-- Example here: https://www.w3schools.com/howto/howto_js_popup_form.asp -->
+        <div class="form-popup" id="add-sticky-form">
+                <div class="form-container">
+                  
+                  <textarea id="note-textarea" pattern="^\S+$" rows="4" cols="35" maxlength="500" placeholder="Take a note..."></textarea>
+              
+                  <button id="add-sticky-form-btn" type="button" class="btn btn-success">Add Sticky</button>
+                  <button id="close-sticky-form-btn" type="button" class="btn cancel">Close</button>
+
+                </div>
+        </div>
+                    
+        </div>
+    </body>
+</html>

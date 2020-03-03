@@ -1,0 +1,6 @@
+
+[Database-Configuration]
+server_name=localhost
+user=student
+password=secret
+database_name=assignment2
