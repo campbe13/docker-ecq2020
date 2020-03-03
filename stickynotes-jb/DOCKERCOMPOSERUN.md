@@ -2,14 +2,20 @@
 
 Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
 
-1. docker-compose build
+1. [docker-compose build]
 2. docker images
 3. docker-compose up -d
 4. docker-compose logs db
 4. docker-compose logs php
-4. docker-compose logs phpmyadmin
+4. docker-compose logs phpmyadmin && tail /var/log/apache2/access.log && tail /var/log/apache2/error.log
 
-# docker-compose build
+tested, now push to docker registry:
+
+6. login 
+5. tag
+7.  push
+
+# [docker-compose build]
 ```
 [tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose build
 docker-compose build
@@ -679,4 +685,53 @@ phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:28 +0000] "GET /index.php?a
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:31 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:32 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:34 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
+```
+## docker login
+```
+[tricia@korra stickynotes-jb]$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: tricia
+Password:
+WARNING! Your password will be stored unencrypted in /home/tricia/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+```
+## docker tag
+```
+[tricia@korra stickynotes-jb]$ docker images
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+stickynotes-jb_php                       latest              9197aaadf76b        About an hour ago   428MB
+mysql                                    latest              7a3923452254        18 hours ago        465MB
+registry.heroku.com/shakespeare-jm/web   latest              cba946926c78        23 hours ago        549MB
+[tricia@korra stickynotes-jb]$ docker tag stickynotes-jb_php:latest tricia/stickynotes-jb_php
+[tricia@korra stickynotes-jb]$ docker images
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+stickynotes-jb_php                       latest              9197aaadf76b        About an hour ago   428MB
+tricia/stickynotes-jb_php                latest              9197aaadf76b        About an hour ago   428MB
+mysql                                    latest              7a3923452254        18 hours ago        465MB
+registry.heroku.com/shakespeare-jm/web   latest              cba946926c78        23 hours ago        549MB
+```
+## docker push
+```
+[tricia@korra stickynotes-jb]$ docker push tricia/stickynotes-jb_php:latest
+The push refers to repository [docker.io/tricia/stickynotes-jb_php]
+7a9a9ebb9ac1: Pushed
+9c7d58334000: Pushed
+6565bce2d5e5: Mounted from library/php
+2159d2f64d7e: Mounted from library/php
+7c111aa3fc84: Mounted from library/php
+1bc9b7122630: Mounted from library/php
+bc4aa4d1d971: Mounted from library/php
+8b81b9cd95de: Mounted from library/php
+85dc2281e45a: Mounted from library/php
+0fc284fc9cf5: Mounted from library/php
+732057c800a3: Mounted from library/php
+4cc11613548d: Mounted from library/php
+df6c050501b6: Mounted from library/php
+b4bfb20b5f05: Mounted from library/php
+2e8cc9f5313f: Mounted from library/php
+f2cb0ecef392: Mounted from library/php
+latest: digest: sha256:874ef0ef1e02a9f5001df1ba0096785fd8ffe61c6bb8baf6540a2ef8ce6ee402 size: 3664
 ```
