@@ -19,7 +19,7 @@ These are standard systemd server controll commands.
 * enable on startup `systemctl enable docker`
 * stop running dockerd `systemctl stop docker`
 * start dockerd `systemctl start docker`
-### `systemctl status docker`
+* show status `systemctl status docker`
 ```
 tricia@acerubuntu1804:~$ systemctl status docker
 ● docker.service - Docker Application Container Engine

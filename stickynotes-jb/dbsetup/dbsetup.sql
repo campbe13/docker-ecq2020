@@ -1,4 +1,4 @@
-/*  user for use in app */
+/*  user for use in app 
  created via yaml for container
 CREATE USER 'student2'@'localhost' IDENTIFIED BY 'secret';
 */

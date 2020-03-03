@@ -21,9 +21,16 @@ build: ## build container images from docker-compose.yaml
 	docker-compose build 
 
 # port forwarding is in the yaml file
+up: run
 run:  ## bring up all containers, detached (~in the background )
 	docker-compose up -d
 	docker-compose ps 
+
+logs: ## show logs for the containers
+	docker-compose logs -f
+
+logsdb: ## show logs for the containers
+	docker-compose db  logs -f
 
 run-fg:  ## bring up all containers, logs to stdout, console unavailable
 	docker-compose up
@@ -45,7 +52,6 @@ shell:  ## shell into the container
 	docker exec -ti $(RUN_NAME) sh
 
 all: clone build run
-up:  build run
 
 stoprun: stop run
 clean:  stop prune
@@ -60,9 +66,9 @@ prune:  # clean up unused containers
 check:  ## check docker run time
 	systemctl status  docker
 	docker version
-	docker-compose version
 	docker images
 	docker ps
+	docker-compose version
 
 publish:   
 	@echo publish to  docker hub, interactive 
