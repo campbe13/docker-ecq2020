@@ -1,0 +1,14 @@
+#You need to create a file config.ini
+#server_name database host
+#database_name  db created for this app
+#user database user with access to db
+#password  to go with database user
+
+# delete the lines begging with #
+
+#You need to create a file conf
+[Database-Configuration]
+server_name=localhost
+user=myuser
+password=mysecret	
+database_name=mydb
