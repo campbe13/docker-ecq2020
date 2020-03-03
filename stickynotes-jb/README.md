@@ -43,8 +43,10 @@ https://hub.docker.com/repository/docker/tricia/stickynotes-jb_php
 
 ### running this app 
 This image cannot be run standalone, it needs a database container.  You must clone this repo and use `docker-compose up -d ` access via a browser http://localhost:8700, access phpmyadmin via http://localhost:8701    All configuration is in the yaml file [docker-compose.yaml](docker-compose.yaml)  for the syntax / explanations see [docker-compose.yaml with explanations ](docker-compose.yaml.md)
+![running on korra (Centos 7.?)](stickynotes-working-korra.PNG)
+
 ### running on cloud
-todo
+todo insert info for running on cloud
 ## Creating a container image (docker compose & Dockerfiles)
 Multi container apps use docker compose yaml and Dockerfiles
 

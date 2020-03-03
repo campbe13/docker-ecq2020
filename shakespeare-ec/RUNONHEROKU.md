@@ -7,8 +7,6 @@ apply a fix `heroku labs:enable --app YOUR-APP runtime-new-layer-extract`
 
 Note: EXPOSE does not work in heroku, PORT envir var is set so another work around,  `sed -i "s/Listen 80/Listen ${PORT:-80}/g" /etc/apache2/ports.conf`  Because of this we have a different Dockerfile so that we can do this ^ before launching apache
 
-todo repeat this with shakespeare-jm to iron out the quirks
-
 ## refs
 * https://devcenter.heroku.com/articles/heroku-cli-commands 
 

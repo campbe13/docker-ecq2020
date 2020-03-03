@@ -79,7 +79,10 @@ all services (containers) are indented under this
 ## php: container / service name (host name on network)	
 all containers configs are indented under this, the name used is pingable on the
 container network.  For example to use the `db` container as the host from the php container
-configure `db` as the `server_name`. see [config.ini](todo) Will resolve to the correct ip address.
+configure `db` as the `server_name`. see [config.ini](jeffstickyphp/database-utils/config.ini.bak)
+for app runtime config.   
+
+Each named service resolve internally to the correct ip address depending on container networking.
 ```
 services:
   php:

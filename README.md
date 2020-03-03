@@ -8,8 +8,10 @@ TODO, see [docker-compose command reference](DOCKERCOMPOSECMDS.md)  for some not
 The following are in order of least to more complex
 
 ## todo
-setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
-from https://github.com/docker/labs
+todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
+from https://github.com/docker/labs  
+
+todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
 
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
@@ -38,7 +40,7 @@ working, in my hub.docker.com registry
 ## [shakespeare-jm](shakespeare-jm)
 working, in my hub.docker.com registry
 
-* TODO deploy to Azure,  & document it 
+* TODO shakespeare-jm deploy to Azure,  & document it 
 
 * uses php apache image
 * install redis
@@ -91,8 +93,8 @@ working 2020-02-27
 
 ## [stickynotes-jb](stickynotes-jb)
 work in progress 2020-03-10
-* TODO port to cloud & upload image to registry, test on fedora, Azure ??
-* TODO deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
+* TODO stickynotes-jb port to cloud & upload image to registry, test on fedora, Azure ??
+* TODO tickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
 * containers using docker-compose & yaml

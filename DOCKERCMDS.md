@@ -3,8 +3,8 @@ The docker platform consists of three main components, the docker command, docke
 
 ![docker engine](https://docs.docker.com/engine/images/engine-components-flow.png)
 ## Todo
-* Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??
-* Add screenshots & text examples from the READMEs in other repos.
+* todo Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??
+* todo Add screenshots & text examples from the READMEs in other repos.
 ## References
 A **Dockerfile** is a clear text file that contains commands that `docker build` would use to assemble a container image.
 **docker compose yaml** is a clear text file that is used to build multiple containers. Docker compose sits ontop of Dockerfiles we use compose for multi container apps.

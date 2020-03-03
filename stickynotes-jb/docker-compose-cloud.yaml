@@ -1,0 +1,81 @@
+# compose file format version 
+# (see https://docs.docker.com/compose/compose-file/) 
+version: "3.7"
+
+services:
+# service name (host name on network)	
+  php:
+#   build: location of the Dockerfile
+    build: ./php
+#   volumes: mappling local to container
+    volumes: 
+#	use cwd for website (dev & debugging only)
+        - ./jeffstickyphp/:/var/www/html
+#	log to localhost (debugging only)
+        - /var/log:/var/log
+#  links for networking purposes
+#  legacy feature https://docs.docker.com/network/links/
+#  todo replace with should use https://docs.docker.com/network/bridge/
+    networks:
+      - backend
+      - frontend
+#   port forward 80 from container to 8700 host
+    ports:
+        - '8700:80'
+#   environment variables
+    environment:
+        - XYZ="this is an example"
+#   internal dependecies for order of ops
+    depends_on:
+        - db
+# db:
+# no build needed 
+# using pre built image
+  db:
+# was using latest, error
+# https://stackoverflow.com/questions/50360870/pdoexception-sqlstatehy000-2054-the-server-requested-authentication-method
+    image: mysql:latest
+# needed for bug crashing w v 5.7.22 & 5.7.29, problems w 8 (latest
+# ref https://stackoverflow.com/questions/48239668/fails-to-initialize-mysql-database-on-windows-10
+    command: --innodb_use_native_aio=0
+
+    environment:
+#     MYSQL_DATABASE: ${DB_DATABASE}
+     MYSQL_DATABASE: assignment2
+     MYSQL_USER: student
+     MYSQL_PASSWORD: secret
+     MYSQL_ROOT_PASSWORD: educate3
+    networks:
+      - backend
+    volumes:
+#      *entrypoint-init* all scripts .sql, .sh run on startup
+      - ./dbsetup:/docker-entrypoint-initdb.d
+      - persistent:/var/lib/mysql
+    ports:
+        - "3306"
+#      testing, do not need port forwarding
+#       - "3306:3306"
+# phpmyadmin 
+# manage db for testing only
+# no build/Dockerfile needed 
+# using pre built image
+  phpmyadmin:
+    links:
+      - db:db
+    image: phpmyadmin/phpmyadmin
+    environment:
+     MYSQL_USER: student
+     MYSQL_PASSWORD: secret
+     MYSQL_ROOT_PASSWORD: educate3
+    networks:
+     - backend
+     - frontend
+    ports:
+        - "8701:80"
+    depends_on:
+        - db
+volumes:
+    persistent:
+networks:
+  frontend:
+  backend:
