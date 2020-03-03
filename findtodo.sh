@@ -7,7 +7,7 @@ fn=TODOREADME.md
 echo "# All todos from the markdown files:" >$fn  
 
 echo "do not edit, this will be clobbered">>$fn
-
+echo "Script $(basename $0)">>$fn
 echo "Created  $(date +%F) $(date +%r)">>$fn
 echo -e "\n## list of todos\n">>$fn
 
