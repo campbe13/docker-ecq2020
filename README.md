@@ -105,6 +105,7 @@ work in progress 2020-03-10
     * phpmyadmin  (no dockerfile, image from hub & config info in yaml)
 * tested on / runs on
     * ubuntu 18.04 (created & run)
+    * Centos 7.x (korra, pulled repo & used docker-compose to build & run)
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20
