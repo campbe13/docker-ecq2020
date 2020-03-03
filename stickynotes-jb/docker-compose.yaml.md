@@ -4,6 +4,7 @@ this one has three containers, called services in the yaml, *php* which is the a
  *phpmyadmin* which runs phpmyadmin
 
 * `docker-compose` default file `docker-compose.yaml`
+* `docker-compose` default file `docker-compose.yml`
 * `docker` default file `Dockerfile`
 
  (see https://docs.docker.com/compose/compose-file/) 
@@ -46,7 +47,7 @@ services:
       - ./dbsetup:/docker-entrypoint-initdb.d
       - persistent:/var/lib/mysql
     ports:
-        - "3306:3306"
+        - "3306"
   phpmyadmin:
     links:
       - db:db
@@ -174,14 +175,13 @@ we also have the database o persistent storrage, containers are ephemeral so if 
       - ./dbsetup:/docker-entrypoint-initdb.d
       - persistent:/var/lib/mysql
 ```
-##  ports: forward 3306 from container to 3600 host
-Not sure if I need this, I will test it without, only need the port internally to the container network
+##  ports: no forwarding needed, tested, only need the port internally to the container network
 
-If you are using single containers this is done in the run statement 
+If you are using single containers this is done in the EXPOSE statement 
 yaml sits on top of docker, most docker commands with docker-compose 
 ```
     ports:
-        - "3306:3306"
+        - "3306"
 ```
 # phpmyadmin:  container / service name (host name on network)	
 Used to look at and manage db for testing only

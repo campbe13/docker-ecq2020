@@ -1,7 +1,13 @@
 # all steps
+
+Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
+
 1. docker-compose build
 2. docker images
 3. docker-compose up -d
+4. docker-compose logs db
+4. docker-compose logs php
+4. docker-compose logs phpmyadmin
 
 # docker-compose build
 ```
@@ -476,3 +482,201 @@ registry.heroku.com/shakespeare-ec       latest              8524faf9b7b8       
 hello-world                              latest              fce289e99eb9        14 months ago       1.84kB
 ```
 ## docker-compose up -d
+```
+[tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose run
+docker-compose up -d
+Creating network "stickynotes-jb_backend" with the default driver
+Creating network "stickynotes-jb_frontend" with the default driver
+Creating volume "stickynotes-jb_persistent" with default driver
+Pulling db (mysql:latest)...
+latest: Pulling from library/mysql
+6d28e14ab8c8: Pull complete
+dda15103a86a: Pull complete
+55971d75ab8c: Pull complete
+f1d4ea32020b: Pull complete
+61420072af91: Pull complete
+05c10e6ccca5: Pull complete
+7e0306b13322: Pull complete
+900b113c001e: Pull complete
+06cd07c30bf4: Pull complete
+df0d65aee5aa: Pull complete
+108d207bdce2: Pull complete
+b33faea3a1af: Pull complete
+Digest: sha256:230d501a0c971221aef647661b331c56587fc5bd4a465dfa132c4d2b45835163
+Status: Downloaded newer image for mysql:latest
+Pulling phpmyadmin (phpmyadmin/phpmyadmin:)...
+latest: Pulling from phpmyadmin/phpmyadmin
+8ec398bc0356: Pull complete
+85cf4fc86478: Pull complete
+970dadf4ccb6: Pull complete
+8c04561117a4: Pull complete
+d6b7434b63a2: Pull complete
+83d8859e9744: Pull complete
+9c3d824d0ad5: Pull complete
+0ff2f3c2c8ab: Pull complete
+f7a2cdcb0840: Pull complete
+fe8c2411b50b: Pull complete
+aa0cb4375001: Pull complete
+96198bf1ad68: Pull complete
+5fe54d7827f9: Pull complete
+b14701794f98: Pull complete
+017ea991a64c: Pull complete
+b9fac930b192: Pull complete
+1807d0d7270b: Pull complete
+5fe7c1ba6fbd: Pull complete
+Digest: sha256:2eccbe375bffb5ddd9cf63a4544c9a48a78b1a8138b728cb0af1e0d4937a340a
+Status: Downloaded newer image for phpmyadmin/phpmyadmin:latest
+Creating stickynotes-jb_db_1 ...
+Creating stickynotes-jb_db_1 ... error
+
+ERROR: for stickynotes-jb_db_1  Cannot start service db: driver failed programming external connectivity on endpoint stickynotes-jb_db_1 (89c9f06f95a749d85dcad43610bf7d009b9373bb7f205d018e18ebb66ae6e69b): Error starting userland proxy: listen tcp 0.0.0.0:3306: bind: address already in use
+
+ERROR: for db  Cannot start service db: driver failed programming external connectivity on endpoint stickynotes-jb_db_1 (89c9f06f95a749d85dcad43610bf7d009b9373bb7f205d018e18ebb66ae6e69b): Error starting userland proxy: listen tcp 0.0.0.0:3306: bind: address already in use
+ERROR: Encountered errors while bringing up the project.
+make: *** [run] Error 1
+```
+See erro above, port bound on host machine, so removed the port forwarding from yaml
+& run again
+```
+[tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose run
+docker-compose up -d
+Recreating stickynotes-jb_db_1 ... done
+Creating stickynotes-jb_phpmyadmin_1 ... done
+Creating stickynotes-jb_php_1        ... done
+```
+## docker-compose ps 
+show running containers
+```
+docker-compose ps
+           Name                          Command               State               Ports
+----------------------------------------------------------------------------------------------------
+stickynotes-jb_db_1           docker-entrypoint.sh --inn ...   Up      0.0.0.0:2000->3306/tcp,
+                                                                       33060/tcp
+stickynotes-jb_php_1          docker-php-entrypoint /bin ...   Up      0.0.0.0:8700->80/tcp
+stickynotes-jb_phpmyadmin_1   /docker-entrypoint.sh apac ...   Up      0.0.0.0:8701->80/tcp
+```
+## docker-compose logs db
+```
+[tricia@korra stickynotes-jb]$ docker-compose logs db
+Attaching to stickynotes-jb_db_1
+db_1          | 2020-03-03 17:45:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.
+db_1          | 2020-03-03 17:45:47+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+db_1          | 2020-03-03 17:45:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.
+db_1          | 2020-03-03 17:45:47+00:00 [Note] [Entrypoint]: Initializing database files
+db_1          | 2020-03-03T17:45:47.899240Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+db_1          | 2020-03-03T17:45:47.899325Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.19) initializing of server in progress as process 46
+db_1          | 2020-03-03T17:45:51.053162Z 5 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+db_1          | 2020-03-03 17:45:53+00:00 [Note] [Entrypoint]: Database files initialized
+db_1          | 2020-03-03 17:45:53+00:00 [Note] [Entrypoint]: Starting temporary server
+db_1          | 2020-03-03T17:45:53.432696Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+db_1          | 2020-03-03T17:45:53.432816Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.19) starting as process 96
+db_1          | 2020-03-03T17:45:53.941711Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+db_1          | 2020-03-03T17:45:53.959168Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+db_1          | 2020-03-03T17:45:53.979139Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+db_1          | 2020-03-03 17:45:53+00:00 [Note] [Entrypoint]: Temporary server started.
+db_1          | 2020-03-03T17:45:54.084470Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock'
+db_1          | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+db_1          | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+db_1          | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+db_1          | Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+db_1          | 2020-03-03 17:45:57+00:00 [Note] [Entrypoint]: Creating database assignment2
+db_1          | 2020-03-03 17:45:57+00:00 [Note] [Entrypoint]: Creating user student
+db_1          | 2020-03-03 17:45:57+00:00 [Note] [Entrypoint]: Giving user student access to schema assignment2
+db_1          |
+db_1          | 2020-03-03 17:45:57+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/dbsetup.sql
+db_1          |
+db_1          |
+db_1          | 2020-03-03 17:45:57+00:00 [Note] [Entrypoint]: Stopping temporary server
+db_1          | 2020-03-03T17:45:57.788070Z 15 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.19).
+db_1          | 2020-03-03T17:45:58.844864Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.19)  MySQL Community Server - GPL.
+db_1          | 2020-03-03 17:45:59+00:00 [Note] [Entrypoint]: Temporary server stopped
+db_1          |
+db_1          | 2020-03-03 17:45:59+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+db_1          |
+db_1          | 2020-03-03T17:46:00.079051Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+db_1          | 2020-03-03T17:46:00.079194Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.19) starting as process 1
+db_1          | 2020-03-03T17:46:00.500156Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+db_1          | 2020-03-03T17:46:00.600651Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+db_1          | 2020-03-03T17:46:00.621649Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+db_1          | 2020-03-03T17:46:00.683288Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock' bind-address: '::' port: 33060
+db_1          | mbind: Operation not permitted
+db_1          | mbind: Operation not permitted
+```
+## docker-compose logs php
+Note for this container logs are mapped to localhost 
+```
+[tricia@korra stickynotes-jb]$ docker-compose logs php
+Attaching to stickynotes-jb_php_1
+php_1         | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+```
+access.log
+```
+[tricia@korra stickynotes-jb]$ tail /var/log/apache2/access.log
+10.226.49.145 - - [03/Mar/2020:17:24:53 +0000] "POST /login.php HTTP/1.1" 200 491 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:25:06 +0000] "POST /login.php HTTP/1.1" 401 403 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:25:57 +0000] "-" 408 0 "-" "-"
+10.226.49.145 - - [03/Mar/2020:17:46:33 +0000] "POST /login.php HTTP/1.1" 200 480 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:46:48 +0000] "POST /login.php HTTP/1.1" 200 463 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:46:48 +0000] "GET /StickyNotesAPI.php?username=tricia&method=retrieve HTTP/1.1" 500 465 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:46:59 +0000] "POST /StickyNotesAPI.php HTTP/1.1" 200 557 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:47:06 +0000] "POST /StickyNotesAPI.php HTTP/1.1" 200 558 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:47:09 +0000] "POST /StickyNotesAPI.php HTTP/1.1" 200 478 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+10.226.49.145 - - [03/Mar/2020:17:47:12 +0000] "POST /StickyNotesAPI.php HTTP/1.1" 200 478 "http://korra.dawsoncollege.qc.ca:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+```
+error.log
+```
+[tricia@korra stickynotes-jb]$ tail /var/log/apache2/error.log
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Tue Mar 03 17:21:11.286537 2020] [mpm_prefork:notice] [pid 8] AH00163: Apache/2.4.38 (Debian) PHP/7.2.28 configured -- resuming normal operations
+[Tue Mar 03 17:21:11.286618 2020] [core:notice] [pid 8] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Mar 03 17:45:49.711816 2020] [mpm_prefork:notice] [pid 8] AH00163: Apache/2.4.38 (Debian) PHP/7.2.28 configured -- resuming normal operations
+[Tue Mar 03 17:45:49.711866 2020] [core:notice] [pid 8] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+```
+## docker-compose logs phpmyadmin
+```
+[tricia@korra stickynotes-jb]$ docker-compose logs phpmyadmin
+Attaching to stickynotes-jb_phpmyadmin_1
+phpmyadmin_1  | phpMyAdmin not found in /var/www/html - copying now...
+phpmyadmin_1  | Complete! phpMyAdmin has been successfully copied to /var/www/html
+phpmyadmin_1  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+phpmyadmin_1  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+phpmyadmin_1  | [Tue Mar 03 17:45:50.239330 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.1 configured -- resuming normal operations
+phpmyadmin_1  | [Tue Mar 03 17:45:50.239378 2020] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:16 +0000] "GET /db_structure.php?server=1&db=assignment2 HTTP/1.1" 200 5191 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:17 +0000] "GET /favicon.ico HTTP/1.1" 200 22788 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:20 +0000] "POST /index.php HTTP/1.1" 302 1308 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:20 +0000] "GET /index.php?db=assignment2&target=db_structure.php HTTP/1.1" 200 12541 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1 HTTP/1.1" 200 20598 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/arrow_ltr.png HTTP/1.1" 200 384 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/s_asc.png HTTP/1.1" 200 429 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/s_desc.png HTTP/1.1" 200 430 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/b_no_favorite.png HTTP/1.1" 200 662 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/bd_browse.png HTTP/1.1" 200 556 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/bd_select.png HTTP/1.1" 200 610 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/b_insrow.png HTTP/1.1" 200 441 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/bd_empty.png HTTP/1.1" 200 611 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/b_drop.png HTTP/1.1" 200 921 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/b_print.png HTTP/1.1" 200 923 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /themes/pmahomme/img/b_tblanalyse.png HTTP/1.1" 200 435 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "POST /ajax.php HTTP/1.1" 200 2724 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "POST /navigation.php?ajax_request=1 HTTP/1.1" 200 3417 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "POST /ajax.php HTTP/1.1" 200 2828 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "POST /ajax.php HTTP/1.1" 200 2718 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:21 +0000] "GET /navigation.php?ajax_request=1&aPath=cm9vdA%3D%3D.YXNzaWdubWVudDI%3D&vPath=cm9vdA%3D%3D.YXNzaWdubWVudDI%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1583257577380617123&token=584d4b75706f5d6e4c706e7e21324024 HTTP/1.1" 200 3115 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /sql.php?server=1&db=assignment2&table=sticky_notes&pos=0&ajax_request=true&ajax_page_request=true&_nocache=158325758076434026&token=584d4b75706f5d6e4c706e7e21324024 HTTP/1.1" 200 5966 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /themes/pmahomme/img/b_browse.png HTTP/1.1" 200 770 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /themes/pmahomme/img/b_tblexport.png HTTP/1.1" 200 798 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /themes/pmahomme/img/b_tblimport.png HTTP/1.1" 200 840 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /themes/pmahomme/img/s_success.png HTTP/1.1" 200 749 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /themes/pmahomme/img/b_view_add.png HTTP/1.1" 200 962 "http://korra.dawsoncollege.qc.ca:8701/themes/pmahomme/css/theme.css?v=5.0.1&nocache=6319120768ltr&server=1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /js/vendor/jquery/jquery.uitablefilter.js?v=5.0.1 HTTP/1.1" 200 1741 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /js/multi_column_sort.js?v=5.0.1 HTTP/1.1" 200 1619 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /js/gis_data_editor.js?v=5.0.1 HTTP/1.1" 200 4044 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:24 +0000] "GET /index.php?ajax_request=1&recent_table=1&no_debug=true&_nocache=1583257580906832549&token=584d4b75706f5d6e4c706e7e21324024 HTTP/1.1" 200 2780 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:28 +0000] "GET /sql.php?server=1&db=assignment2&table=users&pos=0&ajax_request=true&ajax_page_request=true&_nocache=1583257583398719992&token=584d4b75706f5d6e4c706e7e21324024 HTTP/1.1" 200 5950 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:28 +0000] "GET /index.php?ajax_request=1&recent_table=1&no_debug=true&_nocache=1583257584415615411&token=584d4b75706f5d6e4c706e7e21324024 HTTP/1.1" 200 2796 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:31 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
+phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:32 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
+phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:34 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
+```
