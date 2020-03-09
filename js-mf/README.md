@@ -38,7 +38,10 @@ You may be able to pull from docker hub with Azure, still to be tested others no
 ## Makefile 
 This image was built with a [Makefile](Makefile), see here for [Makefile with explanations](Makefile.md)
 
-## Creating a container image (Dockerfile)
+## Creating a container image with Dockerfile
 Multi container apps use docker compose yaml and Dockerfiles, this app has a single container so everything to define the image is in the Dockerfile.  You need the Dockerfile to create the image, so that you can add it to a repository & reuse the container.  Once it is in the repo you no longer need the Dockerfile, unless you are going to make changes to the app or its supporting software or config. 
 
-See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
+See here for the [Dockerfile](Dockerfile) and [Dockerfile with explanations](Dockerfile.md) that was used to create this app.
+
+## steps to build, inspect & run the app
+See [steps with results](BUILDINSPECTRUN.md) 
