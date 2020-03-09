@@ -9,26 +9,27 @@ include config.make
  
 # .PHONY used if no options given
 .PHONY: help
-help: ## put help info here
+help: ## help info here
 	@echo Makefile for container $(RUN_NAME) 
 	@echo clone: $(GIT_REPO)
 	@echo build: $(CONTAINER_IMAGE) 
 	@echo run: $(RUN_NAME)
 	@echo port forward on run container:$(CONTAINER_PORT) to host:$(HOST_PORT)	
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 # clone (need keys, or interactive w uid/pass)
-clone: ## 	clone
+clone: ## create tarball from app directory
 #	if [ -d app ] ; then  rm -rf app; fi
 #	mkdir app;  git clone $(GIT_REPO) app
 	tar -czf app.tgz app
  
-build: ##   build container image from Dockerfile
+build: ## build container image from Dockerfile
 	docker build -t $(CONTAINER_IMAGE) . 
 
-run-fg:  ## run the container logs to stdout
+run-fg:  ## run the container, logs to stdout
 	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
 
-run:  ## run the container detached (~in the background )
+run:  ## run the container, detached (~in the background )
 	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
 	docker ps 
 
