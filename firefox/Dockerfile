@@ -2,7 +2,7 @@
 # run firefox from a container
 FROM alpine:latest
 
-LABEL maintainer "P Campbell <pcampbell.edu@gmail.com>"
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-02-26"
 
 # alpine uses apk for pkg mgmg
 # no cache erases cache so smaller image

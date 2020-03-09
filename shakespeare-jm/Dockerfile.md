@@ -2,11 +2,11 @@
 ```
 # dockerfile for apache + php + redis + php 2019 assignment1
 FROM php:7.2-apache
-MAINTAINER P Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-xx-xx"
 ```
 * \# comments, as with bash scripts
 * FROM the base image to be pulled from docker hub,  you choose a base image that has most of what you want or your start with a basic image (python, apache, php  etc.)
-* MAINTAINER: labeling information
+* LABEL user defined meta data for the container image
 ```
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive

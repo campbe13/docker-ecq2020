@@ -2,7 +2,7 @@
 # 2020-2-29	
 
 FROM php:7.2-apache
-MAINTAINER P Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-02-29"
 
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive

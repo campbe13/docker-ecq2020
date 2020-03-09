@@ -3,11 +3,11 @@
 # dockerfile for lighttpd host javascript example code 
 # 2020-2-21
 FROM alpine:latest
-MAINTAINER 2020-02-21 P Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-xx-xx"
 ```
 * \# comments, as with bash scripts
 * FROM the base image to be pulled from docker hub,  you choose a base image that has most of what you want or your start with a basic image alpine, ubuntu etc
-* MAINTAINER: labeling information
+* LABEL user defined meta data for the container image
 ```
 # install lighthttpd
 # ref https://wiki.alpinelinux.org/wiki/Lighttpd

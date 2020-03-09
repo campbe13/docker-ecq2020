@@ -2,7 +2,7 @@
 # 2020-2-20
 
 FROM node:current-slim
-MAINTAINER P Campbell 2020-02-20 pcampbell.edu@gmail.com 
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-02-20"
 
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive

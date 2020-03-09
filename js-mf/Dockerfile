@@ -2,7 +2,7 @@
 # 2020-2-21
 
 FROM alpine:latest
-MAINTAINER 2020-02-21 P Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-02-21"
 
 # install lighthttpd
 # ref https://wiki.alpinelinux.org/wiki/Lighttpd
