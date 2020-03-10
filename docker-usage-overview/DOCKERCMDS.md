@@ -329,7 +329,6 @@ tricia@acerubuntu1804:~$
 ## docker system prune
 Remove unused data: images, volumes
 
-n.b. for full info see `man docker exec`
-Use  `docker system prune` or to omit the prompt `docker system prune -f`
+Use  `docker system prune` or to make it non-interactive `docker system prune -f`
 
 

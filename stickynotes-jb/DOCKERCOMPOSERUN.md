@@ -2,7 +2,7 @@
 
 Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
 
-1. [docker-compose build]
+1. docker-compose build
 2. docker images
 3. docker-compose up -d
 4. docker-compose logs db
@@ -11,11 +11,11 @@ Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKER
 
 tested, now push to docker registry:
 
-6. login 
+1. login 
 5. tag
-7.  push
+7. push
 
-# [docker-compose build]
+# docker-compose build
 ```
 [tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose build
 docker-compose build
