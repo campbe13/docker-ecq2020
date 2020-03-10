@@ -67,8 +67,14 @@ images ---> `docker-compose push ` ---> images in a repo!
 # docker-compose commands
 
 Incomplete list, the ones I have used (pcampbell)
+* [up](#up)
+* [build](#build)
+* [images](#images)
+* [stop](#stop)
+* [logs](#logs)
+* [exec](#exec)
 
-# docker-compose up 
+## <a name="up">docker-compose up</a>
 Will build if needed and bring up the images needed for the containers for this app.
 When you run an image if it is on the local box it will be loaded from there if not the registriy will be searched.  If the image is found in the registry (but not locally) a `docker pull` is performed, then the container image is run.
  
@@ -82,12 +88,12 @@ Starting stickynotes-jb_php_1        ... done
 Starting stickynotes-jb_phpmyadmin_1 ... done
 ```
 
-# docker-compose build 
+##  <a name="build">docker-compose build</a> 
 build an image from a docker-compose.yaml file in the current working directory
 
 `docker-compose build `
 see  [stickynotes](https://github.com/campbe13/docker-ecq2020/blob/master/stickynotes-jb/DOCKERCOMPOSERUN.md#docker-compose-build)  for complete runtime output
-# docker-compose ps
+## docker-compose ps
 show images on the localhost  for the yaml file in the current working directory
 
 the difference between `docker ps` and this is that this shows only what is referenced in the local yaml file 
@@ -102,7 +108,7 @@ stickynotes-jb_php_1          docker-php-entrypoint /bin     Up      0.0.0.0:870
 stickynotes-jb_phpmyadmin_1   /docker-entrypoint.sh apac     Up      0.0.0.0:8701->80/tcp
                               ...
 ```
-# docker exe  / docker-compose exec
+# <a name="exec">docker exec  / docker-compose exec</a>
 Execute a command on the container.
 
 n.b. for full info see `man docker exec`
@@ -142,7 +148,7 @@ tmpfs           1.9G     0  1.9G   0% /proc/scsi
 tmpfs           1.9G     0  1.9G   0% /sys/firmware
 root@027eb5165fcc:/var/www/html# exit
 ```
-# docker-compose logs 
+## <a name="logs">docker-compose logs</a> 
 Show the log files from a running containers.  You can specify only one of the containers if needed, default is all logs.
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/stickynotes-jb$ docker-compose logs
@@ -198,7 +204,7 @@ phpmyadmin_1  | [Tue Mar 10 17:03:22.930259 2020] [mpm_prefork:notice] [pid 1] A
 phpmyadmin_1  | [Tue Mar 10 17:03:22.930370 2020] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 
 ```
-# docker-compose stop
+## <a name="stop">docker-compose stop</a>
 Stop the running containers 
 To stop the container (The image is still there, you can start it again, it will not take as long as it does not have to download) 
 ```
@@ -208,7 +214,7 @@ Stopping stickynotes-jb_phpmyadmin_1 ... done
 Stopping stickynotes-jb_db_1         ... done
 ```
 
-# docker-compose images
+## <a name="images">docker-compose images</a>
 show images on the localhost  for the yaml file in the current working directory
 
 To see all images that are local, downloaded or created through Dockerfiles &/or compose yaml files use `docker images`.
@@ -221,9 +227,9 @@ stickynotes-jb_db_1           mysql                   latest   c8ad2be69a22   46
 stickynotes-jb_php_1          stickynotes-jb_php      latest   522d19846ec0   427.9 MB
 stickynotes-jb_phpmyadmin_1   phpmyadmin/phpmyadmin   latest   c24a75debb40   469.5 MB
 ```
-# docker-compose information commands
+## docker-compose information commands
 Note docker-compose sits on top of docker commands and uses most of what we have seen for docker.
-## docker-compose version
+ version
 ```
 tricia@acerubuntu1804:~$ docker-compose version
 docker-compose version 1.25.4, build unknown
@@ -231,7 +237,7 @@ docker-py version: 4.2.0
 CPython version: 2.7.17
 OpenSSL version: OpenSSL 1.1.1  11 Sep 2018
 ```
-## docker-compose config
+ config
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/stickynotes-jb$ docker-compose config
 networks:
@@ -289,7 +295,7 @@ version: '3.7'
 volumes:
   persistent: {}
 ```
-## docker-compose config --services
+ config --services
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/stickynotes-jb$ docker-compose config --services     
 db
