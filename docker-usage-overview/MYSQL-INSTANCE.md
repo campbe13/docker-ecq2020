@@ -1,4 +1,4 @@
-m# running a database container	
+# running a database container	
 
 This illustrates running  a mysql container without the need to install and configure mysql server.  
 
@@ -14,7 +14,7 @@ This illustrates running a mysql container without the need for a Dockerfile or 
 
 ## refs
 * https://docs.docker.com/engine/reference/commandline/run/
-* https://hub.	docker.com/_/mysql/
+* https://hub.docker.com/_/mysql/
 
 ## `docker run`
 ```
