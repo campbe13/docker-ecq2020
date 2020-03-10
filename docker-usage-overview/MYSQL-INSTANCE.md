@@ -6,11 +6,11 @@ This illustrates running a mysql container without the need for a Dockerfile or 
 
 1. launch: docker run
 2. monitor: docker logs 
-3. monitor: docker ps
+3. [monitor](#ps): docker ps
 3. monitor: netstat -plan
 3. monitor: iptables -nl
 3. monitor: iptables -nl -t nat
-3. connect: mysql -p your.ip.addr 
+3. [connect](#connect): mysql -p your.ip.addr 
 
 ## refs
 * https://docs.docker.com/engine/reference/commandline/run/
@@ -25,6 +25,7 @@ tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker run --name mysql-container -e
 21042f0aa702289da8e21d7796e2cfa6241059251244898eb7ccc99b9442d415
 ```
 ## `docker logs`
+Note it is best to watch the logs as there is a lag in accessibility to the mysql db on startup, this is there by design in mysql, it has nothing to do with the container
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker logs mysql-container
 2020-03-10 15:20:29+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.
@@ -63,7 +64,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 2020-03-10T15:22:34.112866Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
 2020-03-10T15:22:34.710456Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock' bind-address: '::' port: 33060
 ```
-## `docker ps`
+## <a name=ps>`docker ps`</a>
 ```
 tricia@acerubuntu1804:~$ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
@@ -182,7 +183,7 @@ RETURN     all  --  0.0.0.0/0            0.0.0.0/0
 DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:8900 to:172.17.0.2:80
 DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:3306 to:172.17.0.3:3306
 ```
-## connect to the running container database
+## <a name="connect">connect</a> to the running container database
 populate
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020/docker-usage-overview$ mysql -u root -p  -h 192.168.0.117 <quickdb.sql
