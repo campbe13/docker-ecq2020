@@ -2,16 +2,18 @@
 Some containers & documentation I am working with  for teaching
 my dockerfiles & scripts & instructions here, proofs of concept and basis for lectures / labs 
 
-See [docker command reference](DOCKERCMDS.md) for some notes on using docker commands
-TODO, see [docker-compose command reference](DOCKERCOMPOSECMDS.md)  for some notes on using docker commands
-
 The following are in order of least to more complex
 
 ## todo
-todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
+* todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 from https://github.com/docker/labs  
 
-todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
+* todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
+
+## docker platform (client, config etc)
+
+See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
+Amongst others, contains  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands, see [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker commands
 
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
