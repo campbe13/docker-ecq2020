@@ -17,6 +17,9 @@ This illustrates running a mysql container without the need for a Dockerfile or 
 * https://hub.docker.com/_/mysql/
 
 ## `docker run`
+Notice here you have -e environment variables set, these are used by the mysql container to set various components. For example you can set MYSQL_DATABASE to be created on startup and if you also set MYSQL_USER, MYSQL_PASSWORD  that user has GRANT ALL for this database.
+
+Full list found here https://hub.docker.com/_/mysql/
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=secret-password -p 3306:3306 mysql:latest
 21042f0aa702289da8e21d7796e2cfa6241059251244898eb7ccc99b9442d415
