@@ -1,0 +1,5 @@
+# get your account id from azure
+# rename this to accountid.make
+# it is used in the Makefile
+# there is an entry in .gitignore for acountid.make
+AZUREACCOUNTID=<get your account id from azure website>

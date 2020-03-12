@@ -5,6 +5,7 @@
 #
 # registry name group name etc in config.make
 include config.make
+include accountid.make
 
 # .PHONY used if no options given
 .PHONY: help
@@ -24,7 +25,7 @@ help: ## This help.
 
 accountset: ## set account id from azure website
 	@echo setting my Free tier subs account 
-	az account set -s 9d9aab4e-c397-4dbc-911e-23589a5c3973
+	az account set -s $(AZUREACCOUNTID)
 
 login: logon
 logon: ## login to azure container registry
@@ -36,7 +37,7 @@ list: ## list repo
 	az acr repository show --verbose --repository $(REGISTRY)
 
 creategroup: ## create the resource group
-	az group create --name=$(GROUP) --location=$(LOCATION)
+	az group create --name $(GROUP) --location $(LOCATION)
 
 createreg: createregistry
 createregistry: ## create the registry
