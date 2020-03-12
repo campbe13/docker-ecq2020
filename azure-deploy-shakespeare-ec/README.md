@@ -1,11 +1,10 @@
 # deploy to Azure
 This directory has a [Makfile](Makefile) with the instructions needed to deploy to Azure
 
-We are using the [shakespeare-ec](../shakespeare-ec) app
+We are using the [shakespeare-ec](../shakespeare-ec) app.
+The image was created and tested locally, using a docker engine, see the link, the steps involved here are for deployment. 
 
-Note the azure cli must be installed to use this Makfile. https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest 
-
-The image was be created and tested locally, using a docker engine, see link above ^, the steps involved here are for deployment: 
+Note the [azure cli must be installed](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to use this Makfile.
 
 Note: acr is the Azure Container Registry
 
@@ -33,7 +32,7 @@ Once the app is in Azure Container registry you can deploy it.
 ## clean up resources
 Since you are paying for everything, if you don't need this app and once you have finished with your app (or your tests) you must clean up by deleting everything.
 
-Note: If you wish to depoloy permanently you would not do this step.
+Note: If you wish to deploy permanently you would not do this step.
 
 10. delete the group `az group delete`
  
