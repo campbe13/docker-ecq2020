@@ -31,34 +31,36 @@ login: logon
 logon: ## login to azure container registry
 	az acr login --name=$(REGISTRY) 
 
-
+showtags: list
 list: ## list repo
 	az acr repository list --name=$(REGISTRY) --output table
-	az acr repository show --verbose --repository $(REGISTRY)
+	az acr repository show-tags --verbose --name $(REGISTRY) --repository $(IMAGE) --output table
 
 creategroup: ## create the resource group
 	az group create --name $(GROUP) --location $(LOCATION)
 
+deletegroup: ## delete the resource group REMOVES EVERYTHING
+	az group delete --name $(GROUP) 
+
 createreg: createregistry
 createregistry: ## create the registry
-	az acr create --resource-group=$(GROUP) --location=$(LOCATION) --name=$(REGISTRY) -sku Basic 
-
-showname: ## show registry full name
+	az acr create --resource-group $(GROUP) --location $(LOCATION) --name $(REGISTRY) --sku Basic 
+showregname: showreg
+showreg: ## show registry full name
 	@echo displaying registry full name
-	az acr show --name=$(REGISTRY) --query LoginServer --output table
-tagimage: ## tag the image with repository
+	az acr show --name=$(REGISTRY) --query loginServer --output table
+
+tagimage: tag
+tag: ## tag the image with repository
 	@echo tagging the image for azure
-	docker tag $(IMAGELOCAL) $(REGISTRYFULL)/$(IMAGE)
+	docker tag $(IMAGEALL) $(REGISTRYFULL)/$(IMAGE)
 	docker images
 
 push: ## push to azure
-	az acr push $(REGISTRYFULL)/$(IMAGE)
+	docker push $(REGISTRYFULL)/$(IMAGE)
+
 # dollar slash newline ignores white space
 # https://www.gnu.org/software/make/manual/html_node/Splitting-Lines.html
+# only works on later versions of make
 createapp: ## create the app / container on azure
-	az container create --resource-group=$(GROUP) $\
-	    --name=$(IMAGE) $\ 
-	    --image=$(REGISTRYFULL)/$(IMAGE) $\
-	    --cpu 1 --memory 1 $\
-	    --registry-login-server $(REGISTRYFULL) $\
-	    --registry-username $(USER) 
+	az container create --resource-group $(GROUP) --name $(REGISTRY) --image $(REGISTRYFULL)/$(IMAGE)  --cpu 1 --memory 1 --registry-login-server $(REGISTRYFULL) --registry-username $(USER) --ports 80
