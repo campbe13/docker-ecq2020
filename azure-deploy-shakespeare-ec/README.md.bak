@@ -12,6 +12,8 @@ Refs
 * https://docs.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr
 * https://docs.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-deploy-app
 
+See also [runtime for the steps below](RUNTIMEAZURE.md)
+
 ## push image to acr 
 In order to run an app it must be in the container registry for Azure, these steps push to the registry:
 
