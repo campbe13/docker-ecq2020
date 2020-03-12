@@ -45,7 +45,7 @@ createregistry: ## create the registry
 
 showname: ## show registry full name
 	@echo displaying registry full name
-	az acr show --name=$(REGISTRY) --queryLoginServer --output table
+	az acr show --name=$(REGISTRY) --query LoginServer --output table
 tagimage: ## tag the image with repository
 	@echo tagging the image for azure
 	docker tag $(IMAGELOCAL) $(REGISTRYFULL)/$(IMAGE)
