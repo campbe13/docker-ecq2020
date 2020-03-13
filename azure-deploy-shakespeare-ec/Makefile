@@ -23,9 +23,17 @@ help: ## This help.
 	@echo
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+accountshow: ## show account ids on this host 
+	@echo target account
+	az account show
+	@echo all accounts
+	az account list 
+
 accountset: ## set account id from azure website
 	@echo setting my Free tier subs account 
 	az account set -s $(AZUREACCOUNTID)
+	# using account name
+	#az account set -s "Azure for Students"
 
 login: logon
 logon: ## login to azure container registry
