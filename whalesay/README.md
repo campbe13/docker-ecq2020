@@ -1,5 +1,5 @@
 # whalesay
-This is a proof of concept container to test creating simple containers. I found it through some tutorial, lost the link.  The base image is docker/whalesay.  This container runs with a one time output the cowsay app, using a whale image, and then displays a text from fortune using figlet.
+This is a proof of concept container to test creating simple containers. I found it through some tutorial, lost the link.  The base image is docker/whalesay.  This container runs with a one time output the cowsay app, using a whale image, which displays a text from fortune, then the I love docker is displayed using figlet.
 
 ## TL;DR run this app
 1. [Install docker](https://docs.docker.com/install/)
