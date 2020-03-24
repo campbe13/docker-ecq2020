@@ -50,5 +50,5 @@ EXPOSE 80
 # start  redis server & train the model & launch apache  (systemctl not installed on this image )
 CMD redis-server /etc/redis/redis.conf ; php load_model.php 3 6 10 ; apachectl -D  FOREGROUND
 ```
-* CMD: command to be run when the container is run
+* CMD: command to be run when the container is run, this format invokes a command shell to launch the command
 
