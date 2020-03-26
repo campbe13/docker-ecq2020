@@ -27,6 +27,15 @@ working, in my hub.docker.com registry
     * Windows 10 @ work (run from docker hub)
     * Azure registry used Dockerfile to add to Azure Container Registry (ACR) and run
 
+## [javasample](simple-java) 
+working, in my hub.docker.com registry
+
+* uses openjdk 11 Oracle image
+* builds & copies a few java .class files and creates a menu
+* tested on / runs on
+    * ubuntu 18.04 (created & run)
+    * Fedora 31 (run from docker hub)
+
 ## [flaskpy](flaskpy) 
 working, in my hub.docker.com registry
 

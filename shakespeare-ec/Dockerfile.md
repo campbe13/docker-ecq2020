@@ -53,5 +53,5 @@ so I have to start the redis-server again to be used by the web app
 # start  redis server &  launch apache   (systemctl not installed on this image )
 CMD  redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND
 ```
-CMD: command to be run when the container is run
+* CMD: command to be run when the container is run
 

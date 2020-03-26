@@ -31,7 +31,7 @@ This is a proof of concept container to test creating simple containers. I found
 [tricia@acerfed31 ~]$
 ```
 ## build this image
-See the [Dockerfile](Dockerfile) for how it was created, it uses the base image [github whalesay](https://github.com/docker/whalesay) which is a base image of alpine with cowsay installed, but the image on [docker hub](https://hub.docker.com/r/docker/whalesay) may be ubuntu
+See the [Dockerfile](Dockerfile.md) for how it was created, it uses the base image [github whalesay](https://github.com/docker/whalesay) which is a base image of alpine with cowsay installed, but the image on [docker hub](https://hub.docker.com/r/docker/whalesay) may be ubuntu
 
 ## Scripts
 There are three scripts in this directory

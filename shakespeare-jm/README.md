@@ -49,7 +49,7 @@ Multi container apps use docker compose yaml and Dockerfiles, this app has a sin
 See here for the [Dockerfile](Dockerfile.md) with explanations that was used to create this app.
 
 ### docker commands
-see  [common docker commands](DOCKERCMDS.md) 
+see  [common docker commands](../docker-usage-overview/DOCKERCMDS.md) 
 
 Short list of examples: 
 if you want to see what is going on with the image use `docker ps` or `docker ps -a`

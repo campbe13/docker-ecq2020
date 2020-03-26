@@ -59,7 +59,7 @@ See here for the [php & apache Dockerfile](php/Dockerfile.md) with explanations 
 See here for the [runtime use of these commands](DOCKERCOMPOSERUN.md) & [troubleshooting db errors](DOCKERCOMPOSEtroubleshootdb.md) & the [makefile](Makefile.docker-compose)  using the commands  
 
 ### docker commands
-see  [common docker commands](DOCKERCMDS.md) 
+see  [common docker commands](../docker-usage-overview/DOCKERCMDS.md) 
 ### docker-compose commands
-see  [common docker commands](DOCKERCOMPOSECMDS.md) TODO update this doc with cmds from the DOCKERCOMPOSE*md files
+see  [common docker commands](../docker-usage-overview/DOCKERCOMPOSECMDS.md)
 
