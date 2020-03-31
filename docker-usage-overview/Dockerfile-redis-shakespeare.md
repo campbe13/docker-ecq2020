@@ -5,7 +5,7 @@
 FROM php:7.2-apache
 LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-xx-xx"
 ```
-* # comments, as with bash scripts
+* \# comments, as with bash scripts
 * FROM the base image to be pulled from docker hub, you choose a base image that has most of what you want or your start with a basic image (python, apache, php etc.)
 * LABEL user defined meta data for the container image
 ```

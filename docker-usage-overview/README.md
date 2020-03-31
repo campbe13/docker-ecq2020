@@ -13,7 +13,8 @@ Dockerfiles, docker-compose.yaml files etc.
 * [running a db from docker hub](MYSQL-INSTANCE.md) runtime output, see also the [launch script](standalone-mysql.sh) and the [sql script](quickdb.sql) to populate the db
 
 ## Dockerfile (used with docker commands)
-* from [shakespeare container](../shakespeare-ec)[Dockerfile used for one of the containers](Dockerfile-redis-shakespeare.md)
+* from [shakespeare container](../shakespeare-ec/Dockerfile.md)
+* [Dockerfile used for one of the containers](Dockerfile-redis-shakespeare.md)
 
 ## docker-compose.yaml (used with docker-compose commands)
 Examples from the [stickynotes containers](../stickynotes-jb) 
