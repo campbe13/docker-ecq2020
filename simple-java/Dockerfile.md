@@ -8,7 +8,7 @@
 FROM openjdk:11-oracle
 LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-03-26"
 ```
-* # comments, as with bash scripts
+* \# comments, as with bash scripts
 * FROM the base image to be pulled from docker hub, you choose a base image that has most of what you want or your start with a basic image (python, apache, php etc.)
 * LABEL user defined meta data for the container image
 ```
