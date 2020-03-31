@@ -31,44 +31,12 @@ docker exec -it containernamehere sh
 
 note: If you have newly install docker, on \*nix, in order to run docker as a regular user you must add your userid to the docker group (then restart the shell) `sudo usermod -aG docker youruserid`  To check this you should see it as your group when you run `id`
 
+## Dockerfile 
+See [Dockerfile with explanations](Dockerfile.md)
 
 ## Scripts (install docker before using)
-### run.from.hub.sh
+### [run.from.hub.sh](run.from.hub.sh)
 This script will pull the public image and run it. 
-### build.run.sh
+### [build.run.sh](build.run.sh)
 This script will build the image from the Dockerfile in this repo, then run it.
 
-## Dockerfile with explanations 
-
-```
-FROM python:3-alpine
-MAINTAINER P.M.Campbell pcampbell.edu@gmail.com
-```
-* FROM:  the image to be pulled from the docker hub, you choose a base image that has most of what you want or your start with a basic image (alpine, ubuntu etc.)
-* MAINTAINER: labeling information
-```
-RUN pip install --no-cache-dir Flask
-```
-* RUN: commands to be run on the image, each RUN creates a new layer on the docker image
-```
-COPY hello.py /usr/local/bin/hello.py 
-```
-- COPY copy from the local host to the container (AFAICT not possible to do a recursive copy)
--- as this is a simple example we copy one file, a project would be installed through pulling from a git repo
-
-```
-# default flask port
-EXPOSE 5000
-```
-* EXPOSE:  by default ports are internal to docker networks only, unless they are explicitly exposed to the host, EXPOSE means that we can access this port from the host for the docker engine 
-
-```
-# working dir
-WORKDIR /usr/local/bin
-```
-* WORKDIR: this is effectively a cd on the container filesystem
-```
-# runtime
-CMD [ "python", "./hello.py" ] 
-```
-* CMD: command to be run when the container is run
