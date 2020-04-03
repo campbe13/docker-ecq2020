@@ -4,17 +4,18 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 
 The following are in order of least to more complex
 
-## todo
+## general todo
 * todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 from https://github.com/docker/labs  
-
 * todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
+* [Individual todos in the repo](TODOREADME.md) generated through [findtodo.sh](findtodo.sh)
 
-## docker platform (client, config etc)
+## general docker platform (client, config etc)
 
 * See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
 * Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
 * See [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker-compose commands
+
 
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
@@ -42,6 +43,13 @@ working, not in the registry
 * uses alpine latest
 * install xeyes
 * simple poc using an X11 app (needed --net=host)
+* tested on / runs on 
+    * ubuntu 18.04 (created & run)
+## own-fortune 
+working, not in the registry
+
+* uses alpine latest
+* install fortune, figlet, writes to stdout 
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
 
@@ -145,7 +153,3 @@ work in progress 2020-02-06
 * poc one app 
 * isolate firefox in a container so that things like facebook can't get as much info ?? 
 * problems with X11 -> can be done but containers are not meant to do this, really...
-
-## own-fortune 
-not completed, may abandon
-
