@@ -37,7 +37,7 @@ working, in my hub.docker.com registry
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
 ## [xeyes](xeyes) 
-working, not in the registr
+working, not in the registry
 
 * uses alpine latest
 * install xeyes
@@ -112,7 +112,8 @@ working 2020-02-27
     * Heroku (released from heroku registry)
 
 ## [stickynotes-jb](stickynotes-jb)
-work in progress 2020-03-10
+working, only the php image is in in my hub.docker.com registry, the others are base images + config
+ 
 * TODO stickynotes-jb port to cloud & upload image to registry, test on fedora, Azure ??
 * TODO tickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
 

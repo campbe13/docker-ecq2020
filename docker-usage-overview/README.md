@@ -3,6 +3,8 @@
 These are overview documents with accumulated examples of components of the docker platform.
 Dockerfiles, docker-compose.yaml files etc.
 
+## my registry account
+* [tricia](http://hub.docker.com/u/tricia)
 ## docker commands
 * [using docker commands](DOCKERCMDS.md)  runtime output 
 ## docker-compose commands
