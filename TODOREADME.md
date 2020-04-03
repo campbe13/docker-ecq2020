@@ -1,12 +1,11 @@
 # All todos from the markdown files:
 do not edit, this will be clobbered
 Script findtodo.sh
-Created  2020-03-25 09:48:32 PM
+Created  2020-04-02 05:53:45 PM
 
 ## list of todos
 
 ./stickynotes-jb/README.md:todo insert info for running on cloud
-./stickynotes-jb/README.md:see  [common docker commands](DOCKERCOMPOSECMDS.md) TODO update this doc with cmds from the DOCKERCOMPOSE*md files
 ./stickynotes-jb/docker-compose.yaml.md:I think the links is needed for that, not sure if the db overrides it todo: test this assumption.
 ./README.md:## todo
 ./README.md:* todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/

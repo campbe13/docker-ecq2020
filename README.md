@@ -12,8 +12,9 @@ from https://github.com/docker/labs
 
 ## docker platform (client, config etc)
 
-See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
-Amongst others, contains  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands, see [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker commands
+* See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
+* Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
+* See [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker-compose commands
 
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
@@ -35,6 +36,14 @@ working, in my hub.docker.com registry
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
+## [xeyes](xeyes) 
+working, not in the registr
+
+* uses alpine latest
+* install xeyes
+* simple poc using an X11 app (needed --net=host)
+* tested on / runs on 
+    * ubuntu 18.04 (created & run)
 
 ## [flaskpy](flaskpy) 
 working, in my hub.docker.com registry

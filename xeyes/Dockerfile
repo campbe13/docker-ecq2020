@@ -1,25 +1,17 @@
-# PMC 2020-02-06
-# run firefox from a container
+# PMC 2020-04-02
+# run a bunch of xeyes from a tiny container
 FROM alpine:latest
-
-LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-02-06"
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-04-02"
 
 # alpine uses apk for pkg mgmg
 # no cache erases cache so smaller image
 # equiv to apk update in the beginning and rm -rf /var/cache/apk/*
-RUN apk add --no-cache xeyes\
-	dumb-init \
-        x11vnc \
-        xvfb \
-	mesa-dri-intel \
-	mesa-gl \
-	ttf-freefont
-RUN mkdir ~/.vnc
-RUN x11vnc -storepasswd helpme ~/.vnc/passwd
-# X11 display environment variable needed
-# ENV DISPLAY :5
+RUN apk add --no-cache xeyes
 
-# launch
-ENTRYPOINT [ "/usr/bin/dumb-init", "xeyes"]
-# RUN xeyes -display $DISPLAY
-#CMD ["https://www.dawsoncollege.qc.ca"]
+ENTRYPOINT [ "/usr/bin/xeyes", "-fg", "purple" ]
+# todo, play with stacking multiple xeyes to determine when container process ends
+# todo & what happens to output, when I launch in bg as below, noting is displayed but container persists
+# CMD /usr/bin/xeyes -fg blue  
+#; /usr/bin/xeyes -fg green & ; 
+# /usr/bin/xeyes -fg brown & ; \
+#       /usr/bin/xeyes -fg purple & ; /usr/bin/xeyes -fg pink &
