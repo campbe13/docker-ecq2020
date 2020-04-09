@@ -26,7 +26,8 @@ __Note:__  This is a multi container setup for development, there are several vo
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. install docker-compose https://docs.docker.com/compose/install/
 2. clone this repo
-3. make sure this is your current working directory, run `docker-compose  up  -d ` 
+3. make sure this is your current working directory, run `docker-compose build` 
+4. run `docker-compose  up  -d ` 
     * \-d detaches the container, if you omit you will see the startup and the logs from all containers
     * __note__ you do not need the -p unless you want to override the port forwarding in the docker-compose.yaml 
     * when you use docker, the run command does the port forwarding
