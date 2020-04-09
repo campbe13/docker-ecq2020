@@ -9,14 +9,13 @@ It uses three containers
 * db  mysql (standard image, config through yaml file)
 * phpmyadmin (standard image, config through yaml file)
 
-Note:  This is a multi container setup for development, there are several volumes mapped to the localhost to aide testing & dev.  Some would be changed for a production deployment
-
 This is the first app using multiple containers & docker compose 
 * https://hub.docker.com/_/mysql/ 
 * https://docs.docker.com/compose/compose-file/
 * https://docs.docker.com/compose/gettingstarted/
 
-__Note:__  This is a multi container setup for development, there are several volumes mapped to the localhost to aide testing & dev.  Some would be changed for a production deployment, see below for overview of mapping & port forwarding, [yaml](docker-compose.yaml) file for specifics
+__Note:__  This is a multi container setup for development, there are several volumes mapped to the localhost to aide testing & dev.  Some would be changed for a production deployment, see below for overview of mapping & port forwarding, [yaml](docker-compose.yaml) file for specifics</br>
+__Note:__  The information in this repo is expanded upon for this [google slide presentation](https://docs.google.com/presentation/d/1mmvSdb4RyTNta__thGgcuFWSesQE6boD5BXvmA77W74/edit?usp=sharing)
 
 # Runtime __topology__ for this group of containers:
 ![container runtime](stickynotes-jb-containers.PNG)
