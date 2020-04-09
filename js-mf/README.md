@@ -7,7 +7,10 @@ My thanks to M. Frydrychowiz for lending their work
 Note there was an attempt to create a minimal image and these are static javascript pages exposed through a directory structure installed in the container. 
 
 It uses an alpine image + lighttpd
-## TL;DR
+
+__Note:__ The information in this repo is expanded upon for this [google slide presentation](https://docs.google.com/presentation/d/1-vvZ6ejDP4VfnspZzRx8a3gs4I8ANBLCTuFugCdmGtM/edit?usp=sharing)
+
+## TL;DRhttps://docs.google.com/presentation/d/1-vvZ6ejDP4VfnspZzRx8a3gs4I8ANBLCTuFugCdmGtM/edit?usp=sharing
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
