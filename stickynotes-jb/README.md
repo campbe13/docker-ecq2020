@@ -11,6 +11,7 @@ It uses three containers
 
 This is the first app using multiple containers & docker compose 
 * https://hub.docker.com/_/mysql/ 
+* https://hub.docker.com/r/phpmyadmin/phpmyadmin
 * https://docs.docker.com/compose/compose-file/
 * https://docs.docker.com/compose/gettingstarted/
 
