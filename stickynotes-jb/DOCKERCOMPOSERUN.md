@@ -1,7 +1,8 @@
 # all steps
 
-Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
+__Note:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
 
+Steps to test:
 1. docker-compose build
 2. docker images
 3. docker-compose up -d
@@ -9,8 +10,7 @@ Had to troubleshoot the db,see [DOCKER COMPOSE Troubleshooting db issues](DOCKER
 4. docker-compose logs php
 4. docker-compose logs phpmyadmin && tail /var/log/apache2/access.log && tail /var/log/apache2/error.log
 
-tested, now push to docker registry:
-
+Testing complete, now push (only the php image) to docker registry:
 1. login 
 5. tag
 7. push
