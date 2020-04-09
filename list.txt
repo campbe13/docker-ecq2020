@@ -1,0 +1,4 @@
+azure-deploy-shakespeare-ec
+docker-nodejs-bulletinboard
+firefox
+

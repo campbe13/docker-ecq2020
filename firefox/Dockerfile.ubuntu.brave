@@ -1,0 +1,20 @@
+# PMC 2020-04-06
+# run brave from a container
+FROM ubuntu:latest 
+
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-04-02"
+
+# install firefox
+# need the apt-get update, as there is no pkg cache
+# can't install by name without the update can install after 
+# RUN apt-get update && apt-get install wget -y && apt-get install gnupg -y
+RUN apt-get update && apt-get install snap -y && /usr/bin/snap install brave
+# RUN /usr/bin/wget -O- https://brave-browser-apt-release.s3.brave.com/brave-core.asc | 	 apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -  
+#RUN curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -  
+# RUN sh echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com `lsb_release -sc` main" >> /etc/apt/sources.list.d/brave.list
+# RUN apt-get  install brave-browser brave-keyring -y
+
+# launch
+ENTRYPOINT [ "/usr/bin/brave", "https://www.facebook.com" ]
+# for shelling into the container
+# CMD sh

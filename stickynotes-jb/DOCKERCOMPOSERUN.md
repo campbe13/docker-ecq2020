@@ -3,19 +3,21 @@
 __Note:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
 
 Steps to test:
-1. docker-compose build
-2. docker images
-3. docker-compose up -d
-4. docker-compose logs db
-4. docker-compose logs php
-4. docker-compose logs phpmyadmin && tail /var/log/apache2/access.log && tail /var/log/apache2/error.log
+1. [docker-compose build](docker-compose build) 
+2. [docker images](docker images)
+3. [docker-compose up -d](docker-compose up -d)
+4. [docker-compose logs db](docker-compose logs db)
+4. [docker-compose logs php](docker-compose logs php)
+4. [docker-compose logs phpmyadmin](docker-compose logs phpmyadmin) && tail /var/log/apache2/access.log && tail /var/log/apache2/error.log
+4. [docker volume](docker volume)  show container volumes
+4. [docker network](docker network) show container networks
 
 Testing complete, now push (only the php image) to docker registry:
-1. login 
-5. tag
-7. push
+1. [login](docker login) 
+5. [tag](docker tag)
+7. [push](docker push)
 
-# docker-compose build
+## [docker-compose build]
 ```
 [tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose build
 docker-compose build
@@ -474,7 +476,7 @@ Successfully built 9197aaadf76b
 Successfully tagged stickynotes-jb_php:latest
 
 ```
-# docker images
+## docker images
 ```
 [tricia@korra stickynotes-jb]$ docker images
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
@@ -685,6 +687,156 @@ phpmyadmin_1  | 10.226.49.145 - - [03/Mar/2020:17:46:28 +0000] "GET /index.php?a
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:31 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:32 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
 phpmyadmin_1  | 127.0.0.1 - - [03/Mar/2020:17:46:34 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.4.1 (internal dummy connection)"
+```
+## docker volume # show volume info
+### list all volumes
+```
+[tricia@acerfed31 stickynotes-jb]$ docker volume ls
+DRIVER              VOLUME NAME
+local               stickynotes-jb_persistent
+```
+### docker volume inspect 
+```
+[tricia@acerfed31 stickynotes-jb]$ docker volume inspect stickynotes-jb_persistent
+[
+    {
+        "CreatedAt": "2020-04-09T11:41:34-04:00",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.project": "stickynotes-jb",
+            "com.docker.compose.version": "1.25.4",
+            "com.docker.compose.volume": "persistent"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/stickynotes-jb_persistent/_data",
+        "Name": "stickynotes-jb_persistent",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
+## docker network # show network info
+### `docker network ls ` list all networks
+```
+[tricia@acerfed31 stickynotes-jb]$ docker network ls
+NETWORK ID          NAME                      DRIVER              SCOPE
+d561a6579943        bridge                    bridge              local
+2fe32b75f7bb        host                      host                local
+091b69fcf3d3        none                      null                local
+f85012b2c913        stickynotes-jb_backend    bridge              local
+e11b5625acab        stickynotes-jb_frontend   bridge              local
+```
+### `docker inspect backend`
+```
+[tricia@acerfed31 stickynotes-jb]$ docker network inspect stickynotes-jb_backend
+[
+    {
+        "Name": "stickynotes-jb_backend",
+        "Id": "f85012b2c9130b0fbe69025a6bff21085f66940865422be3a61208de6d2c6ea1",
+        "Created": "2020-04-09T11:33:05.023011357-04:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "237a9c549dc1b71d486a5a5ef56c316fdf438cf859fb3b7b945d7f0f3898b2c7": {
+                "Name": "stickynotes-jb_phpmyadmin_1",
+                "EndpointID": "4f40d1725699e9a32acc48c81ff6f59475c7ab312a14349424b99994202fc59c",
+                "MacAddress": "02:42:ac:12:00:04",
+                "IPv4Address": "172.18.0.4/16",
+                "IPv6Address": ""
+            },
+            "3cf97006e12bee01d67c2517eea7f0ceef190987d07627c48d2a0c59135bb3f1": {
+                "Name": "stickynotes-jb_php_1",
+                "EndpointID": "cb0e4617c93defd3199849d43b5cbb187a84108fd617398077567d4c9667ab42",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "eb5182faa86f6018278317db39a86a338c96214ed930a92fc9621b39b9e7e711": {
+                "Name": "stickynotes-jb_db_1",
+                "EndpointID": "eec45414343a8eed4e5c0e13505cb1783c7f63a4d4d4f528cf8b9069cf577395",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "backend",
+            "com.docker.compose.project": "stickynotes-jb",
+            "com.docker.compose.version": "1.25.4"
+        }
+    }
+]
+```
+### `docker inspect frontend`
+```
+[tricia@acerfed31 stickynotes-jb]$ docker network inspect stickynotes-jb_frontend
+[
+    {
+        "Name": "stickynotes-jb_frontend",
+        "Id": "e11b5625acab34f108f3baac7c6260aaa08d1ec993a9eb5191bec56fc6659f37",
+        "Created": "2020-04-09T11:33:05.639754062-04:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "237a9c549dc1b71d486a5a5ef56c316fdf438cf859fb3b7b945d7f0f3898b2c7": {
+                "Name": "stickynotes-jb_phpmyadmin_1",
+                "EndpointID": "70ec149a3bd41ab8058aa44e4758a92318a463687d4a2d01e4c78cc8dca2cd78",
+                "MacAddress": "02:42:ac:13:00:03",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "3cf97006e12bee01d67c2517eea7f0ceef190987d07627c48d2a0c59135bb3f1": {
+                "Name": "stickynotes-jb_php_1",
+                "EndpointID": "032f87e812a601efd58bcdf2430790700671bbae86dc3989786c77ee95b43d8f",
+                "MacAddress": "02:42:ac:13:00:02",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "frontend",
+            "com.docker.compose.project": "stickynotes-jb",
+            "com.docker.compose.version": "1.25.4"
+        }
+    }
+]
 ```
 ## docker login
 ```

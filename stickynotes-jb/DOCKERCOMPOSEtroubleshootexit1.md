@@ -1,7 +1,46 @@
 # Troubleshooting run time problem
-had an error running this on the Fedora box, the php container ends with `Exit 1`
+This is the process I used to troubleshoot & fix an error I had running this
+on another box.
 
+
+
+Had an error running this on the Fedora box, the php container ends with `Exit 1`
+```
+[tricia@acerfed31 stickynotes-jb]$ docker-compose ps
+           Name                          Command               State                  Ports
+----------------------------------------------------------------------------------------------------------
+stickynotes-jb_db_1           docker-entrypoint.sh --inn ...   Up       0.0.0.0:32768->3306/tcp, 33060/tcp
+stickynotes-jb_php_1          docker-php-entrypoint /bin ...   Exit 1
+stickynotes-jb_phpmyadmin_1   /docker-entrypoint.sh apac ...   Up       0.0.0.0:8701->80/tcp
+```
+Hmmm what's running ??
+```
+[tricia@acerfed31 stickynotes-jb]$ docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                NAMES
+237a9c549dc1        phpmyadmin/phpmyadmin   "/docker-entrypoint.…"   About an hour ago   Up About an hour    0.0.0.0:8701->80/tcp                 stickynotes-jb_phpmyadmin_1
+eb5182faa86f        mysql:latest            "docker-entrypoint.s…"   About an hour ago   Up About an hour    33060/tcp, 0.0.0.0:32768->3306/tcp   stickynotes-jb_db_1
+```
+Hmmm what's not running
+```
+[tricia@acerfed31 stickynotes-jb]$ docker ps -a
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS                         PORTS                                NAMES
+237a9c549dc1        phpmyadmin/phpmyadmin   "/docker-entrypoint.…"   About an hour ago   Up About an hour               0.0.0.0:8701->80/tcp                 stickynotes-jb_phpmyadmin_1
+ebf197b6f959        stickynotes-jb_php      "docker-php-entrypoi…"   About an hour ago   Exited (1) About an hour ago                                        stickynotes-jb_php_1
+eb5182faa86f        mysql:latest            "docker-entrypoint.s…"   About an hour ago   Up About an hour               33060/tcp, 0.0.0.0:32768->3306/tcp   stickynotes-jb_db_1
+7d1168e27962        tricia/js-mf            "/usr/sbin/lighttpd …"   6 weeks ago         Exited (0) 6 weeks ago                                              nifty_blackwell
+f871f3b8c90a        tricia/shakespeare-ec   "docker-php-entrypoi…"   7 weeks ago         Exited (137) 6 weeks ago  
+```
+So I need to troubleshoot, the first step is *always* look at the log files
 ## look at the logs
+first I tried the named container
+```
+[tricia@acerfed31 stickynotes-jb]$ docker logs stickynotes-jb_php
+Error: No such container: stickynotes-jb_php
+[tricia@acerfed31 stickynotes-jb]$ docker logs stickynotes-jb_php1
+Error: No such container: stickynotes-jb_php1
+```
+but it's not running so I have to use the id
+```
 [tricia@acerfed31 stickynotes-jb]$ docker logs ebf197b6f959
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
 (2)No such file or directory: AH02291: Cannot access directory '/var/log/apache2/' for main error log
@@ -9,74 +48,64 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00014: Configuration check failed
 Action '-D FOREGROUND' failed.
 The Apache error log may have more information.
-5 files to edit
-
+```
+AHA, lets dig deeper
+```
+[tricia@acerfed31 stickynotes-jb]$ ls -ld /var/log/apache*
+ls: cannot access '/var/log/apache*': No such file or directory
+```
+### fix it
+That's the problem the php image has the following host:container mapping
+```
+    volumes:
+#       use cwd for website (dev & debugging only)
+        - ./jeffstickyphp/:/var/www/html
+#       log to localhost (debugging only)
+        - /var/log:/var/log
+```
+So I can change that in the yaml, or create an apache2 directory in /var/log.
 
+I decided to change it in the yaml, adding a directory requires root access which I have in this case but it's not always possible.  
+1.  `md ~/apache2`
+2.  change the yaml:
+    ```
+           - ~/:/var/log
+    ```
+## test `docker-compose up`
 ```
-[tricia@korra dbsetup]$ docker volume ls
-DRIVER              VOLUME NAME
-local               stickynotes-jb_persistent
+[tricia@acerfed31 stickynotes-jb]$ docker-compose up -d
+stickynotes-jb_db_1 is up-to-date
+Recreating stickynotes-jb_php_1 ...
+Recreating stickynotes-jb_php_1 ... done
 ```
-`docker voluume inspect` can also inspect containers `docker inspect`
+show running containers
 ```
-[tricia@korra dbsetup]$ docker volume inspect stickynotes-jb_persistent
-[
-    {
-        "CreatedAt": "2020-03-03T12:36:45-05:00",
-        "Driver": "local",
-        "Labels": {
-            "com.docker.compose.project": "stickynotes-jb",
-            "com.docker.compose.version": "1.25.4",
-            "com.docker.compose.volume": "persistent"
-        },
-        "Mountpoint": "/var/lib/docker/volumes/stickynotes-jb_persistent/_data",
-        "Name": "stickynotes-jb_persistent",
-        "Options": null,
-        "Scope": "local"
-    }
-]
-```
-## delete a volume
-troubleshooting, persistent volumes, sql not run on startup so must delete in order
-to re-init
-```
-[tricia@korra dbsetup]$ docker volume rm stickynotes-jb_persistent
-Error response from daemon: remove stickynotes-jb_persistent: volume is in use - [178301c8ff8cd6f7ab38e215035c857395088015e35d9b1b0fb24e97e7571e1c]
-[tricia@korra dbsetup]$ docker-compose stop db
-[tricia@korra dbsetup]$ docker volume rm stickynotes-jb_persistent
-Error response from daemon: remove stickynotes-jb_persistent: volume is in use - [178301c8ff8cd6f7ab38e215035c857395088015e35d9b1b0fb24e97e7571e1c]
-```
-had to stop all containers & rm to be sure
-```
-[tricia@korra dbsetup]$ docker-compose stop
-Stopping stickynotes-jb_php_1        ... done
-Stopping stickynotes-jb_phpmyadmin_1 ... done
-[tricia@korra dbsetup]$ docker-compose rm
-Going to remove stickynotes-jb_php_1, stickynotes-jb_phpmyadmin_1, stickynotes-jb_db_1
-Are you sure? [yN] y
-Removing stickynotes-jb_php_1        ... done
-Removing stickynotes-jb_phpmyadmin_1 ... done
-Removing stickynotes-jb_db_1         ... done
-[tricia@korra dbsetup]$ docker volume rm stickynotes-jb_persistent
-stickynotes-jb_persistent
-[tricia@korra dbsetup]$ docker volume rm stickynotes-jb_persistent
-Error: No such volume: stickynotes-jb_persistent
-```
-## docker-compose up
-```
-[tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose up
-docker-compose up -d
-Creating volume "stickynotes-jb_persistent" with default driver
-Creating stickynotes-jb_db_1 ... done
-Creating stickynotes-jb_php_1        ... done
-Creating stickynotes-jb_phpmyadmin_1 ... done
-docker-compose ps
-           Name                          Command               State               Ports
-----------------------------------------------------------------------------------------------------
-stickynotes-jb_db_1           docker-entrypoint.sh --inn ...   Up      0.0.0.0:2004->3306/tcp,
-                                                                       33060/tcp
+[tricia@acerfed31 stickynotes-jb]$ docker-compose ps
+           Name                          Command               State                 Ports
+---------------------------------------------------------------------------------------------------------
+stickynotes-jb_db_1           docker-entrypoint.sh --inn ...   Up      0.0.0.0:32768->3306/tcp, 33060/tcp
 stickynotes-jb_php_1          docker-php-entrypoint /bin ...   Up      0.0.0.0:8700->80/tcp
 stickynotes-jb_phpmyadmin_1   /docker-entrypoint.sh apac ...   Up      0.0.0.0:8701->80/tcp
-[tricia@korra stickynotes-jb]$
 ```
-
+show the logs
+```
+[tricia@acerfed31 ~]$ cd apache2/
+[tricia@acerfed31 apache2]$ ls
+access.log  error.log  other_vhosts_access.log
+[tricia@acerfed31 apache2]$ tail error.log
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Apr 09 17:20:22.073097 2020] [mpm_prefork:notice] [pid 8] AH00163: Apache/2.4.38 (Debian) PHP/7.2.29 configured -- resuming normal operations
+[Thu Apr 09 17:20:22.073224 2020] [core:notice] [pid 8] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[tricia@acerfed31 apache2]$ tail access.log
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET / HTTP/1.1" 200 1536 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET /style.css HTTP/1.1" 200 1252 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET /login.js HTTP/1.1" 200 1416 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET /StickyNote.js HTTP/1.1" 200 694 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET /sticky-note.api-plugin.js HTTP/1.1" 200 1417 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:56 +0000] "GET /script.js HTTP/1.1" 200 3668 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:22:59 +0000] "POST /login.php HTTP/1.1" 401 466 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+192.168.0.192 - - [09/Apr/2020:17:23:01 +0000] "GET /favicon.ico HTTP/1.1" 404 493 "http://192.168.0.112:8700/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+127.0.0.1 - - [09/Apr/2020:17:23:04 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.2.29 (internal dummy connection)"
+127.0.0.1 - - [09/Apr/2020:17:23:09 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.38 (Debian) PHP/7.2.29 (internal dummy connection)"
+[tricia@acerfed31 apache2]$
+```
