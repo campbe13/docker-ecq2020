@@ -1,10 +1,11 @@
 # all steps
 
-__Note:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
+__Note1:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
+__Note2:__ I tried to run this on another computer and the php container crashed on run (spoiler: due to missing directory mapped to the host) see [DOCKER troubleshoot startup error](DOCKERCOMPOSEtroubleshootexit1.md)
 
 Steps to test:
-1. [docker-compose build](docker-compose build) 
-2. [docker images](docker images)
+1. [docker-compose build][build] 
+2. [docker images][images]
 3. [docker-compose up -d](docker-compose up -d)
 4. [docker-compose logs db](docker-compose logs db)
 4. [docker-compose logs php](docker-compose logs php)
@@ -17,7 +18,7 @@ Testing complete, now push (only the php image) to docker registry:
 5. [tag](docker tag)
 7. [push](docker push)
 
-## [docker-compose build]
+## [build]: docker-compose build
 ```
 [tricia@korra stickynotes-jb]$ make -f Makefile.docker-compose build
 docker-compose build
@@ -476,7 +477,7 @@ Successfully built 9197aaadf76b
 Successfully tagged stickynotes-jb_php:latest
 
 ```
-## docker images
+## [images]: docker images
 ```
 [tricia@korra stickynotes-jb]$ docker images
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
