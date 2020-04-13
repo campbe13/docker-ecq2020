@@ -1,6 +1,6 @@
 # all steps
 
-__Note1:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md)
+__Note1:__ I had to troubleshoot the db before this would work, see [DOCKER COMPOSE Troubleshooting db issues](DOCKERCOMPOSEtroubleshoot.md) </br>
 __Note2:__ I tried to run this on another computer and the php container crashed on run (spoiler: due to missing directory mapped to the host) see [DOCKER troubleshoot startup error](DOCKERCOMPOSEtroubleshootexit1.md)
 
 Steps to test:
