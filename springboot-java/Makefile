@@ -3,34 +3,35 @@
 # 2020-04-16
 
 include	 config.make
-XAUTH := ~/.Xauthority
 
 # .PHONY used if no options given
 .PHONY: help
-	@echo set up firefox container for faceborg 
+	@echo set up xeyes container  
 help: ## put help info here
 	@echo
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-all: build run ## build and run
-build: ## build container image from Dockerfile
-	docker build -t $(CONTAINER_IMAGE) . -f $(DOCKERFILE)
+all: maven build run ## maven build, container build and container run 
+maven: ## build the app (maven)
+	mvn compile
+	mvn package
 
-run:  ## run the container, interactive
-# -i interactive  (used for testing)
-# --rm container is ephemeral (used for testing)
-# -t pseudo tty attached to stdin of container (defaults to false) 
-# not needed, host has authority
-# xhost + 
-# if you omit the --net=host, you will get the error:
-# Error: Can't open display:
-	docker run --net=host --rm -e DISPLAY=${DISPLAY} -v ${XAUTH}:/root/.Xauthority --name $(RUN_NAME)  $(CONTAINER_IMAGE)
- 
+build: ## build container image from Dockerfile
+	docker build -t $(CONTAINER_IMAGE) .
+
+runapp: ## run the app, locally for testing
+	java --jar target/*.jar
+
+run-fg:  ## run the container logs to stdout
+	docker run -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
+
+run:  ## run the container detached (~in the background )
+	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) --name $(RUN_NAME)  $(CONTAINER_IMAGE)
+	docker ps 
+
 sh:	shell  ## use shell
-	# --rm removed so container remains & we can shell into it
 shell:  ## shell into the container
-	docker run -ti --net=host -e DISPLAY=${DISPLAY} -v ${XAUTH}:/root/.Xauthority --name $(RUN_NAME)  $(CONTAINER_IMAGE)
-	docker exec -ti $(RUN_NAME) -e DISPLAY=${DISPLAY} -v ${XAUTH}:/root/.Xauthority sh
+	docker exec -ti $(RUN_NAME)  sh
 
 logs: ## show logs for the containers
 	docker logs -f $(RUN_NAME)
@@ -44,6 +45,7 @@ stop: ## stop and remove the containers
 prune:  # clean up unused containers
 	docker system prune -f ; docker images
 
+net:     ## show the container network
 check:  ## check docker run time
 	systemctl status  docker
 	docker info

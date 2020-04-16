@@ -159,15 +159,23 @@ working, only the php image is in in my hub.docker.com registry, the others are 
 ## [digital ocean node.js demo app](digocean-nodejs)
 working, not deployed to hub.docker.com
 
-* todo add README.md for digocean-nodejs see [Makefile](Makefile)
+* todo add README.md for digocean-nodejs see [Makefile](digocean-nodejs/Makefile)
 * Instructions
     ```
     $ make build
     $ make run
-    # via web browser localhost:8111 or ip.add.re.s:8111
+    # via web browser localhost:8111 or host.ip.add.res:8111
     ```
 * tested on / runs on
     * ubuntu 18.04 (created & run)
+## [springboot-java](springboot-java)
+working, not deployed to hub docker com
+* simple springboot app
+* openjdk:alpine 
+* compiled using maven, exposes port 8080 
+* tested on / runs on
+    * ubuntu 18.04 (created & run)
+
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)

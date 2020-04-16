@@ -1,0 +1,4 @@
+CONTAINER_IMAGE=tricia/springbootj
+RUN_NAME=springbootj
+HOST_PORT=8080
+CONTAINER_PORT=8080
