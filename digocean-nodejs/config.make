@@ -1,0 +1,4 @@
+CONTAINER_IMAGE=tricia/sharksnode
+RUN_NAME=sharksnode
+HOST_PORT=8111
+CONTAINER_PORT=8111

@@ -9,12 +9,6 @@ LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-04-
 # can't install by name without the update can install after
 RUN apt-get update && apt-get install firefox -y 
 
-# RUN apt-get update; apt-get install wget -y ; apt-get install gnupg -y
-# RUN /usr/bin/wget -O- https://brave-browser-apt-release.s3.brave.com/brave-core.asc | 	 apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -  
-#RUN curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -  
-# RUN sh echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com `lsb_release -sc` main" >> /etc/apt/sources.list.d/brave.list
-# RUN apt-get  install brave-browser brave-keyring -y
-
 # launch
 ENTRYPOINT [ "/usr/bin/firefox", "-private", "https://www.facebook.com" ]
 # for shelling into the container

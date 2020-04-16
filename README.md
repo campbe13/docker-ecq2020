@@ -38,13 +38,24 @@ working, in my hub.docker.com registry
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
 ## [xeyes](xeyes) 
-working, not in the registry
+working, not in docker hub
 
 * uses alpine latest
 * install xeyes
-* simple poc using an X11 app (needed --net=host)
+* simple poc using an X11 app (needed --net=host display & .Xauth)
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
+## [firefox](firefox)
+working, not in docker hub
+
+* poc X11 app see also xeyes
+* todo add README.md for firefox
+* isolate firefox in a container so that things like facebook can't get as much info ?? 
+* X11 -> can be done but containers are not meant to do this, really...
+__Note:__ requires `docker run`  to use the option `--net=host` if you omit you will get `Error: Can't oen display:`  see the [Makefile](Makefile)
+* tested on / runs on 
+    * ubuntu 18.04 (created & run)
+
 ## own-fortune 
 working, not in the registry
 
@@ -137,6 +148,16 @@ working, only the php image is in in my hub.docker.com registry, the others are 
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Centos 7.x (korra, pulled repo & used docker-compose to build & run)
+## [digital ocean node.js demo app])digocean-nodejs)
+working, not deployed to hub.docker.com
+
+* todo add README.md for digocean-nodejs see [Makefile](Makefile)
+* Instructions
+    * make build
+    * make run
+    * via web browser localhost:8111 or ip.add.re.s:8111
+* tested on / runs on
+    * ubuntu 18.04 (created & run)
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
 work in progress 2020-02-20
@@ -147,9 +168,4 @@ Original instructions here https://docs.docker.com/get-started/part2/
 * install x, y z
 * install app https://github.com/dockersamples/node-bulletin-board/tree/master/bulletin-board-app
 
-## [firefox](firefox)
-work in progress 2020-02-06
 
-* poc one app 
-* isolate firefox in a container so that things like facebook can't get as much info ?? 
-* problems with X11 -> can be done but containers are not meant to do this, really...

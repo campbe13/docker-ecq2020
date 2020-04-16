@@ -1,14 +1,6 @@
 # makefile to build a container to run firefox
 # pmcampbell
-# 2020-04-02
-# using alpine image
-# launch xeyes
-# with help from 
-# https://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers  
-# and
-# https://skandhurkat.com/post/x-forwarding-on-docker/
-# and
-# https://dzone.com/articles/docker-x11-client-via-ssh
+# 2020-04-16
 
 include	 config.make
 XAUTH := ~/.Xauthority
@@ -22,7 +14,7 @@ help: ## put help info here
 
 all: build run ## build and run
 build: ## build container image from Dockerfile
-	docker build -t $(CONTAINER_IMAGE) . 
+	docker build -t $(CONTAINER_IMAGE) . -f $(DOCKERFILE)
 
 run:  ## run the container, interactive
 # -i interactive  (used for testing)
