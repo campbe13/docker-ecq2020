@@ -42,22 +42,30 @@ working, not in docker hub
 
 * uses alpine latest
 * install xeyes
-* simple poc using an X11 app (needed --net=host display & .Xauth)
+* X11 -> can be done but containers are not meant to do this, really... see the [Makefile](xeyes/Makefile)
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
+
+__Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
+* `--net=host`
+* `-e DISPLAY=${DISPLAY}`  # environment
+* `-v ${XAUTH}:/root/.Xauthority` # volume
 ## [firefox](firefox)
 working, not in docker hub
 
 * poc X11 app see also xeyes
 * todo add README.md for firefox
 * isolate firefox in a container so that things like facebook can't get as much info ?? 
-* X11 -> can be done but containers are not meant to do this, really...
-__Note:__ requires `docker run`  to use the option `--net=host` if you omit you will get `Error: Can't oen display:`  see the [Makefile](Makefile)
+* X11 -> can be done but containers are not meant to do this, really... see the [Makefile](firefox/Makefile)
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
 
-## own-fortune 
-working, not in the registry
+__Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
+* `--net=host`
+* `-e DISPLAY=${DISPLAY}`  # environment
+* `-v ${XAUTH}:/root/.Xauthority` # volume
+## [own-fortune](own-fortune)
+working, not in docker hub
 
 * uses alpine latest
 * install fortune, figlet, writes to stdout 
@@ -97,7 +105,7 @@ working, in my hub.docker.com registry
 working, in my hub.docker.com registry
 
 * uses python apache image
-* install redis, 
+* install redis
 * install app Eira G & Camillia E (ec) students in PHP  2019-fall assignment 1 for PHP 
 * run php app to train model, data in redis
 * php web app, uses redis and apache
@@ -148,19 +156,22 @@ working, only the php image is in in my hub.docker.com registry, the others are 
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Centos 7.x (korra, pulled repo & used docker-compose to build & run)
-## [digital ocean node.js demo app])digocean-nodejs)
+## [digital ocean node.js demo app](digocean-nodejs)
 working, not deployed to hub.docker.com
 
 * todo add README.md for digocean-nodejs see [Makefile](Makefile)
 * Instructions
-    * make build
-    * make run
-    * via web browser localhost:8111 or ip.add.re.s:8111
+    ```
+    $ make build
+    $ make run
+    # via web browser localhost:8111 or ip.add.re.s:8111
+    ```
 * tested on / runs on
     * ubuntu 18.04 (created & run)
-
-## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard)
-work in progress 2020-02-20
+## [vue.js-tutorial](vue.js-tutorial)
+work in progress 2020-04-16
+## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)
+Delete this ??? or just keep ref below ?? work in progress 2020-02-20
 
 Original instructions here https://docs.docker.com/get-started/part2/
 
