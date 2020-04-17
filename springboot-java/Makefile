@@ -54,7 +54,7 @@ check:  ## check docker run time
 	docker ps
 	docker-compose version
 
-publish:   
+publish:  ## publish to docker hub (interactive)  
 	@echo publish to  docker hub, interactive 
 	@echo be sure to tag it first with my repo tricia/imagename
         ifdef DOCKER_USER

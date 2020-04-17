@@ -20,7 +20,7 @@ from https://github.com/docker/labs
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
 
-* uses docker/whalesay imageeo 
+* uses docker/whalesay image
 * simple poc
 * I added  some commands (figlet), runs to stdout 
 * tested on / runs on 
@@ -159,22 +159,21 @@ working, only the php image is in in my hub.docker.com registry, the others are 
 ## [digital ocean node.js demo app](digocean-nodejs)
 working, not deployed to hub.docker.com
 
-* todo add README.md for digocean-nodejs see [Makefile](digocean-nodejs/Makefile)
-* Instructions
-    ```
-    $ make build
-    $ make run
-    # via web browser localhost:8111 or host.ip.add.res:8111
-    ```
+* simple node.js app
+* node:alpine base image
+* exposes port 8111
 * tested on / runs on
     * ubuntu 18.04 (created & run)
+
 ## [springboot-java](springboot-java)
 working, not deployed to hub docker com
+
 * simple springboot app
-* openjdk:alpine 
+* openjdk:alpine base image
 * compiled using maven, exposes port 8080 
 * tested on / runs on
     * ubuntu 18.04 (created & run)
+    * Windows 10 (run from docker hub)
 
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
