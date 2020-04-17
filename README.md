@@ -60,6 +60,16 @@ working, not in docker hub
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
 
+## [chromium](chromium)
+working, not in docker hub
+
+* poc X11 app see also xeyes
+* todo add README.md for chromium
+* isolate chromium in a container so that things like facebook can't get as much info ?? 
+* X11 -> can be done but containers are not meant to do this, really... see the [Makefile](chromium/Makefile)
+* tested on / runs on 
+    * ubuntu 18.04 (created & run)
+
 __Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
 * `--net=host`
 * `-e DISPLAY=${DISPLAY}`  # environment
@@ -174,7 +184,16 @@ working, not deployed to hub docker com
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Windows 10 (run from docker hub)
+## [pandocker](pandocker)
+working, deployed to docker hub
 
+The idea here is to make it easy for Faculty to convert their word docs to other formats (ex markdown) maps current working directory to the container so file must be in cwd, and uses either interactive or a config.pandoc file to determine what to convert.
+
+* [pandoc](pandoc.org) base image (on alpine) see https://github.com/pandoc/dockerfiles#basic-usage 
+* tested on / runs on
+    * ubuntu 18.04 (created & run)
+    * Fedora 31 (run from docker hub)
+    * todo test & doc Windows runtime pandocker for dept (run from docker hub)
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)

@@ -1,0 +1,546 @@
+---
+title: Dawson College
+---
+
+**Computer Science Technology Program**
+=======================================
+
+**COURSE OUTLINE**
+
+**Operating Systems I**
+-----------------------
+
+### Number: 420-241-DW Hours: 3-2-2 Credits: 2 ^2/3^
+
+**Prerequisites:** Successful completion of all 420.0A courses in Term I
+
+**Domain:** Operating Systems, Networks, and Computer Architecture
+
+**Note:** You must pass this course as well as the Co-requisite courses
+in order to progress in the Computer Science Technology Program in the
+fall semester.
+
+### Semester: Winter 2019 Revision 2019-01-16
+
+### Description
+
+Operating Systems I (Linux) explores the concepts, terminology, and
+fundamental features of operating systems in general and the Linux
+operating system in detail. The characteristics of a multi-user,
+multi-tasking, multi-threaded operating system will be examined in
+detail. Aspects of connectivity using TCP/IP protocols, and application
+services such as FTP, SSH, and web servers will be introduced. The
+command-line user interface will be the central focus, allowing the
+student to use shell commands, the **vi** editor, utilities and bash
+scripts to construct and use command sequences to manipulate data and
+perform basic system administration tasks. A Linux graphical user
+interface will be introduced and explored. Projects will include
+installation and configuration of the operating system on a host machine
+
+**STATEMENT OF COMPETENCE**
+
+-   Maximize the full potential of an operating system (016Q)
+
+-   Install hardware and software on a workstation (016R)
+
+-   Maximize the full potential of a network environment (0174)
+
+-   Install an application (017A)
+
+**Teacher: Office: Local: Section: Email:**
+
+Patricia Campbell 3F.33 4802 01 & 02 MIO
+
+Teachers will respond to students\' inquiries in a timely manner.
+
+Teachers\' schedules will be posted outside their offices by the end of
+the first week of classes.
+
+Patricia Campbell's schedule is available here
+<http://bit.ly/pmcofficehrs>
+
+**Course Objectives:**
+
+Upon successful completion of the course, the student will be able to:
+
+1.  describe in detail the functional components of an operating system,
+    including kernel, shell, file systems, and device drivers
+
+2.  distinguish between multitasking operating systems that are
+    cooperative and preemptive
+
+3.  identify, describe, and manipulate tasks, processes, and threads in
+    an operating system
+
+4.  participate in the selection of an operating system to host a
+    software solution
+
+5.  log on to a host and use all essential Linux commands
+
+6.  customize startup options, environment variables, and file system
+    features for a user
+
+7.  create and manipulate files and directories
+
+8.  apply appropriate permissions to files and directories
+
+9.  use backup and restore facilities with files and directories
+
+10. demonstrate familiarity with Linux editors, utility programs, and
+    programming language environments available on a Linux system
+
+11. use BASH shell to master a variety of system commands and tools to
+    create system and file manipulation facilities, including shell
+    script programs, customized user environments, and command aliases
+
+12. use graphical desktop interfaces (Gnome and KDE) in the X window
+    environment to run applications, update packages, and use system
+    monitoring tools
+
+13. demonstrate familiarity with common TCP/IP application services such
+    as FTP, Telnet, Secure Shell, and HTTP
+
+14. install and configure Linux on a server, including developing system
+    administration and security procedures, writing system
+    documentation, and describing system maintenance procedures perform
+    basic system administration and security tasks
+
+15. create users and groups with appropriate permissions and security
+    features
+
+16. develop and elucidate firewall rule sets
+
+17. use system monitoring tools to control system security
+
+**Course Methodology:**
+
+The course consists of two 1½-hour lectures and one 2-hour lab session
+per week. Concepts and techniques will be presented in lectures and
+practical exercises that apply to the concepts and techniques will be
+carried out in lab sessions.
+
+**Required Textbook:**
+
+Prentice Hall; 7th edition (Dec 31 2013), [A Practical Guide to Fedora
+and Red Hat Enterprise Linux (]{.underline}7th [Edition)]{.underline} ,
+Mark Sobel. ISBN-13: 978-0133477436
+
+**Required Material:**
+
+A minimum of 2G USB stick; students are responsible for keeping copies
+of all work that they create that must be submitted. To this end a
+student should have appropriate media for backups.
+
+**Assessment of student performance:**
+
+**Midterm Examination** Worth: 25% (Week 7 or 8)
+
+**Assignments and Project** Worth: 30%
+
+There will be graded assignments given in this course. It is expected
+that each assignment will involve additional time outside of class and
+lab time to complete. Students will complete a major project involving
+installation and administration of the Linux operating system on a
+server.
+
+**Quizzes** Worth: 5%
+
+There will be 4 quizzes given at various times throughout the semester.
+The best 3 out of 4 will be used to determine the student's grade.
+
+**Final Examination** Worth: 40% (Exam period)
+
+This examination will test the knowledge that was acquired by the
+student during the entirety of the course.
+
+**Course Objectives with their associated learning activities**
+
++-----------+---------------------------+---------------------------+
+| **Topic** | **Lab Activity**          |                           |
++===========+===========================+===========================+
+|           | Explain essential         | Intro, command review.    |
+|           | Operating System concepts |                           |
+|           | including:                |                           |
+|           |                           |                           |
+|           | -   Batch vs. interactive |                           |
+|           |     processing modes      |                           |
+|           |                           |                           |
+|           | -   Multiprogramming      |                           |
+|           |                           |                           |
+|           | -   Multitasking,         |                           |
+|           |     pre-emptive and       |                           |
+|           |     cooperative           |                           |
+|           |                           |                           |
+|           | -   Time sharing          |                           |
+|           |                           |                           |
+|           | -   Tasks, processes, and |                           |
+|           |     threads               |                           |
+|           |                           |                           |
+|           | -   Multiprocessing       |                           |
+|           |                           |                           |
+|           | -   Reliability and       |                           |
+|           |     scalability           |                           |
+|           |                           |                           |
+|           | Describe and compare the  |                           |
+|           | evolution of the OS       |                           |
+|           | through the following     |                           |
+|           | operating systems:        |                           |
+|           |                           |                           |
+|           | -   Unix and Linux        |                           |
+|           |                           |                           |
+|           | -   DOS and Windows       |                           |
++-----------+---------------------------+---------------------------+
+|           |                           |                           |
++-----------+---------------------------+---------------------------+
+|           | Describe aspects of the   | Install Fedora live       |
+|           | Linux file system         | version to USB            |
+|           | structure, including:     |                           |
+|           |                           |                           |
+|           | -   Contrast the ext      |                           |
+|           |     inode structure with  |                           |
+|           |     FAT, (NTFS, ReFS)     |                           |
+|           |                           |                           |
+|           | -   Types of Files        |                           |
+|           |                           |                           |
+|           | -   File System           |                           |
+|           |     Structure, File       |                           |
+|           |     Representation and    |                           |
+|           |     Storage               |                           |
+|           |                           |                           |
+|           | -   Review Links          |                           |
+|           |                           |                           |
+|           | -   Journaling file       |                           |
+|           |     systems (ext3, ext4   |                           |
+|           |     etc)                  |                           |
+|           |                           |                           |
+|           | -   Memory management and |                           |
+|           |     virtual memory        |                           |
+|           |     systems               |                           |
+|           |                           |                           |
+|           | -   Linux File System     |                           |
+|           |     Layout                |                           |
++-----------+---------------------------+---------------------------+
+|           |                           |                           |
++-----------+---------------------------+---------------------------+
+| 3         | Plan and Document a Linux | Full installation of      |
+|           | System Installation       | Linux                     |
+|           |                           |                           |
+|           | Perform a Linux system    |                           |
+|           | installation, including:  |                           |
+|           |                           |                           |
+|           | -   Identify Hardware     |                           |
+|           |     components,           |                           |
+|           |                           |                           |
+|           | -   Identify and solve    |                           |
+|           |     hardware              |                           |
+|           |     compatibility issues  |                           |
+|           |     (drivers)             |                           |
+|           |                           |                           |
+|           | -   Installing and        |                           |
+|           |     Configuring a Linux   |                           |
+|           |     System                |                           |
++-----------+---------------------------+---------------------------+
+| 4         | Effectively employ        | Install and update        |
+|           | graphical tools in a      | packages                  |
+|           | Linux environment,        |                           |
+|           | including                 |                           |
+|           |                           |                           |
+|           | -   Configuring and using |                           |
+|           |     a graphical user      |                           |
+|           |     environment (Gnome,   |                           |
+|           |     KDE)                  |                           |
+|           |                           |                           |
+|           | -   Using VI for sysadmin |                           |
++-----------+---------------------------+---------------------------+
+
++----+-------------------------------+-------------------------------+
+| 5  | Review typical Linux File     | Create files and directories  |
+|    | Processing tasks, including:  | using the Linux file commands |
+|    |                               |                               |
+|    | -   Viewing                   | Create symbolic and hard      |
+|    |                               | links                         |
+|    | -   Copying, Moving, &        |                               |
+|    |     Removing                  |                               |
+|    |                               |                               |
+|    | -   Appending, Combining,     |                               |
+|    |     Comparing                 |                               |
+|    |                               |                               |
+|    | -   Sorting                   |                               |
+|    |                               |                               |
+|    | -   Searching                 |                               |
+|    |                               |                               |
+|    | -   Cutting & Pasting         |                               |
+|    |                               |                               |
+|    | -   Review Compression and    |                               |
+|    |     Archiving (tar, gzip)     |                               |
++----+-------------------------------+-------------------------------+
+| 6  | Write Shell Scripts that use  | Write and Test a Simple Shell |
+|    |                               | Script                        |
+|    | -   Environment variables     |                               |
+|    |                               | Customize Features of the     |
+|    | -   Shell Variables           | User\'s Operating environment |
+|    |                               |                               |
+|    | -   Passing of Arguments      |                               |
+|    |                               |                               |
+|    | -   Program Control Flow      |                               |
++----+-------------------------------+-------------------------------+
+| 7  | Write Advanced Shell Scripts  | Write and test Multiple       |
+|    | that perform                  | Scripts using Advanced        |
+|    |                               | Scripting Features            |
+|    | -   Numeric data Processing   |                               |
+|    |                               |                               |
+|    | -   Functions                 |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+| 8  | Catch up and                  | Complete lab assignments      |
+|    |                               |                               |
+|    | Mid Term Test                 |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+| 9  | Write Shell Scripts that      | Write Shell Scripts that use  |
+|    | effectively employ            | regular expressions           |
+|    |                               |                               |
+|    | -   Regular Expressions in    |                               |
+|    |     bash                      |                               |
+|    |                               |                               |
+|    | -   Look at regex in awk and  |                               |
+|    |     sed                       |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+| 10 | Describe and explain          | Investigate and evaluate a    |
+|    | Networking and                | server's Network Properties   |
+|    | Internetworking in terms of:  | and Features                  |
+|    |                               |                               |
+|    | -   Network Models            |                               |
+|    |                               |                               |
+|    | -   Client-server/dae mon     |                               |
+|    |     model                     |                               |
+|    |                               |                               |
+|    | -   TCP/IP Protocol Suite     |                               |
+|    |                               |                               |
+|    | -   DNS and DHCP (client      |                               |
+|    |     side)                     |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+| 11 | Analyze the following Linux   | Assign permissions to Linux   |
+|    | file system security          | files and directories         |
+|    | features:                     |                               |
+|    |                               |                               |
+|    | -   Password based security   |                               |
+|    |                               |                               |
+|    | -   Encryption based security |                               |
+|    |                               |                               |
+|    | -   Protection Based on       |                               |
+|    |     Access Permission         |                               |
+|    |                               |                               |
+|    | -   The concept of Access     |                               |
+|    |     Control Lists with        |                               |
+|    |     respect to Linux inode    |                               |
+|    |     table                     |                               |
++----+-------------------------------+-------------------------------+
+
++----+-------------------------------+-------------------------------+
+| 12 | Administer a Linux Server by  | Develop an Administration     |
+|    | addressing                    | Policy                        |
+|    |                               |                               |
+|    | -   Users, Profiles, skel     | Create Users / Groups,        |
+|    |     features                  | administer services, use      |
+|    |                               | logging in bash               |
+|    | -   Groups                    |                               |
+|    |                               |                               |
+|    | -   Quotas                    |                               |
+|    |                               |                               |
+|    | -   Starting/Stopping         |                               |
+|    |     /Configuring Services     |                               |
+|    |                               |                               |
+|    | -   System log archives       |                               |
+|    |     rotation/evaluati on      |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+| 13 | Configure Internet Services   | Configure and Test Internet   |
+|    | on a Linux server             | Services                      |
+|    |                               |                               |
+|    | -   TCP/IP Services           | Demonstrate appropriate use   |
+|    |                               | of graphical network          |
+|    | -   Web Server                | monitoring tools              |
+|    |                               |                               |
+|    | -   FTP                       |                               |
+|    |                               |                               |
+|    | -   Mail                      |                               |
+|    |                               |                               |
+|    | -   Using graphical network   |                               |
+|    |     monitoring tools          |                               |
+|    |                               |                               |
+|    | -   Discuss professional      |                               |
+|    |     behaviour appropriate to  |                               |
+|    |     the use of packet         |                               |
+|    |     sniffers.                 |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+|    | Secure a Linux server system  | Develop a firewall rule set   |
+|    | by                            | and secure a server           |
+|    |                               |                               |
+|    | -   Use SSL on a web server   |                               |
+|    |                               |                               |
+|    | -   Assessing System Security |                               |
+|    |     vulnerabilities           |                               |
+|    |                               |                               |
+|    | -   Setting Firewall rules    |                               |
+|    |     using IPTables            |                               |
++----+-------------------------------+-------------------------------+
+|    |                               |                               |
++----+-------------------------------+-------------------------------+
+
+**Program and course rules and regulations:**
+
+***For 420 career program courses, students must receive at least 50% on
+the assignment component and at least 60% on the examination component
+in order to obtain a passing grade for the course. Failure to do so will
+result in a maximum grade of 50 (the lower of 50 or the grade earned).
+For the purpose of this rule, quizzes are considered exams.***
+
+Assignments are due at the due date specified by the instructor.
+Assignments received after this time are late. Assignments will not be
+accepted after due date set by instructor. In exceptional circumstances,
+such as illness, etc. labs submitted late will be graded provided that
+the student has received an extension from the instructor in advance.
+
+Each student must submit their own individual answers to assignments,
+and shared solutions are not acceptable. Students must protect their
+work from being easily copied by others by introducing uniqueness into
+their work in the choice of images used, the display styles used in the
+presentation of documents, the originality of the written descriptive
+passages, and by placing digital signatures on their original images.
+
+Students are reminded that they are responsible for all material
+presented in the lecture and during the lab, and are expected to obtain
+material they have missed.
+
+Students must follow exactly the instructions in the lab exercises about
+how and where to store all computer files in order for their work to be
+accepted and properly evaluated.
+
+**DAWSON COLLEGE**
+
+**COMPUTER SCIENCE DEPARTMENT**
+
+**POLICIES**
+
+**1. ACADEMIC INTEGRITY**
+
+The Computer Science Department adheres to the Dawson College Academic
+Conduct policy. Students have an obligation to inform themselves of all
+aspects of this policy. According to ISEP, the teacher is required to
+report to the Sector Dean all cases of cheating and plagiarism affecting
+a student's grade. (ISEP Section V-C) Students may appeal any decision
+of the teacher regarding cheating and plagiarism according to the
+methods established by the College. The penalty for cheating or
+plagiarism may range from a zero on the work to a failure in the course.
+
+**2. ATTENDANCE AND LATENESS**
+
+Students are responsible for all material covered in classes and labs,
+whether or not they are present. Students have an obligation to arrive
+on time and to remain for the duration of scheduled classes, labs and
+activities. Students who disregard this obligation may be asked to leave
+the class, lab or activity. Students should refer to the Institutional
+Student Evaluation Policy
+
+(ISEP section IV-C) regarding attendance.
+
+**3. RELIGIOUS HOLIDAY OBSERVANCE**
+
+Class period(s) may be cancelled in order that the teacher can observe
+religious holidays. Any material missed as a result, will be made up
+during labs, class periods and alternate tutorial sessions.
+
+Students, who intend to observe religious holidays, must inform their
+teachers in writing as prescribed in the ISEP Policy on Religious
+Observances (ISEP Section IV-D). Students absent from classes because of
+observance of religious holidays will not be penalized. It must be
+emphasized, however, that this College policy should not be interpreted
+to mean that a student can receive credit for work not performed. It is
+the student's responsibility to fulfill the requirements of the
+alternative arrangement.
+
+**4. SOFTWARE**
+
+The Computer Science Department forbids the use of the computer labs it
+uses to make any copies of any software without the explicit
+authorization of the Department. Apart from any legal action that might
+arise from such unauthorized copying, the Computer Science Department
+reserves the right to discipline any student involved in such activity.
+
+Students who borrow software from the College and fail to return it will
+be placed on the defaulter list and be subject to the appropriate
+penalties.
+
+Viruses are programs that attach themselves to a computer system without
+the permission of those to whom the system belongs. They are
+deliberately written to be, at worst, harmful (e.g. destroying the
+contents of disks) and, at best, bothersome (e.g. disturbing the image
+shown on the screen). They can cause serious losses of time and effort
+for students, staff and faculty. Any student involved in the deliberate
+spreading of viruses is subject to the most severe penalties prescribed
+by College regulations, apart from any legal action that might arise
+from such acts.
+
+**5. LITERACY**
+
+The Computer Science Department recognizes that literacy in all its
+forms (read, written, spoken) is essential to our students in their
+careers.
+
+Teachers may choose to incorporate a literacy component into the marking
+scheme for any piece of work. Teachers may use their discretion to
+insist that any piece of work submitted for credit is revised by the
+student if it is unsatisfactory with regard to literacy.
+
+Teachers will inform all students in their courses of this policy at the
+beginning of each semester either by including it in the course
+description or otherwise.
+
+**6. CELL PHONES**
+
+The use of cell phones in all Computer Science lectures, labs and exams
+is prohibited.
+
+**7. PORTABLE COMPUTERS**
+
+The use of portable computers in all Computer Science lectures for
+purposes other than note-taking is prohibited.
+
+**8. STUDENT CONDUCT**
+
+Everyone has the right to a safe and non-violent environment. Students
+are obliged to conduct themselves as stated in the Student Code of
+Conduct and in the ISEP section on the roles and responsibilities of
+students. (ISEP section II-D)
+
+**9. PROFESSIONAL CONDUCT POLICY**
+
+Students who are enrolled in the Computer Science Technology careers
+program must conduct themselves according to the Professional Conduct
+Policy as described in the Program Handbook
+
+**10. INTENSIVE COURSE CONFLICTS**
+
+If a student is attending an intensive course, the student must inform
+the teacher, within the first two weeks of class, of the specific dates
+of any anticipated absences.
+
+**11. ISEP**
+
+The Institutional Student Evaluation Policy (ISEP) is designed to
+promote equitable and effective evaluation of student learning and is
+therefore a crucial policy to read and understand. The policy describes
+the rights and obligations of students, faculty, departments, programs,
+and the College administration with regard to evaluation in all your
+courses, including grade reviews and resolution of academic grievance.
+The ISEP is available on the Dawson website.

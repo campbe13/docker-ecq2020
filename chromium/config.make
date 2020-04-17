@@ -1,0 +1,2 @@
+CONTAINER_IMAGE=tricia/chromium
+RUN_NAME=chromium

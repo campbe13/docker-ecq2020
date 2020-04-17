@@ -1,0 +1,11 @@
+# this config file must be  in the same directory as the files to be converted
+# 2 options 
+# Option 1 give the complete command line options, if this exists, the rest will be ignored
+#CMDLINE='-s moodlequiz.docx -o moodlequiz.text  -t mediawiki'
+
+
+# Option 2 individual options 
+IN="420-241-DW-01-02-Campbell_2019.docx"
+OUT=test.txt
+#TYPE=mediawiki
+TYPE=markdown

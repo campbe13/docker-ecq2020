@@ -1,0 +1,3 @@
+IN=myword.docx
+OUT=myword.md    
+TYPE=markdown
