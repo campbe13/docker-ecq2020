@@ -1,5 +1,8 @@
 # run the image from docker hub on Windows 10
 ```
+C:\Users\pcampbell>docker run -t tricia/springbootj -p 8085:8080
+Unable to find image 'tricia/springbootj:latest' locally
+latest: Pulling from tricia/springbootj
 e7c96db7181b: Pull complete 
 f910a506b6cb: Pull complete
 c2274a1a0e27: Pull complete 

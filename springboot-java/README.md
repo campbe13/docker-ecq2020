@@ -8,6 +8,8 @@ todo complete this README.md for springboot + java
 
 To use this you must have jdk & jre installed & maven & docker
 
+See [run on windows Docker Desktop from docker hub](RUNFROMHUB.md)
+
 For more details see [Makefile](Makefile) 
 ## to run from docker hub
 n.b.  -p host:container
