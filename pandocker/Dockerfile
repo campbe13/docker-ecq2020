@@ -13,4 +13,4 @@ COPY pandoc.sh /usr/bin/
 # launch
 ENTRYPOINT [ "/usr/bin/pandoc.sh" ]
 # for shelling into the container
-# CMD sh
+#CMD sh

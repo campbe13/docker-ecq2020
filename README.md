@@ -61,7 +61,7 @@ working, not in docker hub
     * ubuntu 18.04 (created & run)
 
 ## [chromium](chromium)
-working, not in docker hub
+NOT working, not in docker hub
 
 * poc X11 app see also xeyes
 * todo add README.md for chromium
@@ -187,7 +187,11 @@ working, not deployed to hub docker com
 ## [pandocker](pandocker)
 working, deployed to docker hub
 
+This is in the docker hub organization dawsoncollege2020
+
 The idea here is to make it easy for Faculty to convert their word docs to other formats (ex markdown) maps current working directory to the container so file must be in cwd, and uses either interactive or a config.pandoc file to determine what to convert.
+
+See the [running it on windows](pandocker/WINHOWTO.md)
 
 * [pandoc](pandoc.org) base image (on alpine) see https://github.com/pandoc/dockerfiles#basic-usage 
 * tested on / runs on

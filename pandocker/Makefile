@@ -1,7 +1,7 @@
 # set up a pandoc image
 # ref https://github.com/pandoc/dockerfiles#basic-usage
 
-VERSION=0.1.1
+VERSION=latest
 NAME=pandocker
 HUBUSER=dawsoncollege2020
 
@@ -11,6 +11,7 @@ help: ## put help info here
 	@echo set up pandoc container
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+all: build publish
 build: ## build the image
 	docker build -t ${NAME} .
 

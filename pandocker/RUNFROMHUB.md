@@ -1,4 +1,4 @@
-# running this image from docker hub
+# running this image from docker hub  (on *nix @ cli)
 
 I'll have to make this easier the `pwd` might be miss typed by users
 
