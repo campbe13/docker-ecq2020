@@ -22,7 +22,7 @@ Use pandoc core image (alpine based)
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. cd to the directory that holds your doc to convert, & config.pandoc if you're using it.
-3. `docker run -ti --rm --volume "pwd:/data" dawsoncollege2020/pandocker`  
+3. `docker run -ti --rm --volume "\`pwd\`:/data" dawsoncollege2020/pandocker`  
 
 ## run time
 This image can be run interactively or using a file see example [config.pandoc](full.example.config.pandoc).  If config.pandoc* exists, it will be used, if not it will be interactive, the script will ask for source, destination files and the conversion type. 
@@ -31,7 +31,7 @@ This image can be run interactively or using a file see example [config.pandoc](
 * See the [windows how to](WINHOWTO.md) for running on windows
 
 ## docker registry image repo
-Instructions also in [docker hub for pandocker](https://hub.docker.com/repository/docker/dawsoncollege2020/pandocker)
+Instructions also in [docker hub for pandocker](https://hub.docker.com/r/dawsoncollege2020/pandocker)
 ## create & run the container image
 You will first have to clone this repo and cd into this directory, the build assumes the Dockerfile is in the current working directory.
 1. build `make build`
