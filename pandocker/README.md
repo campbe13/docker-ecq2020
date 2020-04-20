@@ -5,8 +5,10 @@ you can use pandoc from a container.
 If you use a [config.pandoc](config.pandoc) file to indicate the 
 1. input file name
 2. output file name
-3. dest format
+3. output file format
+
 or
+
 4. Instead: a single option to put in the full options
 
 Configured with help from https://github.com/pandoc/dockerfiles#basic-usage
@@ -33,9 +35,9 @@ This image can be run interactively or using a file see example [config.pandoc](
 ## docker registry image repo
 Instructions also in [docker hub for pandocker](https://hub.docker.com/r/dawsoncollege2020/pandocker)
 ## create & run the container image
-You will first have to clone this repo and cd into this directory, the build assumes the Dockerfile is in the current working directory.
-1. build `make build`
-2. make run
+You will first have to clone this repo and cd into this directory, the build assumes the Dockerfile is in the current working directory. check the [Makefile](Makefile) for version info etc.
+1. `make build`
+2. `make run`
 ### docker commands
 see  [common docker commands](../docker-usage-overview/DOCKERCMDS.md) 
 ### docker-compose commands
