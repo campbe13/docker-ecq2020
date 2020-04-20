@@ -31,7 +31,8 @@ The easiest way to use this is using a config file
      TYPE=markdown		# conversion type
      ```
 1. Open a Command Prompt
-2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`
+2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell)
+
 
 Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [error](#no-such-file)
 
@@ -59,7 +60,7 @@ Mode                LastWriteTime         Length Name
 
 ### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
-1. Open a Command Prompt
+1. Open a Command Prompt 
 2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`
 3. respond to the text prompts
 
@@ -107,6 +108,9 @@ Drives are not automatically shared so you must change the config before you sta
 Click on the docker icon, select settings, a window will launch, select resources you will see, make sure the drive that you want to use is selected.  
 ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 
+## Powershell 
+1. Open a PowerShell
+2. Run the following  `docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker` 
 
 ## Errors 
 ### file not found
