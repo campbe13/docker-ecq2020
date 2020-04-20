@@ -197,7 +197,8 @@ See the [running it on windows](pandocker/WINHOWTO.md)
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
-    * todo test & doc Windows runtime pandocker for dept (run from docker hub)
+    * Windows 10 Pro 64 bit  (run from docker hub)
+
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)
