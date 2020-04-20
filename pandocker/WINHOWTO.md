@@ -1,28 +1,16 @@
 # Using pandocker on Windows
-This container will allow you to run pandoc whenever you need it, without installing it on your windows box.  It is a bash script front end in front of launching pandoc.
+This container will allow you to run [pandoc](pandoc.org) whenever you need it, without installing it on your windows box.  It is a bash script front end in front of launching pandoc.
 
-The container is public and in the organization dawsoncollege2020.
+It puts a simple bash script as a front end to pandoc.  You can have an input file, pandoc will determine the format, output file name and the output file conversion type.  Or you can give it  full more complex pandoc options see the [example](#example)
 
-__NOTE__ The container works by "sharing" a volume on your windows computer, that volume needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
-
-__Note__ There is an intermittent open  bug Docker for Windows where files are not found, there is no fix as of 2020-04-20 so just run again if you get `No such file or directory` when it's clearly there.   Bug https://github.com/docker/for-win/issues/5959 
-   ```
-   PS C:\Users\pcampbell\Documents> docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker
-   /usr/bin/pandoc.sh: source: line 44: can't open 'config.pandoc.txt': No such file or directory
-   PS C:\Users\pcampbell\Documents> ls .\config.pandoc.txt
-
-
-       Directory: C:\Users\pcampbell\Documents
-
-
-   Mode                LastWriteTime         Length Name
-   ----                -------------         ------ ----
-   -a----        4/20/2020   2:08 PM            212 config.pandoc.txt
-   ```
+__Note__ The container works by "sharing" a volume on your windows computer, in the run statement.  That volume needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
 There are 2 ways of using this container:
-2. using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads the config & performs the requested actions
-1. interactively, clunky, type in your info to a bash script
+
+1. using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads the config & performs the requested actions
+2. interactively, clunky, type in your info to a bash script
+
+The container is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020).
 
 ## One time prep	
 This will have to be done once only, afterward & if you've already set up docker go to the [run](#run) section.
@@ -33,7 +21,7 @@ This will have to be done once only, afterward & if you've already set up docker
 
 ## Run
 ### headless using config.pandoc 
-Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes in your Documents directory, example `C:\Users\pcampbell\Documents>`
+Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes in your Documents directory, example `C:\Users\pcampbell\Documents>`  
 
 The easiest way to use this is using a config file
 1. Create a file in your Documents directory,  `config.pandoc` or `config.pandoc.txt`, example contents:
@@ -42,13 +30,14 @@ The easiest way to use this is using a config file
      IN=myword.docx      	# file to be converted
      TYPE=markdown		# conversion type
      ```
-
 1. Open a Command Prompt
 2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`
 
 Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
 That\'s it, if there are no typos you will see `myword.md` in the same Documents directory.
+
+Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [error](#no-such-file)
 
 ### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
@@ -57,7 +46,8 @@ Your file must be in the shared volume, if a config.pandoc exists it will be use
 3. respond to the text prompts
 
 __Note__ if you are going to run it a lot don't use `--rm`
-## example [config.pandoc](full.example.config.pandoc)
+## example
+[config.pandoc](full.example.config.pandoc)
 ```
 # this config file must be  in the same directory as the files to be converted
 # 2 options
@@ -101,6 +91,26 @@ pandoc.sh see converted file out.md in the current working directory
 ```
 
 ## Errors 
+### file not found
+There is an intermittent open  bug Docker for Windows where files are not found, there is no fix as of 2020-04-20 so just run again if you get `No such file or directory` when it's clearly there.   
+
+Open Bug https://github.com/docker/for-win/issues/5959 
+
+   ```
+   PS C:\Users\pcampbell\Documents> docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker
+   /usr/bin/pandoc.sh: source: line 44: can't open 'config.pandoc.txt': No such file or directory
+   PS C:\Users\pcampbell\Documents> ls .\config.pandoc.txt
+
+
+       Directory: C:\Users\pcampbell\Documents
+
+
+   Mode                LastWriteTime         Length Name
+   ----                -------------         ------ ----
+   -a----        4/20/2020   2:08 PM            212 config.pandoc.txt
+   ```
+
+
 ### drive not shared 
 The following is what you will  see if the drive is not shared:
 
@@ -124,9 +134,9 @@ PS C:\Users\pcampbell\Documents>
 ### not logged on or name typo
 via cmd window
 ```
-C:\Users\pcampbell>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker
-Unable to find image 'dawsoncollege2020/pandocker:latest' locally
-docker: Error response from daemon: pull access denied for dawsoncollege2020/pandocker, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+C:\Users\pcampbell>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandokcer
+Unable to find image 'dawsoncollege2020/pandokcer:latest' locally
+docker: Error response from daemon: pull access denied for dawsoncollege2020/pandokcer, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
 See 'docker run --help'.
 ```
 
