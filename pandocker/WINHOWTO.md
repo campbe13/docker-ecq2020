@@ -17,7 +17,7 @@ This will have to be done once only, afterward & if you've already set up docker
 1.  Install [Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
 2.  Create a [docker hub account](https://hub.docker.com/)  can also be done via Docker Desktop
 3.  Sign into docker hub via Docker Desktop (click on the docker icon, then `Sign in / Create Docker ID`)
-4.  Drives are not automatically shared with Docker Desktop so you must change the config before you start the container. Click on the docker icon, select settings, a window will launch, select resources, you will see, make sure the drive that you want to use is selected. ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
+4.  Drives are not automatically shared with Docker Desktop so you must change the config before you start the container. Click on the docker icon, select settings, a window will launch, select resources, you will see, make sure the drive that you want to use is selected. ![Docker settings - resources](docker-desktop-share-volumes-c.PNG =300x240)
 
 ## Run
 ### headless using config.pandoc 
