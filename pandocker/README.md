@@ -2,20 +2,25 @@
 You don't have to install pandoc, the idea here is to set up a container with a shared volume so that
 you can use pandoc from a container.
 
-If you use a [config.pandoc](config.pandoc) file to indicate the 
+This is to make it easy to convert their word docs to other formats (ex markdown) maps current working directory to the container so file must be in cwd, and uses either interactive or a config.pandoc file to determine what to convert.
+
+* Uses pandoc core (alpine) as a base image https://hub.docker.com/r/pandoc/core 
+* Uses a shared volume to host the file to be converted (ex my.docx) and a config.pandoc file if using.
+* Configured with help from https://github.com/pandoc/dockerfiles#basic-usage
+* This images is in the docker hub organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020)
+* See the [running it on windows](pandocker/WINHOWTO.md)
+* Uses pandoc core image https://hub.docker.com/r/pandoc/core 
+
+If you use a [config.pandoc](config.pandoc.txt) file to indicate the (no spaces, if in file name use \" \") 
 1. input file name
 2. output file name
 3. output file format
 
 or
 
-4. Instead: a single option to put in the full options
-
-Configured with help from https://github.com/pandoc/dockerfiles#basic-usage
+4. Instead: a single option to put in the full options see [pandoc](pandoc.org) for full syntax
 
 See the supporting [Dockerfile](Dockerfile) and the  [Makefile](Makefile)
-
-Use pandoc core image (alpine based)
 
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 

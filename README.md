@@ -60,20 +60,6 @@ working, not in docker hub
 * tested on / runs on 
     * ubuntu 18.04 (created & run)
 
-## [chromium](chromium)
-NOT working, not in docker hub
-
-* poc X11 app see also xeyes
-* todo add README.md for chromium
-* isolate chromium in a container so that things like facebook can't get as much info ?? 
-* X11 -> can be done but containers are not meant to do this, really... see the [Makefile](chromium/Makefile)
-* tested on / runs on 
-    * ubuntu 18.04 (created & run)
-
-__Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
-* `--net=host`
-* `-e DISPLAY=${DISPLAY}`  # environment
-* `-v ${XAUTH}:/root/.Xauthority` # volume
 ## [own-fortune](own-fortune)
 working, not in docker hub
 
@@ -145,6 +131,7 @@ working 2020-02-27
 
 * simple go website, deployed to heroku using heroku cli
 * tested on / runs on
+* exposes port 8080
     * ubuntu 18.04 (created & run)
     * Heroku (released from heroku registry)
 
@@ -160,9 +147,9 @@ working, only the php image is in in my hub.docker.com registry, the others are 
     * current iteration uses internal network (name of service is hostname, pingable & used in config.ini for app
     * uses persistent storage for database 
 * containers
-    * apache + php app 
-    * mysql   (no dockerfile, image from hub & config info in yaml)
-    * phpmyadmin  (no dockerfile, image from hub & config info in yaml)
+    * apache + php app (exposes port 80)
+    * mysql   (no dockerfile, image from hub & config info in yaml)  (port 3306 internal to container network)
+    * phpmyadmin  (no dockerfile, image from hub & config info in yaml) (exposes port 80)
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Centos 7.x (korra, pulled repo & used docker-compose to build & run)
@@ -178,29 +165,40 @@ working, not deployed to hub.docker.com
 ## [springboot-java](springboot-java)
 working, not deployed to hub docker com
 
-* simple springboot app
+* simple springboot app, compiled using maven
 * openjdk:alpine base image
-* compiled using maven, exposes port 8080 
+* exposes port 8080 
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Windows 10 (run from docker hub)
 ## [pandocker](pandocker)
 working, deployed to docker hub
 
-This is in the docker hub organization dawsoncollege2020
-
-The idea here is to make it easy for Faculty to convert their word docs to other formats (ex markdown) maps current working directory to the container so file must be in cwd, and uses either interactive or a config.pandoc file to determine what to convert.
-
-See the [running it on windows](pandocker/WINHOWTO.md)
-
-* [pandoc](pandoc.org) base image (on alpine) see https://github.com/pandoc/dockerfiles#basic-usage 
+* pandoc core image, based on alpine
+* uses a volume shared with the container at run time 
 * tested on / runs on
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
     * Windows 10 Pro 64 bit  (run from docker hub)
 
+## [chromium](chromium)
+NOT working, not in docker hub
+
+* poc X11 app see also xeyes
+* todo add README.md for chromium
+* isolate chromium in a container so that things like facebook can't get as much info ?? 
+* X11 -> can be done but containers are not meant to do this, really... see the [Makefile](chromium/Makefile)
+* tested on / runs on 
+    * ubuntu 18.04 (created & run)
+
+__Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
+* `--net=host`
+* `-e DISPLAY=${DISPLAY}`  # environment
+* `-v ${XAUTH}:/root/.Xauthority` # volume
+
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
+
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)
 Delete this ??? or just keep ref below ?? work in progress 2020-02-20
 

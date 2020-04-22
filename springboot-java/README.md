@@ -16,7 +16,7 @@ For more details see [Makefile](Makefile)
 *  `-p` hostport:containerport  (you must use 8080 as container port as that is defined in the image)
 * add `-d` if you want it to run in the background
 
-__WARNING__ if you are running on windows a quirk of docker for windows is that the -p for port forwarding must be 1st, or, frustration will ensue, port will not be forwarded.
+__WARNING__ if you are running on windows a quirk of docker for windows is that the -p for port forwarding must be 1st, or frustration will ensue, port will not be forwarded.
 ```
 docker run -p 8080:8080 tricia/springbootj 
 ```
