@@ -2,7 +2,7 @@
 
 The first time it has to pull the image
 
-Note where you see `$(pwd)` or `\`pwd`\`  this uses command substitution to give the current working directory.
+Note where you see `$(pwd)` this uses command substitution to give the current working directory.
 ```
 [tricia@acerfed31 Documents]$ docker run --rm --volume "$(pwd):/data" dawsoncollege2020/pandocker:0.1.0
 Unable to find image 'dawsoncollege2020/pandocker:0.1.0' locally
