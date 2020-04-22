@@ -37,7 +37,7 @@ Status: Downloaded newer image for tricia/springbootj:latest
 ### ipaddress:8085
 ![ipaddress:8085](docker-springb-ipaddr.PNG)
 ### from another computer ipaddress:8085
-![from another computer ipaddress:8085](docker-springb-ipaddr.PNG)
+![from another computer ipaddress:8085](docker-springb-ipaddr-remote.PNG)
 ## docker desktop snapshots
 ### running app
 ![docker desktop](docker-spring.PNG)
