@@ -1,11 +1,10 @@
 # running this image from docker hub  (on *nix @ cli)
 
-I'll have to make this easier the `pwd` might be miss typed by users
-
 The first time it has to pull the image
 
+Note where you see `$(pwd)` or `\`pwd`\`  this uses command substitution to give the current working directory.
 ```
-[tricia@acerfed31 Documents]$ docker run --rm --volume "`pwd`:/data" dawsoncollege2020/pandocker:0.1.0
+[tricia@acerfed31 Documents]$ docker run --rm --volume "$(pwd):/data" dawsoncollege2020/pandocker:0.1.0
 Unable to find image 'dawsoncollege2020/pandocker:0.1.0' locally
 0.1.0: Pulling from dawsoncollege2020/pandocker
 aad63a933944: Already exists
@@ -22,7 +21,7 @@ Status: Downloaded newer image for dawsoncollege2020/pandocker:0.1.0
 
 Subsequent runs are faster 
 ```
-[tricia@acerfed31 Documents]$ docker run -ti --rm --volume "`pwd`:/data" dawsoncollege2020/pandocker:0.1.1
+[tricia@acerfed31 Documents]$ docker run -ti --rm --volume "$(pwd):/data" dawsoncollege2020/pandocker:0.1.1
 pandoc.sh file to convert must be in current working directory
 
 source file to convert file name
@@ -58,7 +57,7 @@ TYPE=markdown
 ```
 Example run using config.pandoc
 ```
-[tricia@acerfed31 Documents]$ docker run -ti --rm --volume "`pwd`:/data" dawsoncollege2020/pandocker:0.1.1
+[tricia@acerfed31 Documents]$ docker run -ti --rm --volume "$(pwd):/data" dawsoncollege2020/pandocker:0.1.1
 pandoc.sh see converted file myword.md in the current working directory
 [tricia@acerfed31 Documents]$ cat config.pandoc
 IN=myword.docx
@@ -76,6 +75,3 @@ title: Introduction to Programming
 **Course Number:** 420-BXC-03**\
 Ponderation:** 1.5-1.5-3\
 ```
-
-
-
