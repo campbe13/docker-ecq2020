@@ -73,18 +73,17 @@ out.md
 convert to type ex markdown
 markdown
 pandoc.sh see converted file out.md in the current working directory
-C:\Users\pcampbell\Documents>dir win-my*
+C:\Users\pcampbell\Documents>dir win-my* out*
  Volume in drive C is Windows x64 Bit
  Volume Serial Number is D096-AD0C
 
  Directory of C:\Users\pcampbell\Documents
 
 11/04/2019  03:26 PM            14,945 win-my-word.docx
-04/20/2020  06:15 PM            14,526 win-my-word.md
+04/20/2020  06:15 PM            14,526 out.md
                2 File(s)         29,471 bytes
                0 Dir(s)  823,968,378,880 bytes free
 ```
-
 ## example config file named config.pandoc or config.pandoc.txt
 [config.pandoc](full.example.config.pandoc)
 ```
@@ -104,7 +103,6 @@ TYPE=markdown
 Drives are not automatically shared so you must change the config before you start the container.
 Click on the docker icon, select settings, a window will launch, select resources you will see, make sure the drive that you want to use is selected.  
 ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
-
 ## Powershell 
 The syntax below is only different because in command env vars are used so `%ENVVAR%` and in PowerShell they are use so `$env:ENVVAR`
 1. Open a PowerShell
