@@ -1,6 +1,7 @@
 # run the image from docker hub on Windows 10
+__WARNING__ a quirk of windows the -p for port forwarding must be 1st, or, frustration will ensue, port will not be forwarded.
 ```
-C:\Users\pcampbell>docker run -t tricia/springbootj -p 8085:8080
+C:\Users\pcampbell>docker run -p 8085:8080 -t tricia/springbootj 
 Unable to find image 'tricia/springbootj:latest' locally
 latest: Pulling from tricia/springbootj
 e7c96db7181b: Pull complete 
@@ -30,6 +31,17 @@ Status: Downloaded newer image for tricia/springbootj:latest
 2020-04-16 23:42:37.953  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2020-04-16 23:42:37.958  INFO 1 --- [           main] hello.Application                        : Started Application in 3.31 seconds (JVM running for 4.103)
 ```
+## accessing the app
+### localhost:8085
+![localhost:8085](docker-springb-localhost.PNG)
+### ipaddress:8085
+![ipaddress:8085](docker-springb-ipaddr.PNG)
+### from another computer ipaddress:8085
+![from another computer ipaddress:8085](docker-springb-ipaddr.PNG)
+## docker desktop snapshots
+### running app
 ![docker desktop](docker-spring.PNG)
+### inspect app
 ![docker desktop inspect](docker-spring-inspect.PNG)
+### stats for app
 ![docker desktop stats](docker-spring-stats.PNG)

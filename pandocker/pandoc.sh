@@ -9,7 +9,6 @@
 # all are either sourced from the config
 # or read in 
 panconvert () {
-	echo "                                             end"
         if [[ -z $IN ]] || [[ -z $OUT ]] || [[ -z $TYPE ]] ; then
 	   echo $sn cannot run, missing either '$IN $OUT or $TYPE'
 	   return 4

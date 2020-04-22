@@ -1,4 +1,5 @@
 # this config file must be  in the same directory as the files to be converted
+# anything to the right of a hashtag is a comment
 # 2 options 
 # Option 1 give the complete command line options, if this exists, the rest will be ignored
 #CMDLINE='-s moodlequiz.docx -o moodlequiz.text  -t mediawiki'

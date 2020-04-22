@@ -24,21 +24,21 @@ This will have to be done once only, afterward & if you've already set up docker
 Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes in your Documents directory, example `C:\Users\pcampbell\Documents>`  
 
 The easiest way to use this is using a config file
-1. Create a file in your Documents directory,  `config.pandoc` or `config.pandoc.txt`, example contents:
+1.  With your word docx, create a file in your Documents directory,  `config.pandoc` or `config.pandoc.txt`, example contents:
      ```
      OUT=win-my-word.md		# destination file name
      IN=win-my-word.docx      	# file to be converted
      TYPE=markdown		# conversion type
      ```
-1. Open a Command Prompt
+1. Open a Command Prompt Window 
 2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell)
 
 
-Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [error](#no-such-file)
+Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [know bug](#no-such-file)
 
 Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
-That\'s it, if there are no typos you will see `myword.md` in the same Documents directory.
+That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.
 ### headless run time example
 ```
 PS C:\Users\pcampbell\Documents> docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker
@@ -66,7 +66,7 @@ Your file must be in the shared volume, if a config.pandoc exists it will be use
 
 ### interactive runtime example
 ```
-C:\Users\pcampbell\Documents>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker
+C:\Users\pcampbell\>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker
 pandoc.sh file to convert must be in current working directory
 
 source file to convert file name
