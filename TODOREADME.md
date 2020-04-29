@@ -1,7 +1,7 @@
 # All todos from the markdown files:
 do not edit, this will be clobbered
 Script findtodo.sh
-Created  2020-04-28 08:42:45 PM
+Created  2020-04-29 12:21:21 PM
 
 ## list of todos
 ```
@@ -26,6 +26,7 @@ Created  2020-04-28 08:42:45 PM
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:## Todo
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:# TODO full list, add missing ^^ docker admin commands
 ./hello-world-go-heroku/README.md:todo use docker to deploy
+./flaskpy/README.md:todo set up prod (copy to image,as current [Dockerfile](#Dockerfile)) & dev mount local volume so can manipulate as we run
 ./azure-deploy-shakespeare-ec/RUNTIMEAZURE.md:todo fix problemes creating container app
 ```
 ## end list of todos

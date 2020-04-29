@@ -1,6 +1,10 @@
 # flaskpoc
 
 This is a proof of concept single container app.  It uses a python alpine image + Flask to set up a web app.   
+
+
+todo set up prod (copy to image,as current [Dockerfile](#Dockerfile)) & dev mount local volume so can manipulate as we run
+
 ## install docker
 If you plan to run this image locally install docker (it may also be run from any of the major cloud providers such as AWS, Azure, Google Cloud and some others such as heroku and openshift.
 
