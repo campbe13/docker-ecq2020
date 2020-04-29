@@ -196,11 +196,13 @@ __Note:__  Uses X11 so when running the image config needs the following, if you
 * `--net=host`
 * `-e DISPLAY=${DISPLAY}`  # environment
 * `-v ${XAUTH}:/root/.Xauthority` # volume
+## [django](django)
+work in progress 2020-04-28
 
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
 
-## [ue.js-tutorial](learn.js.node.js)
+## [nodeschool setup](learn.js.node.js)
 work in progress 2020-04-16
 Trying to use http://nodeschool.io/  course/workshops in containers.
 
