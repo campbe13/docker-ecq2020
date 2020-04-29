@@ -15,11 +15,16 @@ all: build publish
 build: ## build the image
 	docker-compose --verbose build 
 
+run:  ## run django-admin startproject composeexample in the web container
+	docker-compose run web django-admin startproject composeexample .
+
+
 # port forwarding is in the yaml file
-up: run
-run:  ## bring up all containers, detached (~in the background )
+up:  ## bring up the containers (db & web)
+	docker-compose up
+
+up-bg:	## bring up the containers (db & web) in the background
 	docker-compose up -d
-	docker-compose ps 
 
 publish: ## publish to docker hub
 	docker tag ${NAME} ${HUBUSER}/${NAME}:${VERSION} 
