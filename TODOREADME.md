@@ -1,13 +1,14 @@
 # All todos from the markdown files:
 do not edit, this will be clobbered
 Script findtodo.sh
-Created  2020-04-16 06:11:48 PM
+Created  2020-04-28 08:42:45 PM
 
 ## list of todos
 ```
 ./stickynotes-jb/README.md:todo insert info for running on cloud
 ./stickynotes-jb/docker-compose.yaml.md:I think the links is needed for that, not sure if the db overrides it todo: test this assumption.
-./README.md:## general todo
+./springboot-java/README.md:todo complete this README.md for springboot + java
+./README.md:### general todo
 ./README.md:* todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 ./README.md:* todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
 ./README.md:* [Individual todos in the repo](TODOREADME.md) generated through [findtodo.sh](findtodo.sh)
@@ -15,7 +16,9 @@ Created  2020-04-16 06:11:48 PM
 ./README.md:* TODO shakespeare-jm deploy to Azure,  & document it 
 ./README.md:* TODO stickynotes-jb port to cloud & upload image to registry, test on fedora, Azure ??
 ./README.md:* TODO tickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
-./README.md:* todo add README.md for digocean-nodejs see [Makefile](Makefile)
+./README.md:* todo add README.md for chromium
+./django/README.md:todo complete django base container & tutorial
+./digocean-nodejs/README.md:todo complete this README.md for node.js 
 ./docker-usage-overview/docker-compose.yaml-stickynotes.md:I think the links is needed for that, not sure if the db overrides it todo: test this assumption.
 ./docker-usage-overview/DOCKERCMDS.md:## Todo
 ./docker-usage-overview/DOCKERCMDS.md:* todo Future ??? set up a cheat sheet for student something like https://github.com/wsargent/docker-cheat-sheet ??

@@ -4,13 +4,14 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 
 The following are in order of least to more complex
 
-## general todo
+## general info
+### general todo
 * todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 from https://github.com/docker/labs  
 * todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
 * [Individual todos in the repo](TODOREADME.md) generated through [findtodo.sh](findtodo.sh)
 
-## general docker platform (client, config etc)
+### general docker platform (client, config etc)
 
 * See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
 * Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
@@ -198,6 +199,14 @@ __Note:__  Uses X11 so when running the image config needs the following, if you
 
 ## [vue.js-tutorial](vue.js-tutorial)
 work in progress 2020-04-16
+
+## [ue.js-tutorial](learn.js.node.js)
+work in progress 2020-04-16
+Trying to use http://nodeschool.io/  course/workshops in containers.
+
+## [shakespeare-ec on Azure](azure-deploy-shakespeare-ec)
+work in progress 2020-04-16
+porting  [shakespeare-ec](#shakespeare-ec) to azure registry & running on azure
 
 ## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)
 Delete this ??? or just keep ref below ?? work in progress 2020-02-20
