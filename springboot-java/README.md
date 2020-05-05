@@ -18,7 +18,7 @@ For more details see [Makefile](Makefile)
 
 __WARNING__ if you are running on windows a quirk of docker for windows is that the -p for port forwarding must be 1st, or frustration will ensue, port will not be forwarded.
 ```
-docker run -p 8080:8080 tricia/springbootj 
+docker run -p 8222:8080 tricia/springbootj 
 ```
 
 ## to make & run this container
@@ -34,6 +34,7 @@ To do  this you must have jdk & jre installed & maven & docker
 	$ mvn compile
 	$ mvn package
 	$ docker build -t  springbootj .
-	$ docker run -p 8080:8080 --name springbootj springbootj
+	$ docker run -p 8222:8080 --name springbootj springbootj
 	```
-3. access it through a browser: `localhost:8080` or  `host.ip.addr.ess:8080`
+3. access it through a browser: `localhost:8222` or  `host.ip.addr.ess:8222`
+	![spring boot landing page](springboot.PNG)
