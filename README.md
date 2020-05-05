@@ -222,14 +222,3 @@ Trying to use http://nodeschool.io/  course/workshops in containers.
 ## [shakespeare-ec on Azure](azure-deploy-shakespeare-ec)
 work in progress 2020-04-16
 porting  [shakespeare-ec](#shakespeare-ec) to azure registry & running on azure
-
-## [from docker quick start nodejs bulletinboard](docker-nodejs-bulletinboard-delete-me)
-Delete this ??? or just keep ref below ?? work in progress 2020-02-20
-
-Original instructions here https://docs.docker.com/get-started/part2/
-
-* uses x, y z 
-* install x, y z
-* install app https://github.com/dockersamples/node-bulletin-board/tree/master/bulletin-board-app
-
-
