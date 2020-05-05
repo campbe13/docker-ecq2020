@@ -2,7 +2,6 @@
 
 This is a proof of concept single container app.  It uses a python alpine image + Flask to set up a web app.   
 
-
 todo set up prod (copy to image,as current [Dockerfile](#Dockerfile)) & dev mount local volume so can manipulate as we run
 
 ## install docker
@@ -10,9 +9,10 @@ If you plan to run this image locally install docker (it may also be run from an
 
 [Install](https://docs.docker.com/install/)  
 
-If you are newly learning docker I suggest you use the command line interface as it may be used anywhere. 
-## docker registry image repo
+__Note:__ note: If you have newly install docker, on \*nix, in order to run docker as a regular user you must add your userid to the docker group (then restart the shell) `sudo usermod -aG docker youruserid`  To check this you should see it as your group when you run `id`
 
+__Note:__ If you are newly learning docker I suggest you use the command line interface as it may be used anywhere. 
+## docker registry image repo
 It is available as a public image in my repo https://hub.docker.com/repository/docker/tricia/flaskpoc
 ### running a container from a hub image:
 If you don't want to clone this gihub repo you can run this image (provided docker is installed) use this command change hostport to whatever you want (high is eaiser wrt firewalls) docker will do port forwarding for you:
@@ -32,9 +32,6 @@ While the host is running you can shell into it if you wish, to see what is goin
 ```
 docker exec -it containernamehere sh
 ```
-
-note: If you have newly install docker, on \*nix, in order to run docker as a regular user you must add your userid to the docker group (then restart the shell) `sudo usermod -aG docker youruserid`  To check this you should see it as your group when you run `id`
-
 ## Dockerfile 
 See [Dockerfile with explanations](Dockerfile.md)
 

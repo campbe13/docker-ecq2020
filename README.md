@@ -181,6 +181,19 @@ working, deployed to docker hub
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
     * Windows 10 Pro 64 bit  (run from docker hub)
+## [mysql](mysql-example)
+working, using base image pulled from docker hub 
+
+* mysql base image
+* uses env variables to configure the db & scripts to start up
+    * ubuntu 18.04 (run from docker hub)
+    * Fedora 31 (run from docker hub)
+    * todo run mysql image on windows
+## [postgres](postgres-example)
+work in progress 
+testing using postgres, was having problems installing it
+* postgres 9.3 installed on ubuntu base (working)
+* postgres base (work in progress)
 
 ## [chromium](chromium)
 NOT working, not in docker hub

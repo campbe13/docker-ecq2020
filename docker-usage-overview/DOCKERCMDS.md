@@ -86,7 +86,7 @@ docker run -d -p 8888:80 -t **containerimagename** -name **containername**
 Use the following if you want to shell into a container but it only loads for seconds 
 ex it is not running anything or the ENTRYPOINT or  CMD are failing somehow
 ```
-docker run -it --entrypoint /bin/sh tricia/js-mf
+docker run -it --entrypoint /bin/sh tricia/js-mf /bin/sh
 ```
 Forward the container system log to the host system log example run shell
 ```

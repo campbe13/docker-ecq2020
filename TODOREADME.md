@@ -1,7 +1,7 @@
 # All todos from the markdown files:
 do not edit, this will be clobbered
 Script findtodo.sh
-Created  2020-04-29 12:21:21 PM
+Created  2020-05-05 01:06:34 PM
 
 ## list of todos
 ```
@@ -16,6 +16,7 @@ Created  2020-04-29 12:21:21 PM
 ./README.md:* TODO shakespeare-jm deploy to Azure,  & document it 
 ./README.md:* TODO stickynotes-jb port to cloud & upload image to registry, test on fedora, Azure ??
 ./README.md:* TODO tickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
+./README.md:    * todo run mysql image on windows
 ./README.md:* todo add README.md for chromium
 ./django/README.md:todo complete django base container & tutorial
 ./digocean-nodejs/README.md:todo complete this README.md for node.js 
@@ -26,7 +27,10 @@ Created  2020-04-29 12:21:21 PM
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:## Todo
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:# TODO full list, add missing ^^ docker admin commands
 ./hello-world-go-heroku/README.md:todo use docker to deploy
+./postgres-example/postgres/README.md:todo fix below, not updated
 ./flaskpy/README.md:todo set up prod (copy to image,as current [Dockerfile](#Dockerfile)) & dev mount local volume so can manipulate as we run
+./mysql-example/README.md:## todo example use mysql with volume /logs on local host 
+./mysql-example/README.md:## todo example populate db by copying *.sql or *.sh to `/docker-entrypoint-initdb.d/` 
 ./azure-deploy-shakespeare-ec/RUNTIMEAZURE.md:todo fix problemes creating container app
 ```
 ## end list of todos

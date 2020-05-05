@@ -4,7 +4,14 @@ assignment given by J. Nilakantan @ Dawson College for the Computer Science PHP 
 
 My thanks to everyone for lending me their work.
 
-It uses a PHP & apache image + redis data store  
+It uses a PHP & apache image + redis data store
+##  once fully tested it was also deployed to heroku
+There were some tweeks needed for docker container vs container on
+see the deployment [commands to deploy to heroku](HEROKUCMDS.md)  
+see more detailed information [../shakespeare-ec](../shakespeare-ec)
+
+if still available, the app will be here: http://shakespeare-jm.herokuapp.com/ 
+
 ## TL;DR
 ### To run this app
 1. install docker https://docs.docker.com/install/ 
