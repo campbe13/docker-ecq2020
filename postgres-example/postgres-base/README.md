@@ -1,14 +1,9 @@
 #  postgres base
 
-I am struggling with installing postgres on python/alpine, before going to a base postgres image I am testing installing postgress via  https://docs.docker.com/engine/examples/postgresql_service/
-It's also a chance to use the new Ubuntu lts 20.04
+I am struggling with installing postgres on python/alpine, before going to a base postgres image I am testing installing postgress via the postgress core image  https://hub.docker.com/_/postgres
 
-This is installing postgres on a ubuntu core image https://hub.docker.com/_/ubuntu, could & may  use the https://hub.docker.com/_/postgres
+* Uses postgres as a base image https://hub.docker.com/_/postgres
 
-See also: https://docs.docker.com/samples/#tutorial-labs
-
-* Uses ubuntu core as a base image https://hub.docker.com/_/ubuntu
-https://hub.docker.com/r/pandoc/core 
 
 See the supporting [Dockerfile](Dockerfile) and the  [Makefile](Makefile)
 

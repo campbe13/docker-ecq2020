@@ -18,7 +18,11 @@ build: ## build the image
 
 #  source file
 run:  ## run the image
-	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT} -ti ${NAME} ${NAME} 
+	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT}  ${NAME} ${NAME} 
+
+debug:  ## run the image
+	docker run -p ${HOST_PORT}:${CONTAINER_PORT} -v pgdata:/var/lib/postgresql/data  ${NAME} ${NAME} 
+
 
 publish: ## publish to docker hub
 	docker tag ${NAME} ${HUBUSER}/${NAME}:${VERSION} 
@@ -26,3 +30,8 @@ publish: ## publish to docker hub
 
 clean: ## stop & remove the container 
 	docker stop $(NAME) ; docker rm $(NAME) ; docker ps
+
+logs:  watch ## watch the logs 
+watch: ## watch the logs  
+	@echo CTRL-C to end 
+	docker logs  ${NAME} 
