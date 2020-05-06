@@ -20,7 +20,11 @@ This will have to be done once only, afterward, & if you've already set up docke
 4.  Drives are not automatically shared with Docker Desktop so you must change the Docker Desktop settings before you start the container. Click on the docker icon, select settings, a window will launch, select resources, you will see, make sure the drive that you want to use is selected.  ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 
 ## Run
-### headless using config.pandoc 
+There are two ways to use this image, the first is without interacting with it (headless), it reads the config file and does it's thing.  The second is interactive, where you have to type in the information.
+
+* headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example runtime](#headless-run-time-example-output)
+* interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an example runtime](#interactive-runtime-example-output)
+### headless how to using config.pandoc 
 Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes in your Documents directory, example `C:\Users\pcampbell\Documents>`  
 
 The easiest way to use this is using a config file
@@ -39,7 +43,7 @@ Did you get a weird `No such file or directory` when it's clearly there?  Just r
 Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
 That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.
-### headless run time example
+### headless run time example output
 ```
 PS C:\Users\pcampbell\Documents> docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker
 pandoc.sh about to convert source win-my-word.docx to markdown destination win-my-word.md
@@ -61,7 +65,7 @@ Your file must be in the shared volume, if a config.pandoc exists it will be use
 1. Open a Command Prompt 
 2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`
 3. respond to the text prompts
-### interactive runtime example
+### interactive runtime example output
 ```
 C:\Users\pcampbell\>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker
 pandoc.sh file to convert must be in current working directory

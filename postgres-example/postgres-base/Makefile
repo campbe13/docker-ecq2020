@@ -1,10 +1,10 @@
-# set up an instance of postgres
+# set up an postgres image
 # ref https://hub.docker.com/_/postgres
 
 VERSION=latest
 NAME=postgres-pmc
 HUBUSER=dawsoncollege2020
-HOST_PORT=5432
+HOST_PORT=5433
 CONTAINER_PORT=5432
 
 # .PHONY used if no options given
@@ -18,7 +18,7 @@ build: ## build the image
 
 #  source file
 run:  ## run the image
-	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT}  ${NAME} ${NAME} 
+	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT} --name ${NAME} ${NAME} 
 
 debug:  ## run the image
 	docker run -p ${HOST_PORT}:${CONTAINER_PORT} -v pgdata:/var/lib/postgresql/data  ${NAME} ${NAME} 

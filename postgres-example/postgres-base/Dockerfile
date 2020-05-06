@@ -31,5 +31,5 @@ EXPOSE 5432
 # VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 # Set the default command to run when starting the container
-ENTRYPOINT ["sudo", "-u", "postgres", "postgres" ]
+ENTRYPOINT ["su", "-", "postgres", "-c", "postgres" ]
 # ENTRYPOINT ["postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]

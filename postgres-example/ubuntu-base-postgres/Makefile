@@ -1,8 +1,7 @@
-# set up a pandoc image
-# ref https://github.com/pandoc/dockerfiles#basic-usage
+# set up a postgres  image
 
 VERSION=latest
-NAME=postgres-pmc
+NAME=postgres-ubuntu-pmc
 HUBUSER=dawsoncollege2020
 HOST_PORT=5432
 CONTAINER_PORT=5432
@@ -18,7 +17,8 @@ build: ## build the image
 
 #  source file
 run:  ## run the image
-	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT} -ti ${NAME} ${NAME} 
+#        docker run -t  tty true  -i interactive true
+	docker run -d -p ${HOST_PORT}:${CONTAINER_PORT} --name ${NAME} ${NAME}
 
 publish: ## publish to docker hub
 	docker tag ${NAME} ${HUBUSER}/${NAME}:${VERSION} 
