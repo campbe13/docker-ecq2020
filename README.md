@@ -4,6 +4,8 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 
 The following are in order of least to more complex
 
+* todo  update docker tagging in earlier repos
+
 ## general info
 ### general todo
 * todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/

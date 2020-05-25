@@ -1,13 +1,14 @@
 # All todos from the markdown files:
 do not edit, this will be clobbered
 Script findtodo.sh
-Created  2020-05-05 01:06:34 PM
+Created  2020-05-25 10:41:10 AM
 
 ## list of todos
 ```
 ./stickynotes-jb/README.md:todo insert info for running on cloud
 ./stickynotes-jb/docker-compose.yaml.md:I think the links is needed for that, not sure if the db overrides it todo: test this assumption.
 ./springboot-java/README.md:todo complete this README.md for springboot + java
+./README.md:* todo  update docker tagging in earlier repos
 ./README.md:### general todo
 ./README.md:* todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 ./README.md:* todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
@@ -27,7 +28,7 @@ Created  2020-05-05 01:06:34 PM
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:## Todo
 ./docker-usage-overview/DOCKERCOMPOSECMDS.md:# TODO full list, add missing ^^ docker admin commands
 ./hello-world-go-heroku/README.md:todo use docker to deploy
-./postgres-example/postgres/README.md:todo fix below, not updated
+./postgres-example/postgres-base/README.md:todo fix below, not updated
 ./flaskpy/README.md:todo set up prod (copy to image,as current [Dockerfile](#Dockerfile)) & dev mount local volume so can manipulate as we run
 ./mysql-example/README.md:## todo example use mysql with volume /logs on local host 
 ./mysql-example/README.md:## todo example populate db by copying *.sql or *.sh to `/docker-entrypoint-initdb.d/` 

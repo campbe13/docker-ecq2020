@@ -7,7 +7,7 @@ __Note__ The container works by "sharing" a the volume on your windows computer,
 
 There are 2 ways of using this container:
 
-1. using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads this config & performs the requested actions
+1. headless using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads this config & performs the requested actions
 2. interactively, clunky, type in your info to a bash script
 
 The container is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020).
@@ -36,16 +36,19 @@ The easiest way to use this is using a config file
      ```
      note: uses bash syntax so, case sensitive on the lhs, no spaces around the ` = ` and if your file name has spaces, encase in double quotes `IN="my file.docx"`
 1. Open a Command Prompt Window 
-2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell)
+2. Run the following in a Command Window `docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell)
 
-Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [know bug](#no-such-file)
+* Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [know bug](#no-such-file)
+* Instead of the full path `C:\Users\pcampbell`, you can use
+     * `%USERPROFILE%` environment variable in cmd, 
+     * `$env:USERPROFILE` environment variable in PowerShell
+* Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
-Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
-
-That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.
+__That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.__
 ### headless run time example output
+Note this is running in Windows Powershell
 ```
-PS C:\Users\pcampbell\Documents> docker run --rm --volume "$env:USERPROFILE\Documents:/data"  -ti dawsoncollege2020/pandocker
+PS C:\Users\pcampbell\Documents> docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker
 pandoc.sh about to convert source win-my-word.docx to markdown destination win-my-word.md
 pandoc.sh see converted file win-my-word.md in the current working directory
 PS C:\Users\pcampbell\Documents> ls win-my*
@@ -63,11 +66,12 @@ Mode                LastWriteTime         Length Name
 ### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
 1. Open a Command Prompt 
-2. Run the following in a Command Window `docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker`
+2. Run the following in a Command Window `docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker`
 3. respond to the text prompts
 ### interactive runtime example output
+Note this is running in Command Prompt
 ```
-C:\Users\pcampbell\>docker run --rm --volume "%USERPROFILE%\Documents:/data"  -ti dawsoncollege2020/pandocker
+C:\Users\pcampbell\>docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker
 pandoc.sh file to convert must be in current working directory
 
 source file to convert file name
