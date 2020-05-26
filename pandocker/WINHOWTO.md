@@ -2,9 +2,7 @@
 
 [Pandoc](pandoc.org) is a command line utility that you can use to covert various document formats into others.  For example word _.docx_ files to markdown _.md_
 
-This container will allow you to run [pandoc](pandoc.org) whenever you need it, without installing it on your windows box. 
-
-It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example-config-file)
+This container will allow you to run [pandoc](pandoc.org) whenever you need it, without installing it on your windows box.  It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example-config-file)
 
 __Note__ The container works by "sharing" the volume (directory) you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That directory needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
