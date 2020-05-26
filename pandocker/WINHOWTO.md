@@ -17,9 +17,10 @@ __Note__ The container works by "sharing" the volume (directory) you give it fro
    TYPE=markdown
    OUT=my.md
    ```
-3. open a command line window
+3. open a command line  or PowerShell window
 4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker` 
 5. you now have my.md in the directory, it is the converted my.docx
+
 ![pandocker runtime headless](pandocker-runtime.png)
 ## Detailed instructions
 There are 2 ways of using this container:
