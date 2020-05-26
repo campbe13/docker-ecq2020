@@ -3,7 +3,7 @@ This container will allow you to run [pandoc](pandoc.org) whenever you need it, 
 
 It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example-config-file)
 
-__Note__ The container works by "sharing" the volume you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That volume needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
+__Note__ The container works by "sharing" the volume (directory) you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That directory needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
 There are 2 ways of using this container:
 
@@ -15,7 +15,7 @@ The container image is public and in the organization [dawsoncollege2020](https:
 ## One time prep	
 This will have to be done once only, afterward, or if you've already set up docker, go to the [run](#run) section.
 1.  Install [Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
-4.  Drives are not automatically shared with Docker Desktop so you must change the Docker Desktop settings before you start the container. Click on the docker icon, select settings, a window will launch (cog), select resources then file sharing, make sure the drive that you want to use is selected.  ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
+4.  Drives are not automatically shared with Docker Desktop so you must change the Docker Desktop settings before you start the container. Click on the docker icon,![desktop icons](desktop-icons-docker.PNG) select settings, a window will launch , select resources then file sharing, make sure the drive that you want to use is selected.  ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 
 ## Run
 There are two ways to use this image, the first is without interacting with it (headless), it reads the config file and does it's thing.  The second is interactive, where you have to type in the information. 
