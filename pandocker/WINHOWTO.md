@@ -98,7 +98,7 @@ C:\Users\pcampbell\Documents>dir win-my* out*
 ```
 ## example config file named config.pandoc or config.pandoc.txt
 [config.pandoc](full.example.config.pandoc)
-### option 1 complete command line options see pandoc.org
+### option 1 complete command line options see [pandoc.org](pandoc.org)
 ```
 # this config file must be  in the same directory as the files to be converted
 # anything begining with a hashtag is a comment
