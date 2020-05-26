@@ -66,7 +66,7 @@ Mode                LastWriteTime         Length Name
 -a----        4/20/2020   6:15 PM          14526 win-my-word.md
  
 ```
-![pandocker runtime headless](pandocker-runtime.)
+![pandocker runtime headless](pandocker-runtime.png)
 ### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
 1. Open a Command Prompt 
