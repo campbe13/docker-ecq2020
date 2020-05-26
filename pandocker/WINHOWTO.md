@@ -1,14 +1,33 @@
 # Using pandocker on Windows
+
+[Pandoc](pandoc.org) is a command line utility that you can use to covert various document formats into others.  For example word _.docx_ files to markdown _.md_
+
 This container will allow you to run [pandoc](pandoc.org) whenever you need it, without installing it on your windows box. 
 
 It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example-config-file)
 
 __Note__ The container works by "sharing" the volume (directory) you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That directory needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
+## TL;DR
+
+1. install [docker](https://docs.docker.com/get-docker/)  
+2. share drives with docker see [one time prep](#one-time-prep)
+2. put your file to be converted ex my.docx and a config file config.pandoc into the same directory ex c:\your\directory (other files will be ignored.)  
+3. populate  config.pandoc:
+   ```
+   IN=my.docx
+   TYPE=markdown
+   OUT=my.md
+   ```
+3. open a command line window
+4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker` 
+5. you now have my.md in the directory, it is the converted my.docx
+
 There are 2 ways of using this container:
 
 1. headless using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads this config & performs the requested actions
 2. interactively, clunky, type in your info to a bash script
+
 
 The container image is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020) on docker hub.
 
