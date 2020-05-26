@@ -23,6 +23,7 @@ __Note__ The container works by "sharing" the volume (directory) you give it fro
 4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker` 
 5. you now have my.md in the directory, it is the converted my.docx
 
+## Detailed instructions
 There are 2 ways of using this container:
 
 1. headless using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads this config & performs the requested actions
@@ -31,18 +32,18 @@ There are 2 ways of using this container:
 
 The container image is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020) on docker hub.
 
-## One time prep	
+### One time prep	
 This will have to be done once only, afterward, or if you've already set up docker, go to the [run](#run) section.
 1.  Install [Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
 4.  Drives are not automatically shared with Docker Desktop so you must change the Docker Desktop settings before you start the container. Click on the docker icon,![desktop icons](desktop-icons-docker.PNG) select settings, a window will launch , select resources then file sharing, make sure the drive that you want to use is selected.  ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 
-## Run
+### Run
 There are two ways to use this image, the first is without interacting with it (headless), it reads the config file and does it's thing.  The second is interactive, where you have to type in the information. 
 
 Instructions for 
 * headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example headless runtime](#headless-run-time-example-output)
 * interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an [example interactive runtime](#interactive-runtime-example-output)
-### headless how to using config.pandoc 
+#### headless how to using config.pandoc 
 ![pandocker runtime headless](pandocker-runtime.png)
 Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes they are in your Documents directory, example `C:\Users\mcuser\Documents>`  
 
@@ -67,7 +68,7 @@ The easiest way to use this is using a config file
 __That\'s it__, if there are no typos you will see `win-my-word.md` in the same Documents directory._
 
 
-#### headless run time example output
+##### headless run time example output
 Note this is running in Windows Powershell
 ```
 PS C:\Users\mcuser\Documents> docker run --rm --volume "C:\Users\mcuser\Documents:/data"  -ti dawsoncollege2020/pandocker
@@ -86,12 +87,12 @@ Mode                LastWriteTime         Length Name
  
 ```
 
-### interactively ( config.pandoc  does not exist )
+#### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
 1. Open a Command Prompt 
 2. Run the following in a Command Window `docker run --rm --volume "C:\Users\mcuser\Documents:/data"  -ti dawsoncollege2020/pandocker`
 3. respond to the text prompts
-#### interactive runtime example output
+##### interactive runtime example output
 Note this is running in Command Prompt
 ```
 C:\Users\mcuser\>docker run --rm --volume "C:\Users\mcuser\Documents:/data"  -ti dawsoncollege2020/pandocker
