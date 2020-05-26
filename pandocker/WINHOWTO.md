@@ -46,7 +46,9 @@ The easiest way to use this is using a config file
 * Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
 __That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.__
-### headless run time example output
+
+
+#### headless run time example output
 Note this is running in Windows Powershell
 ```
 PS C:\Users\pcampbell\Documents> docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker
@@ -64,12 +66,13 @@ Mode                LastWriteTime         Length Name
 -a----        4/20/2020   6:15 PM          14526 win-my-word.md
  
 ```
+![pandocker runtime headless](pandocker-runtime.)
 ### interactively ( config.pandoc  does not exist )
 Your file must be in the shared volume, if a config.pandoc exists it will be used, so delete if you don't want it.
 1. Open a Command Prompt 
 2. Run the following in a Command Window `docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker`
 3. respond to the text prompts
-### interactive runtime example output
+#### interactive runtime example output
 Note this is running in Command Prompt
 ```
 C:\Users\pcampbell\>docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker
@@ -95,13 +98,17 @@ C:\Users\pcampbell\Documents>dir win-my* out*
 ```
 ## example config file named config.pandoc or config.pandoc.txt
 [config.pandoc](full.example.config.pandoc)
+### option 1 complete command line options see pandoc.org
 ```
 # this config file must be  in the same directory as the files to be converted
 # anything begining with a hashtag is a comment
-# 2 options
 # Option 1 give the complete command line options, if this exists, the rest will be ignored
 CMDLINE='-s moodlequiz.docx -o moodlequiz.text  -t mediawiki'
-
+```
+### option 2  individual options
+```
+# this config file must be  in the same directory as the files to be converted
+# anything begining with a hashtag is a comment
 # Option 2 individual options
 IN="420-241-DW-01-02-Campbell_2019.docx"
 OUT=test.txt
