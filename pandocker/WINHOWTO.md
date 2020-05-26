@@ -6,6 +6,14 @@ This container will allow you to run [pandoc](pandoc.org) whenever you need it, 
 
 __Note__ The container works by "sharing" the volume (directory) you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That directory needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
+* [TL;DR](#TL;DR)
+* [Detailed instructions](#detailed-instructions)
+  * [one time prep](#one-time-prep)
+  * [run headless](#headless-how-to-using-config.pandoc)
+  * [run interactively](#interactively-(-config.pandoc-does-not-exist-))
+* [examples for config files](#example-config-file)
+* [possible errors](#errors)
+
 ## TL;DR
 
 1. install [docker](https://docs.docker.com/get-docker/)  
