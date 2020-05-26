@@ -37,7 +37,7 @@ The easiest way to use this is using a config file
      ```
      note: uses bash syntax so, case sensitive, left justify, no spaces around the ` = ` and if your file name has spaces, encase in double quotes `IN="my file.docx"`
 1. Open a Command Prompt Window 
-2. Run the following in a Command Window `docker run --rm --volume "C:\Users\mcuser\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell))
+2. Run the following in a Command Window `docker run --rm --volume "C:\Users\mcuser\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell))  
 
 * Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [know bug](#no-such-file)
 * Instead of the full path `C:\Users\mcuser`, you can use
