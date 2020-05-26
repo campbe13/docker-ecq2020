@@ -20,7 +20,7 @@ __Note__ The container works by "sharing" the volume (directory) you give it fro
 3. open a command line window
 4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker` 
 5. you now have my.md in the directory, it is the converted my.docx
-
+![pandocker runtime headless](pandocker-runtime.png)
 ## Detailed instructions
 There are 2 ways of using this container:
 
@@ -42,7 +42,6 @@ Instructions for
 * headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example headless runtime](#headless-run-time-example-output)
 * interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an [example interactive runtime](#interactive-runtime-example-output)
 #### headless how to using config.pandoc 
-![pandocker runtime headless](pandocker-runtime.png)
 Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes they are in your Documents directory, example `C:\Users\mcuser\Documents>`  
 
 The easiest way to use this is using a config file
