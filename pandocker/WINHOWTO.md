@@ -25,18 +25,19 @@ There are two ways to use this image, the first is without interacting with it (
 * headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example runtime](#headless-run-time-example-output)
 * interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an example runtime](#interactive-runtime-example-output)
 ### headless how to using config.pandoc 
-Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes in your Documents directory, example `C:\Users\pcampbell\Documents>`  
+Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes they are in your Documents directory, example `C:\Users\pcampbell\Documents>`  
 
 The easiest way to use this is using a config file
-1.  With your word docx, create a file in your Documents directory,  `config.pandoc` or `config.pandoc.txt`, example contents:
+1.  All files will be in the same directory 
+2.  Create a file in the directory,  `config.pandoc` or `config.pandoc.txt`, example contents:
      ```
      OUT=win-my-word.md		# destination file name
      IN=win-my-word.docx      	# file to be converted
      TYPE=markdown		# conversion type
      ```
-     note: uses bash syntax so, case sensitive on the lhs, no spaces around the ` = ` and if your file name has spaces, encase in double quotes `IN="my file.docx"`
+     note: uses bash syntax so, case sensitive, left justify, no spaces around the ` = ` and if your file name has spaces, encase in double quotes `IN="my file.docx"`
 1. Open a Command Prompt Window 
-2. Run the following in a Command Window `docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell)
+2. Run the following in a Command Window `docker run --rm --volume "C:\Users\pcampbell\Documents:/data"  -ti dawsoncollege2020/pandocker`  (can also  be run in [PowerShell](#powershell))
 
 * Did you get a weird `No such file or directory` when it's clearly there?  Just retry, see [know bug](#no-such-file)
 * Instead of the full path `C:\Users\pcampbell`, you can use
