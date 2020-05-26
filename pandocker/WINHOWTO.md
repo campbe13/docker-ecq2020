@@ -9,8 +9,8 @@ __Note__ The container works by "sharing" the volume (directory) you give it fro
 * [TL;DR](#TL;DR)
 * [Detailed instructions](#detailed-instructions)
   * [one time prep](#one-time-prep)
-  * [run headless](#headless-how-to-using-config.pandoc)
-  * [run interactively](#interactively-(-config.pandoc-does-not-exist-))
+  * [run headless](#headless-how-to-using-configpandoc)
+  * [run interactively](#interactively--configpandoc--does-not-exist-)
 * [examples for config files](#example-config-file)
 * [possible errors](#errors)
 
