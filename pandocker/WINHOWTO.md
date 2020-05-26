@@ -1,28 +1,28 @@
 # Using pandocker on Windows
 This container will allow you to run [pandoc](pandoc.org) whenever you need it, without installing it on your windows box. 
 
-It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example)
+It puts a simple bash script as a front end to pandoc.  You give it have an input file name (pandoc will determine the type), output file name and the output file conversion type.  Or you can give it, full, more complex pandoc options see the [example](#example-config-file)
 
-__Note__ The container works by "sharing" a the volume on your windows computer, see the run statement.  That volume needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
+__Note__ The container works by "sharing" the volume you give it from your windows computer, to a mount point of `/data` on the container see the run statement.  That volume needs to contain your *source file* to be converted and _optionally_ a *config.pandoc file* to instruct the container what to convert. 
 
 There are 2 ways of using this container:
 
 1. headless using a config file (`config.pandoc` or `config.pandoc.txt`) the bash script reads this config & performs the requested actions
 2. interactively, clunky, type in your info to a bash script
 
-The container is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020).
-
+The container image is public and in the organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020) on docker hub.
 
 ## One time prep	
-This will have to be done once only, afterward, & if you've already set up docker, go to the [run](#run) section.
+This will have to be done once only, afterward, or if you've already set up docker, go to the [run](#run) section.
 1.  Install [Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
 4.  Drives are not automatically shared with Docker Desktop so you must change the Docker Desktop settings before you start the container. Click on the docker icon, select settings, a window will launch (cog), select resources then file sharing, make sure the drive that you want to use is selected.  ![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 
 ## Run
-There are two ways to use this image, the first is without interacting with it (headless), it reads the config file and does it's thing.  The second is interactive, where you have to type in the information.
+There are two ways to use this image, the first is without interacting with it (headless), it reads the config file and does it's thing.  The second is interactive, where you have to type in the information. 
 
-* headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example runtime](#headless-run-time-example-output)
-* interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an example runtime](#interactive-runtime-example-output)
+Instructions for 
+* headless [run with config file](#headless-how-to-using-config.pandoc), see also an [example headless runtime](#headless-run-time-example-output)
+* interactive [type in the information](#interactively-(-config.pandoc-does-not-exist-)) see also an [example interactive runtime](#interactive-runtime-example-output)
 ### headless how to using config.pandoc 
 ![pandocker runtime headless](pandocker-runtime.png)
 Determine where the file to be converted and the config.pandoc file are on your windows system the example below assumes they are in your Documents directory, example `C:\Users\mcuser\Documents>`  
@@ -45,7 +45,7 @@ The easiest way to use this is using a config file
      * `$env:USERPROFILE` environment variable in PowerShell
 * Note the first time you run this it will take longer as it has to download the image (~300MB,) subsequent runs will use the local copy. 
 
-__That\'s it, if there are no typos you will see `win-my-word.md` in the same Documents directory.__
+__That\'s it__, if there are no typos you will see `win-my-word.md` in the same Documents directory._
 
 
 #### headless run time example output
@@ -96,7 +96,8 @@ C:\Users\mcuser\Documents>dir win-my* out*
                2 File(s)         29,471 bytes
                0 Dir(s)  823,968,378,880 bytes free
 ```
-## example config file named config.pandoc or config.pandoc.txt
+## example config file 
+It must be named config.pandoc or config.pandoc.txt
 [config.pandoc](full.example.config.pandoc)
 ### option 1 complete command line options see [pandoc.org](pandoc.org)
 ```
@@ -115,10 +116,6 @@ OUT=test.txt
 #TYPE=mediawiki
 TYPE=markdown
 ```
-## Sharing drives
-Drives are not automatically shared so you must change the config before you start the container.
-Click on the docker icon, select settings, a window will launch, select resources you will see, make sure the drive that you want to use is selected.  
-![Docker settings - resources](docker-desktop-share-volumes-c.PNG)
 ## Powershell 
 The syntax below is only different because in command env vars are used so `%ENVVAR%` and in PowerShell they are use so `$env:ENVVAR`
 1. Open a PowerShell
