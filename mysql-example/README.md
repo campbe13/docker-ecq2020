@@ -2,6 +2,7 @@
 
 As with other dbs it is very easy to start up an instance of a mysql database without the need for installing the database itself, no issues with versions and Windows compatibility amongst other things. 
 
+For full reference see [mysql on docker hub](https://hub.docker.com/_/mysql)
 
 ### mysql instance, no Dockerfile, no yaml
 * Use this for [demos](MYSQLDEMO.md)
