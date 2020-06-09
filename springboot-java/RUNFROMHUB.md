@@ -1,5 +1,6 @@
 # run the image from docker hub on Windows 10
 __WARNING__ a quirk of windows the -p for port forwarding must be 1st, or, frustration will ensue, port will not be forwarded.
+Meaning if you use it `docker run -t xyz  -p 9999:9999`  forwarding will not be done and it will give no error message.
 ```
 C:\Users\pcampbell>docker run -p 8085:8080 -t tricia/springbootj 
 Unable to find image 'tricia/springbootj:latest' locally
