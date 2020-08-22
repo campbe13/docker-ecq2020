@@ -8,7 +8,7 @@ This is to make it easy to convert their word docs to other formats (ex markdown
 * Uses a shared volume to host the file to be converted (ex my.docx) and a config.pandoc file if using.
 * Configured with help from https://github.com/pandoc/dockerfiles#basic-usage
 * This images is in the docker hub organization [dawsoncollege2020](https://hub.docker.com/u/dawsoncollege2020)
-* See the [running it on windows](pandocker/WINHOWTO.md)
+* See the [running it on windows](WINHOWTO.md)
 * Uses pandoc core image https://hub.docker.com/r/pandoc/core 
 
 If you use a [config.pandoc](config.pandoc.txt) file to indicate the (no spaces, if in file name use \" \") 
