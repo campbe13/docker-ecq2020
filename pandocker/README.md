@@ -12,6 +12,11 @@ This is to make it easy to convert their word docs to other formats (ex markdown
 * Uses pandoc core image https://hub.docker.com/r/pandoc/core 
 
 If you use a [config.pandoc](config.pandoc.txt) file to indicate the (no spaces, if in file name use \" \") 
+```
+IN=filetoread
+OUT=filetocreate
+TYPE=conversion-type
+```
 1. input file name
 2. output file name
 3. output file format
