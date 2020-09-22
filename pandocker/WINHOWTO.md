@@ -26,7 +26,7 @@ __Note__ The container works by "sharing" the volume (directory) you give it fro
    OUT=my.md
    ```
 3. open a command line  or PowerShell window
-4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker` 
+4. run `docker run --rm --volume "C:\your\directory:/data"  -ti dawsoncollege2020/pandocker`  alternately you can use the %cd% for current working directory `docker run --rm --volume "%cd%:/data"  -ti dawsoncollege2020/pandocker` 
 5. you now have my.md in the directory, it is the converted my.docx
 
 ![pandocker runtime headless](pandocker-runtime.png)
