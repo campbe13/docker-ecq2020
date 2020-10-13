@@ -2,7 +2,6 @@
 Some containers & documentation I am working with  for teaching
 my dockerfiles & scripts & instructions here, proofs of concept and basis for lectures / labs 
 
-The following are in order of least to more complex
 
 * todo  update docker tagging in earlier repos
 
@@ -22,6 +21,10 @@ from https://github.com/docker/labs
 * See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
 * Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
 * See [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker-compose commands
+
+## containers
+The following are in order of least to more complex
+
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
 
