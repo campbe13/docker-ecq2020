@@ -7,19 +7,21 @@ The following are in order of least to more complex
 * todo  update docker tagging in earlier repos
 
 ## general info
+### other repos & sites
+* base repo for using Travis CI to deploy to github pages https://github.com/campbe13/javascript-320
+** The github page https://campbe13.github.io/javascript-320/
+** How To for setting up Travis -> github pages https://docs.google.com/document/d/1Yrijs0V0053suuavLWUzIvQsyPURtc33o6zOMsBAOrE/edit?usp=sharing
+* A simple java springboot app using Jenkins CI on a Dawson Server http://korra.dawsoncollege.qc.ca:8080/
+** "engineering log" for setup of Jenkins https://docs.google.com/document/d/1stFH2Eq3EjCleLTMwAIYoXY0AYmG0QlgW1FxiY8FWoU/edit?usp=sharing
 ### general todo
 * todo setup/use something like docker beginner labs https://github.com/docker/labs/tree/master/beginner/
 from https://github.com/docker/labs  
 * todo  checkout docker play for teaching https://labs.play-with-docker.com/  signin with docker id/pwd
 * [Individual todos in the repo](TODOREADME.md) generated through [findtodo.sh](findtodo.sh)
-
 ### general docker platform (client, config etc)
-
 * See [overview of docker commands, Dockerfile, compose etc](docker-usage-overview)
 * Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
 * See [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker-compose commands
-
-
 ## [whalesay](whalesay)
 working, in my hub.docker.com registry
 
