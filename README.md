@@ -7,6 +7,8 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 
 ## general info
 ### other repos & sites
+* using Gitlab CI to deploy to gitlab pages
+** [Gitlab CI to pages lab exercise](https://docs.google.com/document/d/1-_-l-M8RhhsLC62ahop_tME6tIMv1lVqcgMQrnnlGMU/edit?usp=sharing) 
 * base repo for using Travis CI to deploy to github pages https://github.com/campbe13/javascript-320
 ** The github page https://campbe13.github.io/javascript-320/
 ** How To for setting up Travis -> github pages https://docs.google.com/document/d/1Yrijs0V0053suuavLWUzIvQsyPURtc33o6zOMsBAOrE/edit?usp=sharing
