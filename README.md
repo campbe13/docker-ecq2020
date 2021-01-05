@@ -58,9 +58,12 @@ working, not in docker hub
     * ubuntu 18.04 (created & run)
 
 __Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
-* `--net=host`
-* `-e DISPLAY=${DISPLAY}`  # environment
-* `-v ${XAUTH}:/root/.Xauthority` # volume
+
+```bash
+--net=host
+-e DISPLAY=${DISPLAY}  # environment
+-v ${XAUTH}:/root/.Xauthority # volume
+```
 ## [firefox](firefox)
 working, not in docker hub
 
