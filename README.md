@@ -9,6 +9,8 @@ my dockerfiles & scripts & instructions here, proofs of concept and basis for le
 ### other repos & sites
 * using Gitlab CI to deploy to gitlab pages
    * [Gitlab CI to pages lab exercise](https://docs.google.com/document/d/1-_-l-M8RhhsLC62ahop_tME6tIMv1lVqcgMQrnnlGMU/edit?usp=sharing) 
+   * base repo https://gitlab.com/campbe13/demo1-gitlab-ci
+   * The gitlab page https://campbe13.gitlab.io/demo1-gitlab-ci/
 * using Travis CI to deploy to github pages 
    * base repo  https://github.com/campbe13/javascript-320 
    * The github page https://campbe13.github.io/javascript-320/
@@ -219,9 +221,12 @@ NOT working, not in docker hub
     * ubuntu 18.04 (created & run)
 
 __Note:__  Uses X11 so when running the image config needs the following, if you omit you will get `Error: Can't open display:`  
-* `--net=host`
-* `-e DISPLAY=${DISPLAY}`  # environment
-* `-v ${XAUTH}:/root/.Xauthority` # volume
+```bash
+--net=host
+-e DISPLAY=${DISPLAY}  # environment
+-v ${XAUTH}:/root/.Xauthority  # volume
+```
+
 ## [django](django)
 work in progress 2020-04-28
 
