@@ -30,7 +30,13 @@ See the supporting [Dockerfile](Dockerfile) and the  [Makefile](Makefile)
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
 ## TL;DR
-### To run this app
+### To run this app  windows
+1. install docker https://docs.docker.com/install/ 
+    * on windows Drives are not automatically shared with Docker Desktop so you must change the  settings before you start the container. see [WINHOWTO.md#one-time-prep]
+2. cd to the directory that holds your doc to convert, & config.pandoc if you're using it.
+3. `docker run --rm --volume "%cd%:/data" -ti dawsoncollege2020/pandocker`  
+
+### To run this app  *nix
 1. install docker https://docs.docker.com/install/ 
     * on *nix you will need to add your user to the docker group to run as a regular user `sudo usermod -aG docker youruserid`
 2. cd to the directory that holds your doc to convert, & config.pandoc if you're using it.
