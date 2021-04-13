@@ -2,6 +2,7 @@
 Some containers & documentation I am working with  for teaching
 my dockerfiles & scripts & instructions here, proofs of concept and basis for lectures / labs 
 
+I have written up some of the work in a blog: [cloudnativeish blog](https://cloudnativeish.wordpress.com/)
 
 * todo  update docker tagging in earlier repos
 
