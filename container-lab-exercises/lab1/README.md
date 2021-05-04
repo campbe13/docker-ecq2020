@@ -40,7 +40,7 @@ It’s time to get your hands dirty! As with all things technical, a “hello wo
 
 That’s it: your first container. The _hello-world_ container output tells you a bit about what just happened. Essentially, the Docker engine running in your terminal tried to find an **image** named hello-world. Since you just got started there are no images stored locally (`Unable to find image...`) so Docker engine goes to its default **Docker registry**, which is [Docker Hub](https://hub.docker.com), to look for an image named “hello-world”. It finds the image there, pulls it down, and then runs it in a container. And hello-world’s only function is to output the text you see in your terminal, after which the container exits.
 
-![Hello world explainer](/images/ops-basics-hello-world.svg)
+![Hello world explainer](ops-basics-hello-world.png)
 
 If you are familiar with VMs, you may be thinking this is pretty much just like running a virtual machine, except with a central repository of VM images. And in this simple example, that is basically true. But as you go through these exercises you will start to see important ways that Docker and containers differ from VMs. For now, the simple explanation is this:
 
@@ -88,7 +88,7 @@ Great! Let’s now run a Docker **container** based on this image. To do that yo
 
 While the output of the `ls` command may not be all that exciting, behind the scenes quite a few things just took place. When you call `run`, the Docker client finds the image (alpine in this case), creates the container and then runs a command in that container. When you run `docker run alpine`, you provided a command (`ls -l`), so Docker executed this command inside the container for which you saw the directory listing. After the `ls` command finished, the container shut down.
 
-![docker run explainer](/images/ops-basics-run-details.svg)
+![docker run explainer](ops-basics-run-details.png)
 
 The fact that the container exited after running our command is important, as you will start to see. Let’s try something more exciting. Type in the following:
 
@@ -138,7 +138,7 @@ What you see now is a list of all containers that you ran. Notice that the `STAT
 
 Here is the same output of the `docker ps -a` command, shown diagrammatically (note that your container IDs and names will be different):
 
-![Docker container instances](/images/ops-basics-instances.svg)
+![Docker container instances](ops-basics-instances.png)
 
 It makes sense to spend some time getting comfortable with the `docker run` commands. To find out more about `run`, use `docker run --help` to see a list of all flags it supports. As you proceed further, we’ll see a few more variants of `docker run` but feel free to experiment here before proceeding.
 
@@ -186,7 +186,7 @@ command again and you should see output similar to the following:
     c317d0a9e3d2        hello-world         "/hello"                 34 seconds ago      Exited (0) 12 minutes ago                       stupefied_mcclintock
     
 
-Graphically this is what happened on our Docker Engine: ![Docker container isolation](/images/ops-basics-isolation.svg)
+Graphically this is what happened on our Docker Engine: ![Docker container isolation](ops-basics-isolation.png)
 
 The container in which we created the “hello.txt” file is the same one where we used the `/bin/ash` shell, which we can see listed in the “COMMAND” column. The _Container ID_ number from the first column uniquely identifies that particular container instance. In the sample output above the container ID is `3030c9c91e12`. We can use a slightly different command to tell Docker to run this specific container instance. Try typing:
 
@@ -208,7 +208,7 @@ Notice this time that our container instance is still running. We used the ash s
 
 This time we get a directory listing and it shows our “hello.txt” file because we used the container instance where we created that file.
 
-![Docker exec command](/images/ops-basics-exec.svg)
+![Docker exec command](ops-basics-exec.png)
 
 Now you are starting to see some of the important concepts of containers. In the next exercise we will start to see how you can create your own Docker images and how to use a Dockerfile to standardize images such that you can create larger, more complex images in a simple, automated manner.
 
