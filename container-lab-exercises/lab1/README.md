@@ -54,20 +54,19 @@ In this rest of this lab, you are going to run an [Alpine Linux](http://www.alpi
 
 To get started, let’s run the following in our terminal:
 
-    docker image pull alpine
+    docker pull alpine
     
 
 The `pull` command fetches the alpine **image** from the **Docker registry** and saves it in our system. In this case the registry is **[Docker Hub](https://hub.docker.com)**. You can change the registry, but that’s a different lab.
 
-You can use the `docker image` command to see a list of all images on your system.
+You can use the `docker images` command to see a list of all images on your system.
 
-    docker image ls
+    docker images
     
 
-    REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    alpine                  latest              c51f86c28340        4 weeks ago         1.109 MB
-    hello-world             latest              690ed74de00f        5 months ago        960 B
-    
+    REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+    alpine                   latest    6dbb9cc54074   2 weeks ago    5.61MB
+    hello-world              latest    d1165f221234   2 months ago   13.3kB
 
 ### 1.1 Docker  Run
 
@@ -114,7 +113,7 @@ Wait, nothing happened! Is that a bug? No! In fact, something did happen. You st
 
 You are now inside the container running a Linux shell and you can try out a few commands like `ls -l`, `uname -a` and others. Note that Alpine is a small Linux OS so several commands might be missing. Exit out of the shell and container by typing the `exit` command.
 
-Ok, we said that we had run each of our commands above in a separate container instance. We can see these instances using the `docker os` command. The `docker ps` command by itself shows you all containers that are currently running:
+Ok, we said that we had run each of our commands above in a separate container instance. We can see these instances using the `docker ps` command. The `docker ps` command by itself shows you all containers that are currently running:
 
     docker ps
     
