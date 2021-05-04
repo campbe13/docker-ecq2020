@@ -1,7 +1,7 @@
 Run Alpine Linux Containers
 =============================
 
-In this lab you will run a  container and explore the basics of how containers work, how the Docker Engine executes and isolates containers from each other. 
+In this lab you will run a  container and explore the basics of how containers work, how the Docker Engine executes and isolates containers from each other.   You must have docker installed on your system before continuing, [instructions here](https://docs.docker.com/get-docker/)
 
 * * *
 
@@ -13,23 +13,23 @@ Concepts in this exercise:
 *   Container isolation
 
 * * *
+Note:  This lab is originally from [play with docker](https://docs.docker.com/get-docker/)  where you can use the console in a browser.  I updated the commands and fixed a few things.
 
 Tips:
 
 Code snippets are shown in one of three ways throughout this environment:
 
 1.  Code that looks like `this` is sample code snippets that is usually part of an explanation.
-2.  Code that appears in box like the one below should be typed in as shown.
+2.  Code that appears in a window like the one below should be typed in as shown.
     
         uname -a
         
     
-3.  Code appearing in windows like the one below is code that you should type in yourself. Usually there will be a unique ID or other bit your need to enter which we cannot supply. Items appearing in <> are the pieces you should substitute based on the instructions.
+3.  Code appearing in a window like the one below is code that you should type in , there is a part we can't supply because it is specific to your runtime. Items appearing in <> are the pieces you should substitute based on the instructions.
     
         docker start <container ID>
         
     
-
 1.0 Running your first container
 --------------------------------
 
@@ -68,7 +68,8 @@ You can use the `docker images` command to see a list of all images on your syst
     alpine                   latest    6dbb9cc54074   2 weeks ago    5.61MB
     hello-world              latest    d1165f221234   2 months ago   13.3kB
 
-### 1.1 Docker  Run
+1.2 Docker Containers (run time)
+--------------------------------
 
 Great! Let’s now run a Docker **container** based on this image. To do that you are going to use the `docker run` command.
 
@@ -141,7 +142,8 @@ Here is the same output of the `docker ps -a` command, shown diagrammatically (n
 
 It makes sense to spend some time getting comfortable with the `docker run` commands. To find out more about `run`, use `docker run --help` to see a list of all flags it supports. As you proceed further, we’ll see a few more variants of `docker run` but feel free to experiment here before proceeding.
 
-### 1.2 Container Isolation
+1.3 Container Isolation
+-----------------------
 
 In the steps above we ran several commands via container instances with the help of `docker run`. The `docker ps -a` command showed us that there were several containers listed. Why are there so many containers listed if they are all from the _alpine_ image?
 
@@ -211,12 +213,13 @@ This time we get a directory listing and it shows our “hello.txt” file becau
 
 Now you are starting to see some of the important concepts of containers. In the next exercise we will start to see how you can create your own Docker images and how to use a Dockerfile to standardize images such that you can create larger, more complex images in a simple, automated manner.
 
-### 1.3 Terminology
+1.4 Terminology
+---------------
 
-In the last section, you saw a lot of Docker-specific jargon which might be confusing to some. So before you go further, let’s clarify some terminology that is used frequently in the Docker ecosystem.
+You just saw a lot of Docker-specific jargon which might be confusing. So let’s clarify some terminology that is used frequently in the Docker ecosystem.
 
-*   _Images_ - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run `docker image inspect alpine`. In the demo above, you used the `docker image pull` command to download the **alpine** image. When you executed the command `docker run hello-world`, it also did a `docker image pull` behind the scenes to download the **hello-world** image.
+*   _Images_ - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run `docker inspect alpine`. In the demo above, you used the `docker pull` command to download the **alpine** image. When you executed the command `docker run hello-world`, it also did a `docker pull` behind the scenes to download the **hello-world** image.
 *   _Containers_ - Running instances of Docker images — containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using `docker run` which you did using the alpine image that you downloaded. A list of running containers can be seen using the `docker  ls` command.
-*   _Docker daemon_ - The background service running on the host that manages building, running and distributing Docker containers.
+*   _Docker daemon_ - The background service (`dockerd` on *nix) running on the host that manages building, running and distributing Docker containers.
 *   _Docker client_ - The command line tool that allows the user to interact with the Docker daemon.
-*   _Docker Hub_ - Store is, among other things, a [registry](https://hub.docker.com/) of Docker images. You can think of the registry as a directory of all available Docker images. 
+*   _Docker Hub_ - Is, among other things, a [registry](https://hub.docker.com/) of Docker images. You can think of the registry as a directory of all available Docker images. 
