@@ -20,18 +20,19 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 ### To make this app available on docker hub
 1. sign up for an account if you do not have one on [docker hub](https://hub.docker.com) 
 2. sign in on [docker hub](https://hub.docker.com) 
- and create a repository it will have the format <your username>/<choose an image name> 
+ and create a repository it will have the format `<your username>/<choose an image name>` 
   for example sybil/bestapp
 3. if you are on *nix use `docker login` with your credentials from the website, it will set up a file `~/.docker/config.json`
 3. build your container app with the tag for your repository `docker build -t <your username>/<image name>` for example `docker build -t sybil/bestapp`
 4. push the image to docker hub `docker push <your username>/<image name>` for example `docker push sybil/bestapp`
-5. test it on another computer  `docker run -d -p 8888:80 <your username>/<image name>` for example docker run -d -p 8888:80 sybil/bestapp`
+5. test it on another computer  `docker run -d -p 8888:80 <your username>/<image name>` for example i`docker run -d -p 8888:80 sybil/bestapp`
 
 ### To run this app from the docker hub image
-It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp
+It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
+
 2. run `docker run -d -p <hostport>:80 tricia/weatherapp` 
     * 80 is the container port and _hostport_ is the host that is running docker, port forwarding from container 80 to host _hostport_ is done by docker, choose a high port 
-    * \-d detaches the container, if you omit you will see the startup and the apache output
+    * `d` detaches the container, if you omit you will see  whatever the container logs
 3. load a browser to access the app `localhost:_hostport_` or `ip.address.of.host:_hostport_`
 4. if you want to access the app from another host, you must open your firewall for port _hostport_
 
