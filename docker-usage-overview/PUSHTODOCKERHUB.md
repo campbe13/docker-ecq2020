@@ -27,11 +27,3 @@ Run it from another computer
 * web app `docker run -d -p 8888:80 sybil/bestapp`
 * stand alone app with tty output  `docker run -t sybil/bestapp`
 * stand alone app with tty output and user input `docker run -it sybil/bestapp`
-### To run this app from the docker hub image
-It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
-
-2. run `docker run -d -p <hostport>:80 tricia/weatherapp` 
-    * 80 is the container port and _hostport_ is the host that is running docker, port forwarding from container 80 to host _hostport_ is done by docker, choose a high port 
-    * `d` detaches the container, if you omit you will see  whatever the container logs
-3. load a browser to access the app `localhost:_hostport_` or `ip.address.of.host:_hostport_`
-4. if you want to access the app from another host, you must open your firewall for port _hostport_
