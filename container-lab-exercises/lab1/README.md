@@ -13,7 +13,7 @@ Concepts in this exercise:
 *   Container isolation
 
 * * *
-Note:  This lab is originally from [play with docker](https://docs.docker.com/get-docker/)  where you can use the console in a browser.  I updated the commands and fixed a few things.
+Note:  This lab is originally from [play with docker](https://training.play-with-docker.com/ops-s1-hello/)  where you can use the console in a browser.  I updated the commands and fixed a few things.
 
 Tips:
 
