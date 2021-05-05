@@ -1,4 +1,4 @@
-# asciiquiarium on alpine image
+# asciiquarium on alpine image
 
 This is a simple example of a single container app.  It uses an alpine image + asciiquarium.
 
@@ -14,14 +14,14 @@ __Note:__ If you are newly learning docker I suggest you use the command line in
 ### _Manually_ run asciiquarium
 Since the following is applied to a running instance it will not be permanent, when type exit ito end the container the state is not saved.
 1. Download alpine image and launch the container, run a shell `docker run -it alpine /bin/ash`
-1. You should now see the shell prompt `/#` install `apk add asciiquiarium`
-1. if the install worked you can now run it  ` asciiquiarium`
+1. You should now see the shell prompt `/#` install `apk add asciiquarium`
+1. if the install worked you can now run it  ` asciiquarium`
 
-While it is running CTRL-C will kill asciiquiarium, not the container.  After CTRL-C  you will be back to the shell prompt `/#` you can now type `exit` to end the container.
+While it is running CTRL-C will kill asciiquarium, not the container.  After CTRL-C  you will be back to the shell prompt `/#` you can now type `exit` to end the container.
 
-### Create your own asciiquiarium image
-If you want to create your own image to automagically run asciiquarium you can do so by building a new image, based on alpine.
-This will use the same alpine image + a layer to install asciiquiarium + a command that will be launched at runtime for the container.
+### Create your own asciiquarium image
+If you want to create your own image to automagically run asciiquarum you can do so by building a new image, based on alpine.
+This will use the same alpine image + a layer to install asciiquiarum + a command that will be launched at runtime for the container.
 1. Create a Dockerfile, see below & you can copy this [Dockerfle](Dockerfile)
 2. Use the Dockerfile to build your image, we will name it _asciiq_   `docker build -t asciiq .`  the default file is Dockerfile and the . (dot) says look in the cwd for it.
 2. You will see the asciiq image with `docker images` if the build worked ok
@@ -43,7 +43,7 @@ Until and unless you remove the image, every time you want it you now simply run
 	# runtime
 	CMD [ "asciiquarium" ] 
 
-### Put your asciiquiarium image on docker hub, so you can run it from anywhere
+### Run your asciiquarium container from anywhere:  put your asciiquarium image on docker hub
 tbd
 ### Extras
 While the container is running you can shell into it if you wish, to see what is going on, if you run `docker ps` you will see the container name on the left: 
