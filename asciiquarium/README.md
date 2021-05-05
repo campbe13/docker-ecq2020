@@ -20,7 +20,7 @@ Since the following is applied to a running instance it will not be permanent, w
 While it is running CTRL-C will kill asciiquiarium, not the container.  After CTRL-C  you will be back to the shell prompt `/#` you can now type `exit` to end the container.
 
 ### Create your own asciiquiarium image
-If you want to create your own image to automagically run asciiquarium you can do so by building it.
+If you want to create your own image to automagically run asciiquarium you can do so by building a new image, based on alpine.
 This will use the same alpine image + a layer to install asciiquiarium + a command that will be launched at runtime for the container.
 1. Create a Dockerfile, see below & you can copy this [Dockerfle](Dockerfile)
 2. Use the Dockerfile to build your image, we will name it _asciiq_   `docker build -t asciiq .`  the default file is Dockerfile and the . (dot) says look in the cwd for it.
