@@ -9,7 +9,10 @@ Docker hub is to container images what github/gitlab are to code bases
 Before you try this you must [install docker](https://docs.docker.com/install/)
 
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
+
 This assumes you have built and tested your image previously,  you can try the [react app](../react-weather-app) or [asciiquarium](../asciiquarium) if you don't have one of your own to play with.
+
+This [youtube video](https://youtu.be/iwWyfMmQTYw)  demonstrates the steps below for asciiquarium
 
 1. sign up for an account if you do not have one on [docker hub](https://hub.docker.com) 
 2. sign in on [docker hub](https://hub.docker.com) 
