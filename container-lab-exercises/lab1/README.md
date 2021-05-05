@@ -211,8 +211,6 @@ This time we get a directory listing and it shows our “hello.txt” file becau
 
 ![Docker exec command](ops-basics-exec.png)
 
-Now you are starting to see some of the important concepts of containers. In the next exercise we will start to see how you can create your own Docker images and how to use a Dockerfile to standardize images such that you can create larger, more complex images in a simple, automated manner.
-
 1.4 Terminology
 ---------------
 
