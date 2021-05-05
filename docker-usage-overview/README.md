@@ -24,7 +24,7 @@ Examples from the [stickynotes containers](../stickynotes-jb)
     * [Dockerfile used for one of the containers](Dockerfile-used-with-compose-stickynotes.md)
 * [makefile used to build this app](Makefile-stickynotes.md) 
 ## simple howtos
-* [how to add your image to docker hub](PUSHTODOCKERHUB.com]
+* [how to add your image to docker hub](PUSHTODOCKERHUB.md)
 * how to create a non-web app container
 * how to create a web app container
 * how to create a web app + database container(s)
