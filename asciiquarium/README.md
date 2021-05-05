@@ -11,6 +11,7 @@ __Note:__ note: If you have newly install docker, on \*nix, in order to run dock
 
 __Note:__ If you are newly learning docker I suggest you use the command line interface as it may be used anywhere. 
 ## run asciiquarium
+You can see the demo of both of these [via youtube](https://youtu.be/kW8bdAMyLIA)
 ### _Manually_ run asciiquarium
 Since the following is applied to a running instance it will not be permanent, when type exit ito end the container the state is not saved.
 1. Download alpine image and launch the container, run a shell `docker run -it alpine /bin/ash`
