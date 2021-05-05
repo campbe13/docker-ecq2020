@@ -1,5 +1,8 @@
 # dockerfile for lighttpd host javascript example code 
 # 2021-05-05
+# BUILD   docker build -t weatherapp . 
+# RUN     docker run  -t weatherapp . 
+
 
 FROM alpine
 LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-05-05"
@@ -18,6 +21,5 @@ COPY app/* ./
 
 # expose the website port on the container
 EXPOSE 80
-
 # start  web server  (rc-service not installed on this image )
 ENTRYPOINT ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
