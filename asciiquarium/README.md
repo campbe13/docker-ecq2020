@@ -44,8 +44,13 @@ Until and unless you remove the image, every time you want it you now simply run
 	# runtime
 	CMD [ "asciiquarium" ] 
 
-### Run your asciiquarium container from anywhere:  put your asciiquarium image on docker hub
-See [push to docker hub](../docker-usage-overview/PUSHTODOCKERHUB.md) for the steps which are demonstrated in this [youtube video](https://www.youtube.com/watch?v=iwWyfMmQTYw)
+### Run your asciiquarium container from anywhere:  
+I put it on docker hub so anyone can run it `docker run -t tricia/aaq` 
+
+Docker hub repo https://hub.docker.com/r/tricia/aaq 
+
+### Put your image on docker hub
+How to put an app on docker hub see [push to docker hub](../docker-usage-overview/PUSHTODOCKERHUB.md)  You can also watch this demonstrated in this [youtube video](https://www.youtube.com/watch?v=iwWyfMmQTYw)
 
 ### Extras
 While the container is running you can shell into it if you wish, to see what is going on, if you run `docker ps` you will see the container name on the left: 
