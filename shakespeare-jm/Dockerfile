@@ -2,7 +2,7 @@
 #
 # HEROKU VERSION, see below
 FROM php:7.2-apache
-MAINTAINER P Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P.M.Campbell" email="pcampbell.edu@gmail.com"
 
 # env var for apt-get otherwise I get the TERM not set error
 ENV DEBIAN_FRONTEND noninteractive

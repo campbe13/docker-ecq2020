@@ -34,3 +34,4 @@ RUN redis-server /etc/redis/redis.conf ; php load_model.php 3 6 10
 
 # start  redis server & launch apache  (systemctl not installed on this image )
 CMD redis-server /etc/redis/redis.conf ; apachectl -D  FOREGROUND
+LABEL maintainer="P.M.Campbell" email="pcampbell.edu@gmail.com"

@@ -1,5 +1,5 @@
 FROM python:3-alpine
-MAINTAINER P.M.Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P.M. Campbell" email="pcampbell.edu@gmail.com"
 
 RUN pip install --no-cache-dir Flask
 

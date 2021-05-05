@@ -1,10 +1,11 @@
 ## Dockerfile with explanations 
 ```
 FROM python:3-alpine
-MAINTAINER P.M.Campbell pcampbell.edu@gmail.com
+LABEL maintainer="P.M.Campbell" email="pcampbell.edu@gmail.com"
 ```
 * FROM:  the image to be pulled from the docker hub, you choose a base image that has most of what you want or your start with a basic image (alpine, ubuntu etc.)
-* MAINTAINER: labeling information
+* MAINTAINER: labeling information (deprecated)
+* LABEL: labeling information in <key>=<value> pairs
 ```
 RUN pip install --no-cache-dir Flask
 ```
