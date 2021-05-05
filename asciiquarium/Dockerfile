@@ -1,3 +1,11 @@
+# run asciiquarium in a container
+# Author:   P.M. Campbell
+# Build: 
+#       docker build -t asciiq .
+# Usage: 
+#    	docker run -t asciiq
+# --------------------------------------
+
 # image to download alpine:latest 
 FROM alpine
 
