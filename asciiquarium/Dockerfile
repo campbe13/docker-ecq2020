@@ -4,7 +4,7 @@ FROM alpine
 # maintainer/creater info key=value pairs
 LABEL maintainer="P.M. Campbell"  email="pcampbell.edu@gmail.com" modified="2021-05"
 
-# run on the image, creates new layer
+# install the software, run on the image, creates new layer
 RUN apk add asciiquarium
 
 # runtime

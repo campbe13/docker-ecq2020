@@ -12,18 +12,18 @@ __Note:__ note: If you have newly install docker, on \*nix, in order to run dock
 __Note:__ If you are newly learning docker I suggest you use the command line interface as it may be used anywhere. 
 ## run asciiquarium
 ### _Manually_ run asciiquarium
-Since the following is applied to a running instance it will not be permanent, when you hit CTRL-C to end the container the state is not saved.
+Since the following is applied to a running instance it will not be permanent, when type exit ito end the container the state is not saved.
 1. Download alpine image and launch the container, run a shell `docker run -it alpine /bin/ash`
 1. You should now see the shell prompt `/#` install `apk add asciiquiarium`
 1. if the install worked you can now run it  ` asciiquiarium`
 
-While it is running CTRL-C will kill asciiquiarium, not the container.  After CTRL-C  you will be back to the shell prompt `/#` you can now exit the container.
+While it is running CTRL-C will kill asciiquiarium, not the container.  After CTRL-C  you will be back to the shell prompt `/#` you can now type `exit` to end the container.
 
 ### Create your own asciiquiarium image
 If you want to create your own image to automagically run asciiquarium you can do so by building it.
 This will use the same alpine image + a layer to install asciiquiarium + a command that will be launched at runtime for the container.
 1. Create a Dockerfile, see below & you can copy this [Dockerfle](Dockerfile)
-2. Use the Dockerfile to build your image, we will name it asciiq   `docker build -t asciiq .`  the default file is Dockerfile and the . (dot) says look in the cwd for it.
+2. Use the Dockerfile to build your image, we will name it _asciiq_   `docker build -t asciiq .`  the default file is Dockerfile and the . (dot) says look in the cwd for it.
 2. You will see the asciiq image with `docker images` if the build worked ok
 2. You can now run your image `docker run -t asciiq`  the `-t` option with run says use a pseudo terminal.
 While it is running CTRL-C will kill the container. 
@@ -37,7 +37,7 @@ Until and unless you remove the image, every time you want it you now simply run
 	# maintainer/creater info key=value pairs
 	LABEL maintainer="P.M. Campbell"  email="pcampbell.edu@gmail.com" modified="2021-05"
 
-	# run on the image, creates new layer
+	# install the software, run on the image, creates new layer
 	RUN apk add asciiquarium
 
 	# runtime
