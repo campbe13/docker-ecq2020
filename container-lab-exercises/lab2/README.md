@@ -282,8 +282,8 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
          cd ~/linux_tweet_app
         
     
-2.  Display the contents of the Dockerfile.
-    
+2.  Display the contents of the Dockerfile.  (note the DocumentRoot for nginx is `/usr/share/nginx/html/`)
+    `
          cat Dockerfile
         
     
@@ -376,12 +376,12 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
     
 8.  Once you’ve accessed your website, shut it down and remove it.
     
-         docker container rm --force linux_tweet_app
+         docker  rm --force linux_tweet_app
         
     
     > **Note:** We used the `--force` parameter to remove the running container without shutting it down. This will ungracefully shutdown the container and permanently remove it from the Docker host.
     > 
-    > In a production environment you may want to use `docker container stop` to gracefully stop the container and leave it on the host. You can then use `docker container rm` to permanently remove it.
+    > In a production environment you may want to use `docker stop` to gracefully stop the container and leave it on the host. You can then use `docker container rm` to permanently remove it.
     
 
 Task 3: Modify a running website
