@@ -54,7 +54,7 @@ In this step we’re going to start a new container and tell it to run the `host
 
 1.  Run the following command in your Linux console.
     
-         docker container run alpine hostname
+         docker run alpine hostname
         
     
     The output below shows that the `alpine:latest` image could not be found locally. When this happens, Docker automatically _pulls_ it from Docker Hub.
@@ -73,7 +73,7 @@ In this step we’re going to start a new container and tell it to run the `host
     
     List all containers.
     
-         docker container ls --all
+         docker ps --all
         
     
     Notice that your Alpine Linux container is in the `Exited` state.
@@ -95,7 +95,7 @@ In the next example, we are going to run an Ubuntu Linux container on top of an 
 
 1.  Run a Docker container and access its shell.
     
-         docker container run --interactive --tty --rm ubuntu bash
+         docker run --interactive --tty --rm ubuntu bash
         
     
     In this example, we’re giving Docker three parameters:
@@ -128,7 +128,7 @@ In the next example, we are going to run an Ubuntu Linux container on top of an 
          exit
         
     
-    > **Note:** As we used the `--rm` flag when we started the container, Docker removed the container when it stopped. This means if you run another `docker container ls --all` you won’t see the Ubuntu container.
+    > **Note:** As we used the `--rm` flag when we started the container, Docker removed the container when it stopped. This means if you run another `docker ps --all` you won’t see the Ubuntu container.
     
 4.  For fun, let’s check the version of our host VM.
     
@@ -156,7 +156,7 @@ Background containers are how you’ll run most applications. Here’s a simple 
 
 1.  Run a new MySQL container with the following command.
     
-         docker container run \
+         docker run \
          --detach \
          --name mydb \
          -e MYSQL_ROOT_PASSWORD=my-secret-pw \
@@ -190,7 +190,7 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
 2.  List the running containers.
     
-         docker container ls
+         docker ps
         
     
     Notice your container is running.
@@ -307,14 +307,14 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
          echo $DOCKERID
         
     
-5.  Use the `docker image build` command to create a new Docker image using the instructions in the Dockerfile.
+5.  Use the `docker build` command to create a new Docker image using the instructions in the Dockerfile.
     
     *   `--tag` allows us to give the image a custom name. In this case it’s comprised of our DockerID, the application name, and a version. Having the Docker ID attached to the name will allow us to store it on Docker Hub in a later step
     *   `.` tells Docker to use the current directory as the build context
     
     Be sure to include period (`.`) at the end of the command.
     
-         docker image build --tag $DOCKERID/linux_tweet_app:1.0 .
+         docker build --tag $DOCKERID/linux_tweet_app:1.0 .
         
     
     The output below shows the Docker daemon executing each line in the Dockerfile
@@ -344,11 +344,11 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
          Successfully tagged <your docker ID>/linux_tweet_app:latest
         
     
-6.  Use the `docker container run` command to start a new container from the image you created.
+6.  Use the `docker run` command to start a new container from the image you created.
     
     As this container will be running an NGINX web server, we’ll use the `--publish` flag to publish port 80 inside the container onto port 80 on the host. This will allow traffic coming in to the Docker host on port 80 to be directed to port 80 in the container. The format of the `--publish` flag is `host_port`:`container_port`.
     
-         docker container run \
+         docker run \
          --detach \
          --publish 80:80 \
          --name linux_tweet_app \
@@ -390,7 +390,7 @@ When you use a bind mount, a file or directory on the host machine is mounted in
     
     Be sure to run this command from within the `linux_tweet_app` directory on your Docker host.
     
-         docker container run \
+         docker run \
          --detach \
          --publish 80:80 \
          --name linux_tweet_app \
@@ -430,7 +430,7 @@ To show this, stop the current container and re-run the `1.0` image without a bi
     
 2.  Rerun the current version without a bind mount.
     
-         docker container run \
+         docker run \
          --detach \
          --publish 80:80 \
          --name linux_tweet_app \
@@ -451,18 +451,18 @@ To persist the changes you made to the `index.html` file into the image, you nee
 
 1.  Build a new image and tag it as `2.0`
     
-    Remember that you previously modified the `index.html` file on the Docker hosts local filesystem. This means that running another `docker image build` command will build a new image with the updated `index.html`
+    Remember that you previously modified the `index.html` file on the Docker hosts local filesystem. This means that running another `docker build` command will build a new image with the updated `index.html`
     
     Be sure to include the period (`.`) at the end of the command.
     
-         docker image build --tag $DOCKERID/linux_tweet_app:2.0 .
+         docker build --tag $DOCKERID/linux_tweet_app:2.0 .
         
     
     Notice how fast that built! This is because Docker only modified the portion of the image that changed vs. rebuilding the whole image.
     
 2.  Let’s look at the images on the system.
     
-         docker image ls
+         docker images
         
     
     You now have both versions of the web app on your host.
@@ -481,7 +481,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
 
 1.  Run a new container from the new version of the image.
     
-         docker container run \
+         docker run \
          --detach \
          --publish 80:80 \
          --name linux_tweet_app \
@@ -500,7 +500,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
     
     Notice that this command maps the new container to port 8080 on the host. This is because two containers cannot map to the same port on a single Docker host.
     
-         docker container run \
+         docker run \
          --detach \
          --publish 8080:80 \
          --name old_linux_tweet_app \
@@ -514,7 +514,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
 
 1.  List the images on your Docker host.
     
-         docker image ls -f reference="$DOCKERID/*"
+         docker images -f reference="$DOCKERID/*"
         
     
     You will see that you now have two `linux_tweet_app` images - one tagged as `1.0` and the other as `2.0`.
