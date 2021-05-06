@@ -163,28 +163,29 @@ Background containers are how you’ll run most applications. Here’s a simple 
          mysql:latest
         
     
-    *   `--detach` will run the container in the background.
+    *   `--detach` will run the container in the background.   short form `-d`
     *   `--name` will name it **mydb**.
     *   `-e` will use an environment variable to specify the root password (NOTE: This should never be done in production).
     
     As the MySQL image was not available locally, Docker automatically pulled it from Docker Hub.
     
-         Unable to find image 'mysql:latest' locallylatest: Pulling from library/mysql
-         aa18ad1a0d33: Pull complete
-         fdb8d83dece3: Pull complete
-         75b6ce7b50d3: Pull complete
-         ed1d0a3a64e4: Pull complete
-         8eb36a82c85b: Pull complete
-         41be6f1a1c40: Pull complete
-         0e1b414eac71: Pull complete
-         914c28654a91: Pull complete
-         587693eb988c: Pull complete
-         b183c3585729: Pull complete
-         315e21657aa4: Pull complete
-         Digest: sha256:0dc3dacb751ef46a6647234abdec2d47400f0dfbe77ab490b02bffdae57846ed
+         Unable to find image 'mysql:latest' locally
+         latest: Pulling from library/mysql
+         f7ec5a41d630: Pull complete
+         9444bb562699: Pull complete
+         6a4207b96940: Pull complete
+         181cefd361ce: Pull complete
+         8a2090759d8a: Pull complete
+         15f235e0d7ee: Pull complete
+         d870539cd9db: Pull complete
+         493aaa84617a: Pull complete
+         bfc0e534fc78: Pull complete
+         fae20d253f9d: Pull complete
+         9350664305b3: Pull complete
+         e47da95a5aab: Pull complete
+         Digest: sha256:04ee7141256e83797ea4a84a4d31b1f1bc10111c8d1bc1879d52729ccd19e20a
          Status: Downloaded newer image for mysql:latest
-         41d6157c9f7d1529a6c922acb8167ca66f167119df0fe3d86964db6c0d7ba4e0
-        
+         4a0564ae3a27f118f32ba6e8a7a980b42b0374cfae763e03ac104d5d11da9f4e
     
     As long as the MySQL process is running, Docker will keep the container running in the background.
     
@@ -195,33 +196,40 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
     Notice your container is running.
     
-         CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS            NAMES
-         3f4e8da0caf7        mysql:latest        "docker-entrypoint..."   52 seconds ago      Up 51 seconds       3306/tcp            mydb
-        
+         CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                  NAMES
+         4a0564ae3a27   mysql:latest   "docker-entrypoint.s…"   About a minute ago   Up About a minute   3306/tcp, 33060/tcp    mydb
+         
     
 3.  You can check what’s happening in your containers by using a couple of built-in Docker commands: `docker container logs` and `docker container top`.
     
-         docker container logs mydb
+         docker logs mydb
         
     
     This shows the logs from the MySQL Docker container.
     
-           <output truncated>
-           2017-09-29T16:02:58.605004Z 0 [Note] Executing 'SELECT * FROM INFORMATION_SCHEMA.TABLES;' to get a list of tables using the deprecated partition engine. You may use the startup option '--disable-partition-engine-check' to skip this check.
-           2017-09-29T16:02:58.605026Z 0 [Note] Beginning of list of non-natively partitioned tables
-           2017-09-29T16:02:58.616575Z 0 [Note] End of list of non-natively partitioned tables
-        
-    
+        <output truncated>
+        2021-05-06 14:55:47+00:00 [Note] [Entrypoint]: Temporary server stopped
+
+        2021-05-06 14:55:47+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+
+        2021-05-06T14:55:48.277410Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.24) starting as process 1
+        2021-05-06T14:55:48.289383Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+        2021-05-06T14:55:48.511293Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+        2021-05-06T14:55:48.670132Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+        2021-05-06T14:55:48.790936Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+        2021-05-06T14:55:48.791164Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+        2021-05-06T14:55:48.796071Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+        2021-05-06T14:55:48.823328Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.24'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+
     Let’s look at the processes running inside the container.
     
-           docker container top mydb
+           docker  top mydb
         
     
     You should see the MySQL daemon (`mysqld`) is running in the container.
     
-         PID                 USER                TIME                COMMAND
-         2876                999                 0:00                mysqld
-        
+         UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+         systemd+            527105              527081              0                   10:55               ?                   00:00:01            mysqld
     
     Although MySQL is running, it is isolated within the container because no network ports have been published to the host. Network traffic cannot reach containers from the host unless ports are explicitly published.
     
@@ -235,9 +243,8 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
     You will see the MySQL version number, as well as a handy warning.
     
-         mysql: [Warning] Using a password on the command line interface can be insecure.
-         mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
-        
+          mysql: [Warning] Using a password on the command line interface can be insecure.
+          mysql  Ver 8.0.24 for Linux on x86_64 (MySQL Community Server - GPL)
     
 5.  You can also use `docker exec` to connect to a new shell process inside an already-running container. Executing the command below will give you an interactive shell (`sh`) inside your MySQL container.
     
@@ -350,12 +357,18 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
     
          docker run \
          --detach \
-         --publish 80:80 \
+         --publish 8123:80 \
          --name linux_tweet_app \
          $DOCKERID/linux_tweet_app:1.0
         
     
-    Any external traffic coming into the server on port 80 will now be directed into the container on port 80.
+   In this example, we’re giving Docker three parameters:
+    
+    *   `--detach` swill run the container in the background. short form `-d`
+    *   `--publish  host-port: container-por` will forward the container-port to the host-port.  sort form `-p`
+    *   `--rm` tells Docker to go ahead and remove the container when it’s done executing.
+    *   
+    Any external traffic coming into the server on port 8123 will now be directed into the container on port 80.
     
     In a later step you will see how to map traffic from two different ports - this is necessary when two containers use the same port to communicate since you can only expose the port once on the host.
     
@@ -392,7 +405,7 @@ When you use a bind mount, a file or directory on the host machine is mounted in
     
          docker run \
          --detach \
-         --publish 80:80 \
+         --publish 8123:80 \
          --name linux_tweet_app \
          --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html \
          $DOCKERID/linux_tweet_app:1.0
@@ -432,7 +445,7 @@ To show this, stop the current container and re-run the `1.0` image without a bi
     
          docker run \
          --detach \
-         --publish 80:80 \
+         --publish 8123:80 \
          --name linux_tweet_app \
          $DOCKERID/linux_tweet_app:1.0
         
@@ -483,7 +496,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
     
          docker run \
          --detach \
-         --publish 80:80 \
+         --publish 8123:80 \
          --name linux_tweet_app \
          $DOCKERID/linux_tweet_app:2.0
         
