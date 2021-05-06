@@ -225,9 +225,9 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
     Although MySQL is running, it is isolated within the container because no network ports have been published to the host. Network traffic cannot reach containers from the host unless ports are explicitly published.
     
-4.  List the MySQL version using `docker container exec`.
+4.  List the MySQL version using `docker exec`.
     
-    `docker container exec` allows you to run a command inside a container. In this example, we’ll use `docker container exec` to run the command-line equivalent of `mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version` inside our MySQL container.
+    `docker exec` allows you to run a command inside a container. In this example, we’ll use `docker exec` to run the command-line equivalent of `mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version` inside our MySQL container.
     
          docker exec -it mydb \
          mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
@@ -239,7 +239,7 @@ Background containers are how you’ll run most applications. Here’s a simple 
          mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
         
     
-5.  You can also use `docker container exec` to connect to a new shell process inside an already-running container. Executing the command below will give you an interactive shell (`sh`) inside your MySQL container.
+5.  You can also use `docker exec` to connect to a new shell process inside an already-running container. Executing the command below will give you an interactive shell (`sh`) inside your MySQL container.
     
          docker exec -it mydb sh
         
