@@ -1,7 +1,6 @@
 Docker for Beginners - Linux
 ============================
 
-This lab Aug 1, 2019 • @mikegcoleman
 
 In this lab, we will look at some basic Docker commands and a simple build-ship-run workflow. We’ll start by running some simple containers, then we’ll use a Dockerfile to build a custom app. Finally, we’ll look at how to use bind mounts to modify a running container as you might if you were actively developing using Docker.
 
@@ -16,7 +15,8 @@ In this lab, we will look at some basic Docker commands and a simple build-ship-
 > *   [Task 2: Package and run a custom app using Docker](#Task_2)
 > *   [Task 3: Modify a Running Website](#Task_3)
 
-Note: This lab is originally from [play with docker](https://training.play-with-docker.com/beginner-linux/) where you can use the console in a browser. I modified it for my students. 
+Note: This lab is originally from [play with docker](https://training.play-with-docker.com/beginner-linux/) where you can use the console in a browser. I modified it for my students.   Aug 1, 2019 • @mikegcoleman
+
 
 Task 0: Prerequisites
 ---------------------
