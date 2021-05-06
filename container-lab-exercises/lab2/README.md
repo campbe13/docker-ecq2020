@@ -255,7 +255,11 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
 6.  Let’s check the version number by running the same command again, only this time from within the new shell session in the container.
     
-         mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+         mysql --user=root --password=$MYSQL_ROOT_PASSWORD -h 127.0.0.1 -P 3306 --version
+    
+    You can use mysql to create your database interactively, (here you will be prompted for the password)
+    
+         mysql -u root -p mydb  -h 127.0.0.1  -P 3306
         
     
     Notice the output is the same as before.
