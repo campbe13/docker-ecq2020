@@ -15,7 +15,7 @@ In this lab, we will look at some basic Docker commands and a simple build-ship-
 > *   [Task 2: Package and run a custom app using Docker](#Task_2)
 > *   [Task 3: Modify a Running Website](#Task_3)
 
-Note: This lab is originally from [play with docker](https://training.play-with-docker.com/beginner-linux/) where you can use the console in a browser. I modified it for my students.   Aug 1, 2019 • @mikegcoleman
+Note: This lab is originally from [play with docker](https://training.play-with-docker.com/beginner-linux/) where you can use the console in a browser. I modified it for my students.   Original: Aug 1, 2019 • @mikegcoleman
 
 
 Task 0: Prerequisites
