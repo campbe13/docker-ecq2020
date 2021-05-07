@@ -8,6 +8,7 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
 ## TL;DR
+You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo)  PMC: video needs to be redone
 ### To build this container yourself  (general info)
 1.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
     * Dockerfile reference https://docs.docker.com/engine/reference/builder/
@@ -54,8 +55,6 @@ It is available as a public image in my [docker hub account](https://hub.docker.
     * `-d` detaches the container, if you omit you will see  whatever the container logs
 3. load a browser to access the app `http://localhost:<hostport>` 
 4. if you want to access the app from another host, you must open your firewall for port _hostport_  then you can access it via or `http://ip.address.of.host:<hostport>` or `http://domain.name.of.host:<hostport>`
-
-## docker registry image repo
 
 ### running on cloud -- will update soon
 You may be able to pull from docker hub with Azure, still to be tested others not sure, each cloud provider has it's own registry if you want to use any of those you will have to set up an account & use the Dockerfile & app to create your own image in the cloud's own registry. 
