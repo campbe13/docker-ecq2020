@@ -8,7 +8,7 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
 ## TL;DR
-You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo)  PMC: video needs to be redone
+You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo)  PMC: video needs to be redone, it's a bit shakey at the end
 ### To build this container yourself  (general info)
 1.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
     * Dockerfile reference https://docs.docker.com/engine/reference/builder/
