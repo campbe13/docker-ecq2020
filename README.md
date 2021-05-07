@@ -28,7 +28,25 @@ from https://github.com/docker/labs
 * Amongst others, see  [docker command reference](docker-usage-overview/DOCKERCMDS.md) for some notes on using docker commands
 * See [docker-compose command reference](docker-usage-overview/DOCKERCOMPOSECMDS.md)  for some notes on using docker-compose commands
 
-## containers
+# containers 2021
+Used in teaching & videos for 420-440, in no particular order 
+## [[asciiquarium]]
+* base image alpine
+* install & launch asciiquarium
+* youtube videos 
+* tested on/runs on
+    * ubuntu 20.04
+    * Windows 10 pro
+## [[react-weather-app]]
+* base image alpine
+* install lighthttpd
+* copy index.html & react app
+* web app needs port 80 forwarded
+* tested on/runs on
+    * ubuntu 20.04
+    * Windows 10 pro
+## [[container-lab-exercises]] Not a container  lab exercises
+# containers 2020
 The following are in order of least to more complex
 
 ## [whalesay](whalesay)
