@@ -1,4 +1,4 @@
-# mysql & docker platform
+# mysql & docker containers
 
 As with other dbs it is very easy to start up an instance of a mysql database without the need for installing the database engine software itself, no issues with versions and Windows compatibility amongst other things. 
 
