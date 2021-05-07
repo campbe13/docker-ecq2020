@@ -2,7 +2,7 @@
 
 1. [run](#run) `docker run --name mysql-container -d -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=secret-password -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=secret -p 3306:3306 mysql:latest`
 2. [watch logs](#logs) `docker logs mysql-container`
-3. [access](#access) `mysql -u root -p -h 192.168.0.117`
+3. [access](#access) `mysql -u root -p -h 127.0.0.1`
 ## <a name="run">run the db container</a>
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker run --name mysql-container -d -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=secret-password -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=secret -p 3306:3306 mysql:latest
@@ -50,7 +50,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 ```
 ## <a name="access">access the db</a> on the container
 ```
-tricia@acerubuntu1804:~/ecq/docker-ecq2020$ mysql -u root -p -h 192.168.0.117
+tricia@acerubuntu1804:~/ecq/docker-ecq2020$ mysql -u root -p -h 127.0.0.1
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 8
