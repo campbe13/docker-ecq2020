@@ -17,6 +17,23 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
     * `-p 8888:80` forward port 80 on the container to port 8888 on the current host
     * using port 8888 as an example, choose a high port (if you want non localhost access open the port on your firewall)
 4. access the app http://localhost:8888/  (if you have opened the port you can use ip/hostname instead of localhost
+#### Dockerfile for this app
+
+      # Base image
+      FROM alpine
+      # Adding key value pairs to label the image
+      LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-05-05"
+      # install lighthttpd web server 
+      RUN apk add lighttpd
+      # set current directory, this is the DocumentRoot for lighthttpd, where the content goes
+      WORKDIR /var/www/localhost/htdocs/
+      # copy my app files (in app/) from the host  to the container
+      COPY app/* ./
+      # expose the website port on the container
+      EXPOSE 80
+      # set the image when the container is run start the web server  
+      ENTRYPOINT ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+   
 ### To make this app available on docker hub
 1. sign up for an account if you do not have one on [docker hub](https://hub.docker.com) 
 2. sign in on [docker hub](https://hub.docker.com) 
@@ -30,9 +47,9 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 ### To run this app from the docker hub image
 It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
 
-2. there is a script [run.sh](run.sh) that you can use or  `docker run -d -p <hostport>:80 tricia/weatherapp` 
+1. there is a script [run.sh](run.sh) that you can use or  `docker run -d -p <hostport>:80 tricia/weatherapp` 
     * 80 is the container port and _hostport_ is the host that is running docker, port forwarding from container 80 to host _hostport_ is done by docker, choose a high port 
-    * `d` detaches the container, if you omit you will see  whatever the container logs
+    * `-d` detaches the container, if you omit you will see  whatever the container logs
 3. load a browser to access the app `localhost:_hostport_` or `ip.address.of.host:_hostport_`
 4. if you want to access the app from another host, you must open your firewall for port _hostport_
 
