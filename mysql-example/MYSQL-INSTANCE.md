@@ -10,7 +10,7 @@ This illustrates running a mysql container without the need for a Dockerfile or 
 3. monitor: netstat -plan
 3. monitor: iptables -nl
 3. monitor: iptables -nl -t nat
-3. [connect](#connect): mysql -p your.ip.addr 
+3. [connect](#connect): mysql -p 127.0.0.1 
 
 ## refs
 * https://docs.docker.com/engine/reference/commandline/run/
@@ -186,12 +186,11 @@ DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:3306 to:17
 ## <a name="connect">connect</a> to the running container database
 populate
 ```
-tricia@acerubuntu1804:~/ecq/docker-ecq2020/docker-usage-overview$ mysql -u root -p  -h 192.168.0.117 <quickdb.sql
+tricia@acerubuntu1804:~/ecq/docker-ecq2020/docker-usage-overview$ mysql -u root -p  -h 127.0.0.1 <quickdb.sql
 ```
 access
 ```
-tricia@acerubuntu1804:~/ecq/docker-ecq2020/docker-usage-overview$ mysql -u root -p  -h 192.168.0.117
-Enter password:
+tricia@acerubuntu1804:~/ecq/docker-ecq2020/docker-usage-overview$ mysql -u root -p  -h 127.0.0.1
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 10
 Server version: 8.0.19 MySQL Community Server - GPL
