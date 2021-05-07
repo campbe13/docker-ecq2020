@@ -30,14 +30,14 @@ from https://github.com/docker/labs
 
 # containers 2021
 Used in teaching & videos for 420-440, in no particular order 
-## [[asciiquarium]]
+## [asciiquarium]
 * base image alpine
 * install & launch asciiquarium
 * youtube videos 
 * tested on/runs on
     * ubuntu 20.04
     * Windows 10 pro
-## [[react-weather-app]]
+## [react-weather-app]
 * base image alpine
 * install lighthttpd
 * copy index.html & react app
@@ -45,7 +45,7 @@ Used in teaching & videos for 420-440, in no particular order
 * tested on/runs on
     * ubuntu 20.04
     * Windows 10 pro
-## [[container-lab-exercises]] Not a container  lab exercises
+## [container-lab-exercises] Not a container  lab exercises
 # containers 2020
 The following are in order of least to more complex
 
