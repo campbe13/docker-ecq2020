@@ -9,7 +9,7 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 
 ## TL;DR
 ### To build this container yourself  (general info)
-2.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
+1.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
     * Dockerfile reference https://docs.docker.com/engine/reference/builder/
 3.  build the image, run `docker build -t **<containerimagename>** .` (tweak Dockerfile until it works!)
 4.  run the container, run `docker run -d -p 8888:80 <containerimagename>` 
@@ -47,11 +47,13 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 ### To run this app from the docker hub image
 It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
 
+`docker run -d -p <hostport>:80 tricia/weatherapp` 
+
 1. there is a script [run.sh](run.sh) that you can use or  `docker run -d -p <hostport>:80 tricia/weatherapp` 
     * 80 is the container port and _hostport_ is the host that is running docker, port forwarding from container 80 to host _hostport_ is done by docker, choose a high port 
     * `-d` detaches the container, if you omit you will see  whatever the container logs
-3. load a browser to access the app `localhost:_hostport_` or `ip.address.of.host:_hostport_`
-4. if you want to access the app from another host, you must open your firewall for port _hostport_
+3. load a browser to access the app `http://localhost:<hostport>` 
+4. if you want to access the app from another host, you must open your firewall for port _hostport_  then you can access it via or `http://ip.address.of.host:<hostport>` or `http://domain.name.of.host:<hostport>`
 
 ## docker registry image repo
 
