@@ -417,7 +417,7 @@ When you use a bind mount, a file or directory on the host machine is mounted in
     
     > Remember from the Dockerfile, `usr/share/nginx/html` is where the html files are stored for the web app.
     
-2.  The [website](/) should be running.
+2.  The http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running.
     
 
 ### Modify the running website
@@ -431,7 +431,7 @@ Bind mounts mean that any changes made to the local file system are immediately 
          cp index-new.html index.html
         
     
-2.  Go to the running [website](/) and **refresh the page**. Notice that the site has changed.
+2.  Go to the running http://127.0.0.1:8123 or (chosen port) and **refresh the page**. Notice that the site has changed.
     
     > If you are comfortable with `vi` you can use it to load the local `index.html` file and make additional changes. Those too would be reflected when you reload the webpage. If you are really adventurous, why not try using `exec` to access the running container and modify the files stored there.
     
@@ -454,7 +454,7 @@ To show this, stop the current container and re-run the `1.0` image without a bi
          $DOCKERID/linux_tweet_app:1.0
         
     
-3.  Notice the [website](/) is back to the original version.
+3.  Notice the http://127.0.0.1:8123 (or chosen port) is back to the original version.
     
 4.  Stop and remove the current container
     
@@ -505,13 +505,13 @@ To persist the changes you made to the `index.html` file into the image, you nee
          $DOCKERID/linux_tweet_app:2.0
         
     
-2.  Check the new version of the [website](/) (**You may need to refresh your browser to get the new version to load**).
+2.  Check the new version of the website use your url http://127.0.0.1:8123 (or chosen port) (**You may need to refresh your browser to get the new version to load**).
     
     The web page will have an orange background.
     
     We can run both versions side by side. The only thing we need to be aware of is that we cannot have two containers using port 80 on the same host.
     
-    As we’re already using port 80 for the container running from the `2.0` version of the image, we will start a new container and publish it on port 8080. Additionally, we need to give our container a unique name (`old_linux_tweet_app`)
+    As we’re already using port 8123 for the container running from the `2.0` version of the image, we will start a new container and publish it on port 8080. Additionally, we need to give our container a unique name (`old_linux_tweet_app`)
     
 3.  Run another new container, this time from the old version of the image.
     
@@ -524,7 +524,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
          $DOCKERID/linux_tweet_app:1.0
         
     
-4.  View the old version of the [website](/).
+4.  View the old version of the http://127.0.0.1:8080 or (chosen port)
     
 
 ### Push your images to Docker Hub
