@@ -376,7 +376,7 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
     
     In a later step you will see how to map traffic from two different ports - this is necessary when two containers use the same port to communicate since you can only expose the port once on the host.
     
-7.  [Click here to load the website](/) which should be running.
+7.  You can load the website with http://127.0.0.1:8123 (unless you used another port) which should be running.
     
 8.  Once you’ve accessed your website, shut it down and remove it.
     
@@ -524,7 +524,7 @@ To persist the changes you made to the `index.html` file into the image, you nee
          $DOCKERID/linux_tweet_app:1.0
         
     
-4.  View the old version of the http://127.0.0.1:8080 or (chosen port)
+4.  View the old version of the website via  http://127.0.0.1:8080 or (chosen port)
     
 
 ### Push your images to Docker Hub
