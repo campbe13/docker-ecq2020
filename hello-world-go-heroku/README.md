@@ -18,7 +18,7 @@ $  docker build -t tricia/goheroku
 $ docker run  -d -it -p 8888:8080 tricia/goheroku -name goheroku
 ```
 # deploy using heroku cli (already installed) 
-This assumes that you have aready [installed heroku cli](https://docs.docker.com/install/).
+This assumes that you have aready [installed heroku cli](https://devcenter.heroku.com/articles/heroku-cli).
 
 1. `heroku login`	login to heroku 
 1. `heroku create`	create an heroku app
