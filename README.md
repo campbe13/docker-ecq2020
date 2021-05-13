@@ -260,3 +260,4 @@ Trying to use http://nodeschool.io/  course/workshops in containers.
 ## [shakespeare-ec on Azure](azure-deploy-shakespeare-ec)
 work in progress 2020-04-16
 porting  [shakespeare-ec](#shakespeare-ec) to azure registry & running on azure
+

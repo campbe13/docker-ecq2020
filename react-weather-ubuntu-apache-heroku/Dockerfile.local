@@ -1,0 +1,22 @@
+# dockerfile for apache  host javascript example code 
+# 2021-05-12
+# BUILD   docker build -t wappua -f Dockerfile.local 
+# RUN     docker run -d -p <host port>:80  -t wappua  
+# USE     http://localhost:<host port>
+
+
+# for local testing, see Dockerfile for heroku 
+
+
+FROM httpd
+
+LABEL maintainer="P Campbell" email="pcampbell.edu@gmail.com" modified="2020-05-05"
+
+ 
+# DocumentRoot for apache2
+WORKDIR /usr/local/apache2/htdocs/
+
+
+# install app from host to container
+COPY app/* ./
+
