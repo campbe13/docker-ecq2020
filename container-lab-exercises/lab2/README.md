@@ -137,12 +137,11 @@ In the next example, we are going to run an Ubuntu Linux container on top of an 
     
     You should see:
     
-         Welcome to Alpine Linux 3.13
-         Kernel \r on an \m (\l)
+         Ubuntu 20.04.2 LTS \n \l
         
     
 
-Notice that our host VM is running Alpine Linux, yet we were able to run an Ubuntu container. As previously mentioned, the distribution of Linux inside the container does not need to match the distribution of Linux running on the Docker host.
+Notice that our host VM is running Ubuntu and we are running Ubuntu container. As previously mentioned, the distribution of Linux inside the container does not need to match the distribution of Linux running on the Docker host.
 
 However, Linux containers require the Docker host to be running a Linux kernel. For example, Linux containers cannot run directly on Windows Docker hosts. The same is true of Windows containers - they need to run on a Docker host with a Windows kernel.
 
