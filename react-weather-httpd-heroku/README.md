@@ -50,18 +50,22 @@ It is available as a public image in my [docker hub account](https://hub.docker.
 3. load a browser to access the app `http://localhost:<hostport>` 
 4. if you want to access the app from another host, you must open your firewall for port _hostport_  then you can access it via or `http://ip.address.of.host:<hostport>` or `http://domain.name.of.host:<hostport>`
 
-### running on heroku
+### To deploy to  heroku (5 free apps)
 1. sign up for an account on [heroku](https://heroku.com) if you have not already done so
 2. install  the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 3. login with your heroku credentials `heroku login -i`
 4. Due to the way heroku sets up apps you must use  the PORT env var in the Listen directive `Listen ${PORT}`  
-this can be done by copying [my-httpd.conf](my-httpd.conf) onto your image, so the last line of the Dockerfile should be `COPY my-httpd.conf /usr/local/apache2/conf/httpd.conf`
+this can be done by copying [my-httpd.conf](my-httpd.conf) onto your image, so the last line of the Dockerfile must be
+	`COPY my-httpd.conf /usr/local/apache2/conf/httpd.conf`
 5. show the app `heroku apps` and `heroku apps:info -a <your app name>`
-5. enable the app `heroku labs:enable --app <your app name> runtime-new-layer-extract
-5. you may need to authenticate to the heroku registry  `heroku cwcontainer:login`
-5. push to  the heroku registry, it will use your dockerfile to build the app image again  `heroku container:push web --app <your app name>`
-5. release the app  `heroku container:release web --app <your app name>`
+5. enable the app `heroku labs:enable --app <your app name> runtime-new-layer-extract`
+5. you may need to authenticate to the heroku registry  `heroku container:login`
+5. push to  the heroku registry, it will use your dockerfile to build the app image again
+	`heroku container:push web --app <your app name>`
+5. release the app 
+	`heroku container:release web --app <your app name>`
 5. test the app  `https://<your app name>.herokuapp.com`
-Note even though you are running the app on an internal port defined by the heroku container engine it is port forwarded to 443 externally and uses the *.herokuapp.com cert.  
+
+_Note_ even though you are running the app on an internal port defined by the heroku container engine it is port forwarded to 443 externally and uses the *.herokuapp.com cert so traffic is encrypted.  
 
 
