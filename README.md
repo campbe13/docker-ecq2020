@@ -31,6 +31,7 @@ from https://github.com/docker/labs
 # containers 2021
 Used in teaching & videos for 420-440, in no particular order 
 ## [asciiquarium](asciiquarium)
+console app
 * base image alpine
 * install & launch asciiquarium
 * youtube videos 
@@ -38,7 +39,7 @@ Used in teaching & videos for 420-440, in no particular order
     * ubuntu 20.04
     * Windows 10 pro
 ## [react-weather-app](react-weather-app)
-
+web app
 * base image alpine
 * install lighthttpd
 * copy index.html & react app
@@ -49,8 +50,9 @@ Used in teaching & videos for 420-440, in no particular order
 ## Not a container [lab exercises](container-lab-exercises) 
 # containers 2020
 The following are in order of least to more complex
-
 ## [whalesay](whalesay)
+console app
+
 working, in my hub.docker.com registry
 
 * uses docker/whalesay image
@@ -63,6 +65,7 @@ working, in my hub.docker.com registry
     * Azure registry used Dockerfile to add to Azure Container Registry (ACR) and run
 
 ## [javasample](simple-java) 
+console app
 working, in my hub.docker.com registry
 
 * uses openjdk 11 Oracle image
@@ -71,6 +74,8 @@ working, in my hub.docker.com registry
     * ubuntu 18.04 (created & run)
     * Fedora 31 (run from docker hub)
 ## [xeyes](xeyes) 
+console app requires X11 forwarding if run remotely
+
 working, not in docker hub
 
 * uses alpine latest
@@ -87,6 +92,8 @@ __Note:__  Uses X11 so when running the image config needs the following, if you
 -v ${XAUTH}:/root/.Xauthority # volume
 ```
 ## [firefox](firefox)
+console app requires X11 forwarding if run remotely
+
 working, not in docker hub
 
 * poc X11 app see also xeyes
@@ -97,6 +104,8 @@ working, not in docker hub
     * ubuntu 18.04 (created & run)
 
 ## [own-fortune](own-fortune)
+console app
+
 working, not in docker hub
 
 * uses alpine latest
@@ -105,6 +114,8 @@ working, not in docker hub
     * ubuntu 18.04 (created & run)
 
 ## [flaskpy](flaskpy) 
+web app
+
 working, in my hub.docker.com registry
 
 * uses python image
@@ -117,6 +128,8 @@ working, in my hub.docker.com registry
     * Windows 10 @ Dawson ( run from docker hub)
 
 ## [shakespeare-jm](shakespeare-jm)
+web app
+
 working, in my hub.docker.com registry
 
 * TODO shakespeare-jm deploy to Azure,  & document it 
@@ -134,6 +147,8 @@ working, in my hub.docker.com registry
 * built and tested using scripts
 
 ## [shakespeare-ec](shakespeare-ec)
+web app 
+
 working, in my hub.docker.com registry
 
 * uses python apache image
@@ -150,6 +165,8 @@ working, in my hub.docker.com registry
 * built and tested using `make`
 
 ## [javascript-mf](js-mf)
+web app 
+
 working, in my hub.docker.com registry
 
 * uses alpine base image
@@ -163,6 +180,8 @@ working, in my hub.docker.com registry
 * built and tested using `make`
 
 ## [hello-world-go-heroku](hello-world-go-heroku)
+web app 
+
 working 2020-02-27
 
 * simple go website, deployed to heroku using heroku cli
@@ -172,10 +191,12 @@ working 2020-02-27
     * Heroku (released from heroku registry)
 
 ## [stickynotes-jb](stickynotes-jb)
+web app
+
 working, only the php image is in in my hub.docker.com registry, the others are base images + config
  
 * TODO stickynotes-jb port to cloud & upload image to registry, test on fedora, Azure ??
-* TODO tickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
+* TODO stickynotes-jb  deploy to heroku, see [shakespeare-jm](shakespeare-jm) & document better
 
 * port sticky notes app from PHP 2019, thanks to Jeff Boisvert, into a container
 * containers using docker-compose & yaml
@@ -190,6 +211,8 @@ working, only the php image is in in my hub.docker.com registry, the others are 
     * ubuntu 18.04 (created & run)
     * Centos 7.x (korra, pulled repo & used docker-compose to build & run)
 ## [digital ocean node.js demo app](digocean-nodejs)
+web app 
+
 working, not deployed to hub.docker.com
 
 * simple node.js app
@@ -199,6 +222,8 @@ working, not deployed to hub.docker.com
     * ubuntu 18.04 (created & run)
 
 ## [springboot-java](springboot-java)
+web app 
+
 working, not deployed to hub docker com
 
 * simple springboot app, compiled using maven
@@ -208,6 +233,8 @@ working, not deployed to hub docker com
     * ubuntu 18.04 (created & run)
     * Windows 10 (run from docker hub)
 ## [pandocker](pandocker)
+console app, requires config file
+
 working, deployed to docker hub
 
 * pandoc core image, based on alpine
@@ -217,6 +244,8 @@ working, deployed to docker hub
     * Fedora 31 (run from docker hub)
     * Windows 10 Pro 64 bit  (run from docker hub)
 ## [mysql](mysql-example)
+service app
+
 working, using base image pulled from docker hub 
 
 * mysql base image
@@ -225,6 +254,8 @@ working, using base image pulled from docker hub
     * Fedora 31 (run from docker hub)
     * todo run mysql image on windows
 ## [postgres](postgres-example)
+service app 
+
 work in progress 
 testing using postgres, was having problems installing it
 * postgres 9.3 installed on ubuntu base (working)
