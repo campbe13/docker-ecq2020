@@ -89,9 +89,9 @@ Containers which do one task and then exit can be very useful. You could build a
 
 ### Run an interactive Ubuntu container
 
-You can run a container based on a different version of Linux than is running on your Docker host.
+In the previous step you ran a container based on a different version of Linux (Alpine) than is running on your Docker host (Ubuntu.)
 
-In the next example, we are going to run an Ubuntu Linux container on top of an Alpine Linux Docker host (Play With Docker uses Alpine Linux for its nodes).
+In the next example, we are going to run an Ubuntu Linux container.
 
 1.  Run a Docker container and access its shell.
     
