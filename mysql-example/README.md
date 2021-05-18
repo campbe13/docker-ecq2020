@@ -10,8 +10,7 @@ For full reference see [mysql on docker hub](https://hub.docker.com/_/mysql)
 
 
 ## example to populate a db on startup
-See the (docker-compose.yaml](populate.a.db/docker-compose.yaml)
-and the rest of the [directory](populate.a.db)
+See the [directory](populate.a.db)
 
 * uses docker-compose & yaml
 * uses bind mount volumes to map
@@ -19,5 +18,3 @@ and the rest of the [directory](populate.a.db)
   * the directory containing the sql script to create & populate the database
  
 Create & populate on startup by using  *.sql ( or *.sh or *.sh.gz) to `/docker-entrypoint-initdb.d/` 
-## todo example use mysql with volume /logs on local host 
-
