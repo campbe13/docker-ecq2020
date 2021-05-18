@@ -5,9 +5,24 @@
 3. [access](#access) `mysql -u root -p -h 127.0.0.1`
 ## <a name="run">run the db container</a>
 ```
-tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker run --name mysql-container -d -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=secret-password -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=secret -p 3306:3306 mysql:latest
-77db4c0a000513098750f2952a28d74fcefdc26b0f4209122fb7156b51d0441b
-```
+tricia@teacher:~$ docker run --name mysql-container -d -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=secret-password -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=secret -p 3306:3306 mysql:latest
+Unable to find image 'mysql:latest' locally
+latest: Pulling from library/mysql
+69692152171a: Already exists
+1651b0be3df3: Pull complete
+951da7386bc8: Pull complete
+0f86c95aa242: Pull complete
+37ba2d8bd4fe: Pull complete
+6d278bb05e94: Pull complete
+497efbd93a3e: Pull complete
+f7fddf10c2c2: Pull complete
+16415d159dfb: Pull complete
+0e530ffc6b73: Pull complete
+b0a4a1a77178: Pull complete
+cd90f92aa9ef: Pull complete
+Digest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969
+Status: Downloaded newer image for mysql:latest
+c8fd508b4719e53ff1c895348b0eba6ab1d258eb91c6bf7b0439171169d4f613```
 ## <a name="logs">watch the logs</a>, there is a slight delay for access in mysql startup
 ```
 tricia@acerubuntu1804:~/ecq/docker-ecq2020$ docker logs mysql-container -f                      2020-03-10 22:23:15+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.
