@@ -26,8 +26,7 @@ b0a4a1a77178: Pull complete
 cd90f92aa9ef: Pull complete
 Digest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969
 Status: Downloaded newer image for mysql:latest
-c8fd508b4719e53ff1c895348b0eba6ab1d258eb91c6bf7b0439171169d4f613```
-
+c8fd508b4719e53ff1c895348b0eba6ab1d258eb91c6bf7b0439171169d4f613
 ```
 ## <a name="ps">show the docker process </a>
 ```
