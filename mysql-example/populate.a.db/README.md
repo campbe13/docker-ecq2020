@@ -23,3 +23,6 @@ When you run this if the database exsists already it will not run what is in you
 this is so it does not clobber what you have created, a safety catch.
 
 So if you are recreating the database or changing the schema, you must delete the contents of the database mapping in `./testdb`
+## References
+* [docker-compose](https://docs.docker.com/compose/reference/)
+* [docker-compose.yaml](https://docs.docker.com/compose/compose-file/compose-file-v3/)
