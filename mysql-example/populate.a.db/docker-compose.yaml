@@ -10,7 +10,7 @@ services:
     command: --innodb_use_native_aio=0
 
     environment:
-     MYSQL_DATABASE: petss
+#     MYSQL_DATABASE: petss
      MYSQL_USER: petsuser
      MYSQL_PASSWORD: secret
      MYSQL_ROOT_PASSWORD: secrettoo

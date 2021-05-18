@@ -9,6 +9,15 @@ For full reference see [mysql on docker hub](https://hub.docker.com/_/mysql)
 * [running a db from docker hub](MYSQL-INSTANCE.md) runtime output, see also the [launch script](standalone-mysql.sh) and the [sql script](quickdb.sql) to populate the db
 
 
+## example to populate a db on startup
+See the (docker-compose.yaml](populate.a.db/docker-compose.yaml)
+and the rest of the [directory](populate.a.db)
+
+* uses docker-compose & yaml
+* uses bind mount volumes to map
+  * the database directory 
+  * the directory containing the sql script to create & populate the database
+ 
+Create & populate on startup by using  *.sql ( or *.sh or *.sh.gz) to `/docker-entrypoint-initdb.d/` 
 ## todo example use mysql with volume /logs on local host 
-## todo example populate db by copying *.sql or *.sh to `/docker-entrypoint-initdb.d/` 
 
