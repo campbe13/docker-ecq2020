@@ -11,7 +11,7 @@ State/database persistent is maintained through a database on the host directory
 ### managing the container runtime
 * run `docker-compose up` or `docker-compose up -d`
 * look at the logs `docker logs`  (will be on screen if -d omitted in up)
-* stop `docker stop`
+* stop `docker-compose stop`
 
 ### Bind mapping for the container (host:container)
 Host directory | Container directory 
