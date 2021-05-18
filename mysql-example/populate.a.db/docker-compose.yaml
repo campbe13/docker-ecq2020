@@ -1,0 +1,21 @@
+# compose file format version 
+# (see https://docs.docker.com/compose/compose-file/) 
+version: "3.7"
+
+services:
+  db:
+    image: mysql:latest
+# needed for bug crashing w v 5.7.22 & 5.7.29, problems w 8 (latest
+# ref https://stackoverflow.com/questions/48239668/fails-to-initialize-mysql-database-on-windows-10
+    command: --innodb_use_native_aio=0
+
+    environment:
+     MYSQL_DATABASE: petss
+     MYSQL_USER: petsuser
+     MYSQL_PASSWORD: secret
+     MYSQL_ROOT_PASSWORD: secrettoo
+    volumes:
+      - ./dbscript:/docker-entrypoint-initdb.d/
+      - ./testdb:/var/lib/mysql
+    ports:
+        - "3306:3306"
