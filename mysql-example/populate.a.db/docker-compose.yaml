@@ -1,5 +1,3 @@
-# compose file format version 
-# (see https://docs.docker.com/compose/compose-file/) 
 version: "3.7"
 
 services:
