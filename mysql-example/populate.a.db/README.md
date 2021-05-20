@@ -3,6 +3,9 @@
 You must [install docker-compose](https://docs.docker.com/compose/install/) to use this.
 
 See the [docker-compose.yaml](docker-compose.yaml) it is explained below
+
+See also the [Youtube video demo](https://youtu.be/3LUOxIffRAE)
+
 ## Contents
 The sql script used to create and populate the database  is mapped from the host to the container `./dbscript` see Note below
 
