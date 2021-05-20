@@ -26,3 +26,5 @@ So if you are recreating the database or changing the schema, you must delete th
 ## References
 * [docker-compose](https://docs.docker.com/compose/reference/)
 * [docker-compose.yaml](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+* [install docker-compose](https://docs.docker.com/compose/install/)
+* [volumes](https://docs.docker.com/storage/volumes/)
