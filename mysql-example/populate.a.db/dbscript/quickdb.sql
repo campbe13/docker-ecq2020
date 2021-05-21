@@ -1,17 +1,18 @@
 # script to create and populate a simple db
 
-drop database if exists pets;
-create database pets;
+# db created via container env vars
+# drop database if exists pets;
+# create database pets;
 use pets;
 
-create table dogs (name varchar(20), breed varchar(25), birth DATE);
+create table dogs (name varchar(20), breed varchar(25), birth DATE, rabies varchar(1));
 
 #show tables;
 #describe dogs;
 
-insert into dogs values ("Mr. Floofy", "Shih Tzu", "2016-05-05") ;
-insert into dogs values ("Walter", "Labradoodle", "2014-10-25") ;
-insert into dogs values ("Freddy", "Wheaton Terrier & Poodle", "2018-10-31") ;
+insert into dogs values ("Mr. Floofy", "Shih Tzu", "2016-05-05", "y") ;
+insert into dogs values ("Walter", "Labradoodle", "2014-10-25", "y") ;
+insert into dogs values ("Freddy", "Wheaton Terrier & Poodle", "2018-10-31", "n") ;
 
 create table lizards (name varchar(20), type varchar(25), birth DATE);
 
@@ -22,4 +23,3 @@ create table fish (name varchar(20), type varchar(25), species_family varchar(15
 insert into fish values ("munchy", "Piranha", "Serrasalmidae", 5) ;
 insert into fish values ("stripey", "Zebrafisih", "Danio rerio",   20) ;
 
-#select * from dogs;
