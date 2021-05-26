@@ -32,7 +32,7 @@ See the supporting [Dockerfile](Dockerfile) and the  [Makefile](Makefile)
 ## TL;DR
 ### To run this app  windows
 1. install docker https://docs.docker.com/install/ 
-    * on windows Drives are not automatically shared with Docker Desktop so you must change the  settings before you start the container. see [WINHOWTO.md#one-time-prep]
+    * on windows Drives are not automatically shared with Docker Desktop so you must change the  settings before you start the container. see [Windows one time prep](WINHOWTO.md#one-time-prep)
 2. cd to the directory that holds your doc to convert, & config.pandoc if you're using it.
 3. `docker run --rm --volume "%cd%:/data" -ti dawsoncollege2020/pandocker`  
 
