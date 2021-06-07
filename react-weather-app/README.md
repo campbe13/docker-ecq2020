@@ -13,7 +13,7 @@ You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo
 1.  create a directory `app/` put your own app (index.html & website content javascript or simple html) into that directory
 2.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
     * Dockerfile reference https://docs.docker.com/engine/reference/builder/
-3.  build the image, run `docker build -t **<containerimagename>** .` (tweak Dockerfile until it works!)
+3.  build the image, run `docker build -t <containerimagename> .` (tweak Dockerfile until it works!)
 4.  run the container, run `docker run -d -p 8888:80 <containerimagename>` 
     * `-d` detach the container app from the console, run the app in the background
     * `-p 8888:80` forward port 80 on the container to port 8888 on the current host
