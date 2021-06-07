@@ -49,9 +49,10 @@ You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo
 ### To run this app from the docker hub image
 It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
 
-`docker run -d -p <hostport>:80 tricia/weatherapp` 
+My app in docker hub `docker run -d -p <hostport>:80 tricia/weatherapp` 
+Your app in docker hub `docker run -d -p <hostport>:80 <your username>/<choose an image name>` 
 
-1. there is a script [run.sh](run.sh) that you can use or  `docker run -d -p <hostport>:80 tricia/weatherapp` 
+1. there is a script [run.sh](run.sh) that you can use or run your app (see My & Your app)
     * 80 is the container port and _hostport_ is the host that is running docker, port forwarding from container 80 to host _hostport_ is done by docker, choose a high port 
     * `-d` detaches the container, if you omit you will see  whatever the container logs
 3. load a browser to access the app `http://localhost:<hostport>` 
