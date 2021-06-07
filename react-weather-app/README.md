@@ -50,6 +50,7 @@ You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo
 It is available as a public image in my [docker hub account](https://hub.docker.com/repository/docker/tricia/weatherapp)
 
 My app in docker hub `docker run -d -p <hostport>:80 tricia/weatherapp` 
+
 Your app in docker hub `docker run -d -p <hostport>:80 <your username>/<choose an image name>` 
 
 1. there is a script [run.sh](run.sh) that you can use or run your app (see My & Your app)
