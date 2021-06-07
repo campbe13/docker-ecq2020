@@ -9,8 +9,9 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 
 ## TL;DR
 You can see the demo of both of these [via youtube](https://youtu.be/qQTM7Z0oXPo)  PMC: video needs to be redone, it's a bit shakey at the end
-### To build this container yourself  (general info)
-1.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
+### To build this container yourself with your own simple app (general info)
+1.  create a directory `app/` put your own app (index.html & website content javascript or simple html) into that directory
+2.  create a Dockerfile that uses an appropriate base image & installs the software you need.  See here for the [Dockerfile](Dockerfile) that was used to create this app.
     * Dockerfile reference https://docs.docker.com/engine/reference/builder/
 3.  build the image, run `docker build -t **<containerimagename>** .` (tweak Dockerfile until it works!)
 4.  run the container, run `docker run -d -p 8888:80 <containerimagename>` 
