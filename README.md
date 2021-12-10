@@ -47,6 +47,16 @@ web app
 * tested on/runs on
     * ubuntu 20.04
     * Windows 10 pro
+## [react weather app deploy-to-heroku](react-weather-httpd-heroku)
+web app
+* base image alpine
+* install lighthttpd
+* copy index.html & react app
+* web app needs port 80 forwarded
+* tested on/runs on
+    * ubuntu 20.04
+    * Windows 10 pro
+    * heroku
 ## Not a container [lab exercises](container-lab-exercises) 
 # containers 2020
 The following are in order of least to more complex
