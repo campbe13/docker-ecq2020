@@ -1,7 +1,7 @@
 Run Alpine Linux Containers
 =============================
 
-In this lab you will run a  container and explore the basics of how containers work, how the Docker Engine executes and isolates containers from each other.   You must have docker installed on your system before continuing, [instructions here](https://docs.docker.com/get-docker/)
+In this lab you will run a  container and explore the basics of how containers work, how the Docker Engine executes and isolates containers from each other.   You must have docker installed on your system before continuing, [quikstart install for Ubuntu 20.04](ubuntu-install-docker.io.md)  or [full instructions here](https://docs.docker.com/get-docker/)
 
 * * *
 
