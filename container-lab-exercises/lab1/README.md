@@ -16,6 +16,8 @@ Concepts in this exercise:
 Note:  This lab is originally from [play with docker](https://training.play-with-docker.com/ops-s1-hello/)  where you can use the console in a browser.  I updated the commands and fixed a few things.
 
 Tips:
+-----
+__DO NOT__ RUN docker as ROOT  (if you cannot run it as a regular user look at the installation instructions and figure out the problem)
 
 Code snippets are shown in one of three ways throughout this environment:
 
@@ -38,7 +40,8 @@ It’s time to get your hands dirty! As with all things technical, a “hello wo
     docker run hello-world
     
 
-That’s it: your first container. The _hello-world_ container output tells you a bit about what just happened. Essentially, the Docker engine running in your terminal tried to find an **image** named hello-world. Since you just got started there are no images stored locally (`Unable to find image...`) so Docker engine goes to its default **Docker registry**, which is [Docker Hub](https://hub.docker.com), to look for an image named “hello-world”. It finds the image there, pulls it down, and then runs it in a container. And hello-world’s only function is to output the text you see in your terminal, after which the container exits.
+That’s it: your first container. The _hello-world_ container output tells you a bit about what just happened. Essentially, the Docker engine running in your terminal tried to find an **image** named hello-world. Since you used it before it will run it from the local copy.
+if you had not run it before  (say you just got started there are no images stored locally) you would see  (`Unable to find image...`) so Docker engine goes to its default **Docker registry**, which is [Docker Hub](https://hub.docker.com), to look for an image named “hello-world”. It finds the image there, pulls it down, and then runs it in a container. And hello-world’s only function is to output the text you see in your terminal, after which the container exits.
 
 ![Hello world explainer](ops-basics-hello-world.svg)
 
