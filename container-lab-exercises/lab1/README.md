@@ -17,7 +17,7 @@ Note:  This lab is originally from [play with docker](https://training.play-with
 
 Tips:
 -----
-__DO NOT__ RUN docker as ROOT  (if you cannot run it as a regular user look at the installation instructions and figure out the problem)
+__DO NOT__ RUN docker as ROOT  (if you cannot run it as a regular user look at the [installation instructions](ubuntu-install-docker.io.md)  and figure out the problem)
 
 Code snippets are shown in one of three ways throughout this environment:
 
