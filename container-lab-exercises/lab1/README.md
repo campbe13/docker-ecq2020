@@ -35,13 +35,19 @@ Code snippets are shown in one of three ways throughout this environment:
 1.0 Running your first container
 --------------------------------
 
+If you installed docker and tested it you will have downloaded and run hello-world  to experience this properly first remove the image:
+
+    docker rmi hello-world -f
+
 It’s time to get your hands dirty! As with all things technical, a “hello world” app is good place to start. Type or click the code below to run your first Docker container:
 
     docker run hello-world
     
 
-That’s it: your first container. The _hello-world_ container output tells you a bit about what just happened. Essentially, the Docker engine running in your terminal tried to find an **image** named hello-world. Since you used it before it will run it from the local copy.
+That’s it: your first container. The _hello-world_ container output tells you a bit about what just happened. Essentially, the Docker engine running in your terminal tried to find an **image** named hello-world. 
 if you had not run it before  (say you just got started there are no images stored locally) you would see  (`Unable to find image...`) so Docker engine goes to its default **Docker registry**, which is [Docker Hub](https://hub.docker.com), to look for an image named “hello-world”. It finds the image there, pulls it down, and then runs it in a container. And hello-world’s only function is to output the text you see in your terminal, after which the container exits.
+
+If you run it a second time it will not have to download again, rom the local copy of the image.
 
 ![Hello world explainer](ops-basics-hello-world.svg)
 
