@@ -266,8 +266,17 @@ Background containers are how you’ll run most applications. Here’s a simple 
 7.  Type `exit` to leave the interactive shell session.
     
          exit
-        
-    
+### Run a new background MySQL but this time make it accessable through the host:  
+
+1. run `docker run --name mysql-container -d -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=secret-password -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=secret -p 3306:3306 mysql:latest`
+   see [docker run](https://docs.docker.com/engine/reference/commandline/run/)
+2. see the process `docker ps` and `sudo netstat -plan46 `  
+   see [docker ps](https://docs.docker.com/engine/reference/commandline/ps/)
+4. watch logs `docker logs mysql-container -f `  (the -f is like tail -f, to stdout & stderr continuously)  
+   see [docker logs](https://docs.docker.com/engine/reference/commandline/logs/)
+5. access it from the host:  `mysql -u root -p -h 127.0.0.1`  (while watching the logs, so open another terminal)
+
+If you get stuck see the full [mysql demo & results](https://github.com/campbe13/docker-ecq2020/edit/master/mysql-example/MYSQLDEMO.md)
 
 Task 2: Package and run a custom app using Docker
 -------------------------------------------------
