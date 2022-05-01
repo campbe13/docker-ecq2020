@@ -44,7 +44,7 @@ There are different ways to use containers. These include:
 
 1.  **To run a single task:** This could be a shell script or a custom app.
 2.  **Interactively:** This connects you to the container similar to the way you SSH into a remote server.
-3.  **In the background:** For long-running services like websites and databases.
+3.  **In the background:** For long-running services like website apps and databases.
 
 In this section you’ll try each of those options and see how Docker manages the workload.
 
@@ -112,15 +112,15 @@ In the next example, we are going to run an Ubuntu Linux container.
     
 2.  Run the following commands in the container.
     
-    `ls /` will list the contents of the root director in the container, `ps aux` will show running processes in the container, `cat /etc/issue` will show which Linux distro the container is running, in this case Ubuntu 18.04.3 LTS.
+    `ls /` will list the contents of the root director in the container, `ps aux` will show running processes in the container, `cat /etc/*release* and /etc/release` will show which Linux distro the container is running and a little more info, in this case Ubuntu 22.04 LTS (or later)
     
         ls /
         
-    
         ps aux
         
-    
         cat /etc/issue
+        
+        cat /etc/*release* 
         
     
 3.  Type `exit` to leave the shell session. This will terminate the `bash` process, causing the container to exit.
@@ -137,7 +137,7 @@ In the next example, we are going to run an Ubuntu Linux container.
     
     You should see:
     
-         Ubuntu 20.04.2 LTS \n \l
+         Ubuntu 20.04.4 LTS \n \l
         
     
 
@@ -259,7 +259,7 @@ Background containers are how you’ll run most applications. Here’s a simple 
     You can use mysql to create your database interactively, (here you will be prompted for the password)
     
          mysql -u root -p mydb  -h 127.0.0.1  -P 3306
-        
+                 
     
     Notice the output is the same as before.
     
@@ -356,7 +356,7 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
     
 6.  Use the `docker run` command to start a new container from the image you created.
     
-    As this container will be running an NGINX web server, we’ll use the `--publish` flag to publish port 80 inside the container onto port 80 on the host. This will allow traffic coming in to the Docker host on port 80 to be directed to port 80 in the container. The format of the `--publish` flag is `host_port`:`container_port`.
+    As this container will be running an NGINX web server, we’ll use the `--publish` flag to publish port 80 inside the container onto port 80 on the host. This will allow traffic coming in to the Docker host on port 80 to be directed to port 8123 (choose an unused port on your VM) in the container. The format of the `--publish` flag is `host_port`:`container_port`.
     
          docker run \
          --detach \
@@ -370,19 +370,19 @@ Let’s have a look at the Dockerfile we’ll be using, which builds a simple we
     *   `--detach` swill run the container in the background. short form `-d`
     *   `--publish  host-port: container-por` will forward the container-port to the host-port.  sort form `-p`
     *   `--rm` tells Docker to go ahead and remove the container when it’s done executing.
-    *   
+    
     Any external traffic coming into the server on port 8123 will now be directed into the container on port 80.
     
     In a later step you will see how to map traffic from two different ports - this is necessary when two containers use the same port to communicate since you can only expose the port once on the host.
     
-7.  You can load the website with http://127.0.0.1:8123 (unless you used another port) which should be running.
+7.  You can load the website with http://127.0.0.1:8123 (unless you used another port) which should be running.  To access it outside your VM open the port on the firewall.
     
 8.  Once you’ve accessed your website, shut it down and remove it.
     
          docker  rm --force linux_tweet_app
         
     
-    > **Note:** We used the `--force` parameter to remove the running container without shutting it down. This will ungracefully shutdown the container and permanently remove it from the Docker host.
+    > **Note:** We used the `--force` or `-f` parameter to remove the running container without shutting it down. This will ungracefully shutdown the container and permanently remove it from the Docker host.
     > 
     > In a production environment you may want to use `docker stop` to gracefully stop the container and leave it on the host. You can then use `docker container rm` to permanently remove it.
     
