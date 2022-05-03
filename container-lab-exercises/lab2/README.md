@@ -423,14 +423,18 @@ When you use a bind mount, a file or directory on the host machine is mounted in
          $DOCKERID/linux_tweet_app:1.0
         
     
-    > Remember from the Dockerfile, `usr/share/nginx/html` is where the html files are stored for the web app.
+    > Remember from the Dockerfile, `/usr/share/nginx/html` is where the html files are stored for the web app.
     
 2.  The http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running.
     
 
 ### Modify the running website
 
-Bind mounts mean that any changes made to the local file system are immediately reflected in the running container.
+Bind mounts mean that any changes made to the local file system are immediately reflected in the running container. 
+In your command you bind the current working directory `$(pwd)`  which should be `~/linux_tweet_app` on the host to `/usr/share/nginx/html` on the container so that any changes made 
+to  your current working directory are reflected in the container
+
+1.  on your VM Edit `index.html` add a `<h2>`  with your name(s)  and reload the container app via your browser, http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running. you will see the changes.  
 
 1.  Copy a new `index.html` into the container.
     
