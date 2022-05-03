@@ -258,7 +258,7 @@ Background containers are how you’ll run most applications. Here’s a simple 
     
     You can use mysql to create your database interactively, (here you will be prompted for the password)
     
-         mysql -u root -p mydb  -h 127.0.0.1  -P 3306
+         mysql -u root -p   -h 127.0.0.1  -P 3306
                  
     
     Notice the output is the same as before.
