@@ -434,9 +434,13 @@ Bind mounts mean that any changes made to the local file system are immediately 
 In your command you bind the current working directory `$(pwd)`  which should be `~/linux_tweet_app` on the host to `/usr/share/nginx/html` on the container so that any changes made 
 to  your current working directory are reflected in the container
 
-1.  on your VM Edit `index.html` add a `<h2>`  with your name(s)  and reload the container app via your browser, http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running. you will see the changes.  
+1.  On your VM Edit (use `vi`)  `index.html` add a `<h2>`  with your name(s)  and reload the container app via your browser, http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running. you will see the changes.  
+<!--
+> If you are comfortable with `vi` you can use it to load the local `index.html` file and make additional changes. Those too would be reflected when you reload the webpage. 
+-->
+If you are really adventurous, why not try using `exec` to access the running container and modify the files stored there.
 
-1.  Copy a new `index.html` into the container.
+3.  Copy a new `index.html` into the container.
     
     The Git repo that you pulled earlier contains several different versions of an index.html file. You can manually run an `ls` command from within the `~/linux_tweet_app` directory to see a list of them. In this step we’ll replace `index.html` with `index-new.html`.
     
@@ -445,7 +449,7 @@ to  your current working directory are reflected in the container
     
 2.  Go to the running http://127.0.0.1:8123 or (chosen port) and **refresh the page**. Notice that the site has changed.
     
-    > If you are comfortable with `vi` you can use it to load the local `index.html` file and make additional changes. Those too would be reflected when you reload the webpage. If you are really adventurous, why not try using `exec` to access the running container and modify the files stored there.
+    
     
 
 Even though we’ve modified the `index.html` local filesystem and seen it reflected in the running container, we’ve not actually changed the Docker image that the container was started from.
