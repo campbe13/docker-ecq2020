@@ -1,0 +1,14 @@
+{
+  "name": "demos",
+  "version": "1.0.0",
+  "description": "1. read local files\r   * [readfile1.mjs](readfile1.mjs) -  check if we can access the path/file\r   * [readfile2.mjs](readfile2.mjs) -  continue 1 add: check if it is a file\r   * [readfile3.mjs](readfile3.mjs) -  continue 2 add: read the file\r 1. write to local files\r 2. implement REST api   GET w express\r 2. implement REST api   POST w express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PMC",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
