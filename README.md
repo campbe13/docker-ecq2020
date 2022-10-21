@@ -6,6 +6,24 @@ I have written up some of the work in a blog: [cloudnativeish blog](https://clou
 
 * todo  update docker tagging in earlier repos
 
+## Quickstart TL;DR
+From my [blog post](https://cloudnativeish.wordpress.com/2021/06/07/containers-quickstart/)  A series of curated articles that I think will help a professional/teacher to quickly get started with containers. 
+
+1. Guided exercise on play with docker: [First Alpine Linux Containers](https://training.play-with-docker.com/ops-s1-hello/) Browser hosted, no need to install anything it all works in the browser and it gives you a good overview of the basic concepts:
+   * Docker engine
+   * Containers & Images
+   * Docker hub
+   * Container isolation
+2. Guided exercise on play with docker: [Docker for beginners](https://training.play-with-docker.com/beginner-linux/) Browser hosted, still nothing to install, intro to
+   * Running containers single task, interactively (console) and in the background
+   * Run a custom app from docker hub, overview of basic Dockerfile directives
+   * Set up a docker hub account, add & modify images, modify websites
+3. Using a simple website or JavaScript app, [create your own container](https://github.com/campbe13/docker-ecq2020/tree/master/react-weather-app) there are 3 parts, you can do as little or as much as you wish
+   * Build the container for / with your own app, and run it
+   * Make it the image available on docker hub
+   * Run the container, from docker hub image
+3. This is a little more advanced but it jumps you to using persistent storage for a database container. Containers are stateless by design. In using this lab exercise you make sure the data persists on the host running the container. Note that this type of database container is normally used for testing, not in production. See [Instructions MySQL container with persistent storage](https://docs.google.com/document/d/1k1N-jkWDsHaP29HTykZnTn-zGvIFSY9ZVuBB1fkkXAA/edit?usp=sharing)
+
 ## general info
 ### other repos & sites
 * using Gitlab CI to deploy to gitlab pages
