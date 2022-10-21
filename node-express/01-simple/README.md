@@ -26,6 +26,8 @@ Or diy build  & run
 3.  add to docker hub 
 
 ### To build this container  (general info)
+First have a look at  the [Dockerfile](Dockerfile)  which contains the instructions to build the docker image. 
+
 1.  build the image, run `docker build -t <containerimagename>` (tweak Dockerfile until it works!)
  
 4.  run the container, run `docker run -d -p 8888:3099 <containerimagename>` 
@@ -56,7 +58,7 @@ It is available as a public image in my [docker hub account](https://hub.docker.
 
 2. run `docker run -d -p <hostport>:3099 tricia/muppets` 
     * 3099 is the container port and _hostport_ is the host that is running docker, port forwarding from container 3099 to host _hostport_ is done by docker, choose a high port 
-    * `d` detaches the container, if you omit you will see  whatever the container logs
+    * `-d` detaches the container, if you omit you will see  whatever the container logs
 3. load a browser to access the app `localhost:_hostport_` or `ip.address.of.host:_hostport_`
 4. if you want to access the app from another host, you must open your firewall for port _hostport_
 
