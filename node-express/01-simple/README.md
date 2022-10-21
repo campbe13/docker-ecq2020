@@ -17,7 +17,7 @@ Before you try this you must [install docker](https://docs.docker.com/install/)
 **__Note__** If you are newly learning docker I __strongly__ suggest you use the command line interface as it may be used anywhere: windoze, *nix, and cloud shells.  No need to learn new interfaces every time.
 
 ### TL;DR
-Just run this app  (from docker hub)  `docker run campbe13/muppets -d -p 8888:3099`  where `8888` is your localhost port
+Just run this app  (from docker hub)  `docker run campbe13/muppets -d -p 8888:3099`  where `8888` is your localhost port, access it via http://localhost:8888/
 
 Or diy build  & run
 1.  make changes to the app if you want (optional)
