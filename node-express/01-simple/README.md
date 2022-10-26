@@ -23,7 +23,7 @@ Or diy build  & run
 1.  make changes to the app if you want (optional)
 1.  BUILD  `docker build -t mupps . `
 2.  RUN  `docker run  -d -p <hostport>:3099  mupps `
-3.  test http://localhost:<hostport>/, results should be muppets JSON 
+3.  test `http://localhost:<hostport>/`, results should be muppets JSON 
 <br>![image](https://user-images.githubusercontent.com/1751207/197226818-fb1abb50-3d7d-4b4d-b1b4-a6c51be76ef5.png)
 5.  (optional) add to docker hub 
 
