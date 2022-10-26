@@ -1,7 +1,7 @@
 # Express & NodeJs 
 
  
-Proof of concpept dockerize an express api server & eventually deploy to heroku
+Proof of concpept dockerize an express api server & eventually deploy to cloud (AWS, Azure, Heroku, GCP?)
 
 Ref:  [nodejs + docker](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 plus other container info in [my proj on containers](https://github.com/campbe13/docker-ecq2020)
@@ -67,4 +67,5 @@ It is available as a public image in my [docker hub account](https://hub.docker.
 ## docker registry image repo
 
 ### running on cloud (heroku other?? ) -- will update soon
-tbd
+* tbd 
+* AWS ?  https://aws.amazon.com/blogs/aws/lightsail-containers-an-easy-way-to-run-your-containers-in-the-cloud/
