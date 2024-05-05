@@ -23,8 +23,13 @@ Task 0: Prerequisites
 
 You will need all of the following to complete this lab:
 
+*   A DockerID.  (from Docker Hub)
 *   A clone of the lab’s GitHub repo.
-*   A DockerID.
+
+
+### Make sure you have a DockerID
+
+If you do not have a DockerID (a free login used to access Docker Hub), please visit [Docker Hub](https://hub.docker.com) and register for one. You will need this for later steps.
 
 ### Clone the Lab’s GitHub Repo
 
@@ -32,11 +37,6 @@ Use the following command to clone the lab’s repo from GitHub. This will make 
 
         git clone https://github.com/dockersamples/linux_tweet_app
     
-
-### Make sure you have a DockerID
-
-If you do not have a DockerID (a free login used to access Docker Hub), please visit [Docker Hub](https://hub.docker.com) and register for one. You will need this for later steps.
-
 Task 1: Run some simple Docker containers
 -----------------------------------------
 
@@ -137,7 +137,7 @@ In the next example, we are going to run an Ubuntu Linux container.
     
     You should see:
     
-         Ubuntu 20.04.4 LTS \n \l
+         Ubuntu 24.04.4 LTS \n \l
         
     
 
