@@ -11,9 +11,9 @@ In this lab, we will look at some basic Docker commands and a simple build-ship-
 > **Tasks**:
 
 > *   [Task 0: Prerequisites](#Task_0)
-> *   [Task 1: Run some simple Docker containers](#Task_1)
-> *   [Task 2: Package and run a custom app using Docker](#Task_2)
-> *   [Task 3: Modify a Running Website](#Task_3)
+> *   [Task 1: Run some simple Docker containers](#task-1-run-some-simple-docker-containers)
+> *   [Task 2: Package and run a custom app using Docker](#task-2-package-and-run-a-custom-app-using-docker)
+> *   [Task 3: Modify a Running Website](#task-3-modify-a-running-website)
 
 Note: This lab is originally from [play with docker](https://training.play-with-docker.com/beginner-linux/) where you can use the console in a browser. I modified it for my students.   Original: Aug 1, 2019 • @mikegcoleman
 
@@ -426,6 +426,7 @@ When you use a bind mount, a file or directory on the host machine is mounted in
     > Remember from the Dockerfile, `/usr/share/nginx/html` is where the html files are stored for the web app.
     
 2.  The http://127.0.0.1:8123 (or whatever port you choose instead of 8123) should be running.
+3.  Using the website for docker describe what this is doing `--mount type=bind,source="$(pwd)",target=/usr/share/nginx/html` in your log.
     
 
 ### Modify the running website
@@ -448,9 +449,6 @@ If you are really adventurous, why not try using `exec` to access the running co
         
     
 2.  Go to the running http://127.0.0.1:8123 or (chosen port) and **refresh the page**. Notice that the site has changed.
-    
-    
-    
 
 Even though we’ve modified the `index.html` local filesystem and seen it reflected in the running container, we’ve not actually changed the Docker image that the container was started from.
 
