@@ -328,7 +328,7 @@ Note that you'll receive a container id, but no output; this is because we're ru
 4. Try to find your running container, using `docker ps`. Note that the container isn't listed! Why? Because this container's entrypoint contains a syntax error, and has already exited.
 Try running the command that shows *all* containers, including those that have exited (log hint: screenshot your list of stopped containers).
 
-5. Once you've located your stopped container, try pulling the logs for that container, with `docker log <container id>`.
+5. Once you've located your stopped container, try pulling the logs for that container, with `docker logs <container id>`.
 
 6. You should see the error in the above script. (log hint: screenshot). Fix the syntax error, and then rebuild your image, and try running a new container.
 
