@@ -45,6 +45,7 @@ There are different ways to use containers. These include:
 1.  **To run a single task:** This could be a shell script or a custom app.
 2.  **Interactively:** This connects you to the container similar to the way you SSH into a remote server.
 3.  **In the background:** For long-running services like website apps and databases.
+4.  **Debug a broken container** Use the logs to figure out a problem.
 
 In this section you’ll try each of those options and see how Docker manages the workload.
 
