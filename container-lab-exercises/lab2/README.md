@@ -87,62 +87,6 @@ In this step we’re going to start a new container and tell it to run the `host
 
 Containers which do one task and then exit can be very useful. You could build a Docker image that executes a script to configure something. Anyone can execute that task just by running the container - they don’t need the actual scripts or configuration information.
 
-### Debug a broken container
-
-In this step, we'll learn about how to debug containers that won't start, or otherwise have something wrong with them.
-
-Normally, when you run a container of any type, docker will begin from the image's entrypoint. Frequently, this is a script of some kind.
-
-Docker containers will generally run until the script at the entrypoint exits. Usually, this is after they've accomplished some useful task, or they've received some sort of signal.
-
-However, in some instances, like, say, you're developing your own container, and you've made some sort of syntax error, the entrypoint script will exit immediately with a non-zero status code.
-
-In order to debug what's wrong, we generally want to see the output the script we just ran; just like if we ran the script outside a container. We'd want to see what line the error we made was on,
-or if there's any additional diagnostic information that may help us uncover what's happened.
-
-1. Create a folder called `broken_container` in your home directory. Then `cd` into it.
-2. In the directory, create the following two files, `script.py` and `Dockerfile`:
-
-`script.py`
-
-```python
-#!/usr/bin/env python
-
-
-x = 1
-if x === 1:
-    print("x is 1.")
-```
-
-and
-
-`Dockerfile`
-
-```
-FROM python:3.13.0a6-slim-bookworm
-COPY script.py script.py
-CMD ["python", "script.py"]
-```
-
-3. Still in the `broken_container` directory, build, and run this container as a daemon by typing:
-
-```
-docker build . -t broken_container
-docker run -d broken_container
-```
-
-Note that you'll receive a container id, but no output; this is because we're running the container as a daemon; and this is frequently how you'll run apps that you build.
-
-4. Try to find your running container, using `docker ps`. Note that the container isn't listed! Why? Because this container's entrypoint contains a syntax error, and has already exited.
-Try running the command that shows *all* containers, including those that have exited (log hint: screenshot your list of stopped containers).
-
-5. Once you've located your stopped container, try pulling the logs for that container, with `docker log <container id>`.
-
-6. You should see the error in the above script. (log hint: screenshot). Fix the syntax error, and then rebuild your image, and try running a new container.
-
-7. This time, the container will have still exited, but it should now have exited successfully with status 0. Pull the logs for the container again, and then note down the output. (log hint: screenshot)
-
-
 ### Run an interactive Ubuntu container
 
 In the previous step you ran a container based on a different version of Linux (Alpine) than is running on your Docker host (Ubuntu.)
@@ -333,6 +277,62 @@ Background containers are how you’ll run most applications. Here’s a simple 
 5. access it from the host:  `mysql -u root -p -h 127.0.0.1`  (while watching the logs, so open another terminal)
 
 If you get stuck see the full [mysql demo & results](https://github.com/campbe13/docker-ecq2020/edit/master/mysql-example/MYSQLDEMO.md)
+
+### Debug a broken container
+
+In this step, we'll learn about how to debug containers that won't start, or otherwise have something wrong with them.
+
+Normally, when you run a container of any type, docker will begin from the image's entrypoint. Frequently, this is a script of some kind.
+
+Docker containers will generally run until the script at the entrypoint exits. Usually, this is after they've accomplished some useful task, or they've received some sort of signal.
+
+However, in some instances, like, say, you're developing your own container, and you've made some sort of syntax error, the entrypoint script will exit immediately with a non-zero status code.
+
+In order to debug what's wrong, we generally want to see the output the script we just ran; just like if we ran the script outside a container. We'd want to see what line the error we made was on,
+or if there's any additional diagnostic information that may help us uncover what's happened.
+
+1. Create a folder called `broken_container` in your home directory. Then `cd` into it.
+2. In the directory, create the following two files, `script.py` and `Dockerfile`:
+
+`script.py`
+
+```python
+#!/usr/bin/env python
+
+
+x = 1
+if x === 1:
+    print("x is 1.")
+```
+
+and
+
+`Dockerfile`
+
+```
+FROM python:3.13.0a6-slim-bookworm
+COPY script.py script.py
+CMD ["python", "script.py"]
+```
+
+3. Still in the `broken_container` directory, build, and run this container as a daemon by typing:
+
+```
+docker build . -t broken_container
+docker run -d broken_container
+```
+
+Note that you'll receive a container id, but no output; this is because we're running the container as a daemon; and this is frequently how you'll run apps that you build.
+
+4. Try to find your running container, using `docker ps`. Note that the container isn't listed! Why? Because this container's entrypoint contains a syntax error, and has already exited.
+Try running the command that shows *all* containers, including those that have exited (log hint: screenshot your list of stopped containers).
+
+5. Once you've located your stopped container, try pulling the logs for that container, with `docker log <container id>`.
+
+6. You should see the error in the above script. (log hint: screenshot). Fix the syntax error, and then rebuild your image, and try running a new container.
+
+7. This time, the container will have still exited, but it should now have exited successfully with status 0. Pull the logs for the container again, and then note down the output. (log hint: screenshot)
+
 
 Task 2: Package and run a custom app using Docker
 -------------------------------------------------
